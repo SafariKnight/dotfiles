@@ -1,0 +1,15 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+
+format = '$directory '
+right_format = '$git_branch'
+
+[directory]
+truncation_length = 5
+format = '\[[$path]($style)[$read_only]($read_only_style)\]'
+read_only = ': '
+read_only_style = "red"
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style)'

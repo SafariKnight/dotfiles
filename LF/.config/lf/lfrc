@@ -1,0 +1,95 @@
+set hidden true
+set drawbox true
+set ignorecase true
+set icons true
+
+cmd del ${{
+    rm -drf $f
+}}
+
+cmd mkdir ${{
+    printf "Directory Name: "
+    read ans
+    mkdir $ans
+}}
+
+cmd mkfile ${{
+    printf "File Name: "
+    read ans
+    touch $ans
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+# Archive Bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+# Remove some default bindings
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map f
+map g
+map gg
+map G
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ch chmod
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+map DD del
+
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+# LazyGit
+map gg $lazygit $pwd
