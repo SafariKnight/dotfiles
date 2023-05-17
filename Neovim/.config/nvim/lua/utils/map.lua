@@ -1,7 +1,7 @@
 local M = {}
 
 ---Calls a table containing keybinds from config.mappings
----@param section string?
+---@param section string
 ---@param function_opts table?
 M.load_mapping = function(section, function_opts)
   local map_section = function(sect)

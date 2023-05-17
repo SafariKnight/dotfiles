@@ -2,10 +2,6 @@ return {
   "echasnovski/mini.nvim",
   event = "VeryLazy",
   opts = {
-		indentscope = {
-			symbol = "│",
-			options = { try_as_border = true },
-		},
     surround = {
       mappings = {
         add = "gza",          -- Add surrounding in Normal and Visual modes
@@ -40,6 +36,6 @@ return {
     activate("surround")
     activate("move")
     activate("ai")
-    activate("indentscope")
+    -- activate("indentscope")
   end
 }
