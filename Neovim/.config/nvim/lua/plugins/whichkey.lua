@@ -7,8 +7,11 @@ return {
       vim.o.timeoutlen = 300
       require("which-key").setup({
         key_labels = {
-          ["<leader>"] = "SPACE",
-          ["<space>"] = "SPACE"
+          ["<leader>"] = "SPC",
+          ["<space>"] = "SPC"
+        },
+        icons = {
+          breadcrumb = "",
         }
       })
 

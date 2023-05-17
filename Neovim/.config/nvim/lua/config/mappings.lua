@@ -15,9 +15,6 @@ M.abc = {
 M.lspconfig = {
 	plugin = true,
 	n = {
-		-- ["<leader>lsr"] = { vim.lsp.buf.rename, "Rename" },
-		-- ["<leader>lsf"] = { require("telescope.builtin").lsp_document_symbols, "Find" },
-
 		["<leader>lwa"] = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
 		["<leader>lwd"] = { vim.lsp.buf.add_workspace_folder, "Remove Folder" },
 		["<leader>lws"] = {
@@ -31,9 +28,7 @@ M.lspconfig = {
 		["<leader>lLr"] = { "<CMD>LspRestart<CR>", "LSP Restart" },
 		["<leader>lLm"] = { "<CMD>Mason<CR>", "Mason" },
 
-		-- ["<leader>lc"] = { vim.lsp.buf.code_action, "Code Action" },
 		["<leader>li"] = { vim.lsp.buf.signature_help, "Signature Documentation" },
-		-- ["<leader>ld"] = { vim.diagnostic.open_float, "Diagnostic Float" },
 		["<leader>lf"] = { function() vim.lsp.buf.format({ async = true }) end, "Format" },
 
 		["gd"] = { vim.lsp.buf.definition, "Definition" },
@@ -41,20 +36,18 @@ M.lspconfig = {
 		["gr"] = { require("telescope.builtin").lsp_references, "References" },
 		["gi"] = { vim.lsp.buf.implementation, "Implementation" },
 
-		["K"] = { vim.lsp.buf.hover, "Documentation Float" },
 	},
 }
 
 M.lspsaga = {
 	plugin = true,
 	n = {
-		["<leader>lsf"] = { "<CMD>Lspsaga lsp_finder<CR>", "Find" },
+		["<leader>lss"] = { "<CMD>Lspsaga lsp_finder<CR>", "Info" },
 		["<leader>lsr"] = { "<CMD>Lspsaga rename<CR>", "Rename" },
 
     ["<leader>lc"] = { "<CMD>Lspsaga code_action<CR>", "Code Action" },
     ["<leader>ld"] = { "<CMD>Lspsaga show_line_diagnostics<CR>", "Line Diagnostics" },
-
+		["K"] = { "<CMD>Lspsaga hover_doc<CR>", "Documentation Float" },
 	},
 }
-
 return M
