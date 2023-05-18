@@ -24,7 +24,7 @@ return {
 			{ "folke/neodev.nvim", config = true },
 			{ "williamboman/mason-lspconfig.nvim", opts = { ensure_installed = servers_key } },
 			"jose-elias-alvarez/null-ls.nvim",
-			"hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp",
 			"RRethy/vim-illuminate",
 		},
 		opts = {
@@ -45,21 +45,13 @@ return {
 		config = function(_, opts)
 			vim.diagnostic.config(opts)
 			local lspconf = require("lspconfig")
-			local on_attach = function(client, bufnr)
-				require("utils.map").load_mapping("lspconfig", { buffer = bufnr })
-
-				-- Create a command `:Format` local to the LSP buffer
-				vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-					vim.lsp.buf.format({ async = true })
-				end, { desc = "Format current buffer with LSP" })
-				require("illuminate").on_attach(client)
-			end
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			for server, opts in pairs(servers) do
 				opts = vim.tbl_deep_extend("force", opts, {
-					capabilities = capabilities,
-					on_attach = on_attach,
+					-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
+          capabilities = require("utils.lsp").capabilities,
+					on_attach = require("utils.lsp").on_attach,
 				})
+        -- print(vim.inspect(opts))
 				lspconf[server].setup(opts)
 			end
 			local nls = require("null-ls")

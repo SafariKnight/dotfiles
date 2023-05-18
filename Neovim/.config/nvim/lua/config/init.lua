@@ -4,4 +4,4 @@ end
 
 req("lazy")
 req("set")
-require("utils.map").load_mapping()
+require("utils.map").load_mapping("abc")

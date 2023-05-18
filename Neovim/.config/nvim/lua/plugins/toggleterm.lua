@@ -1,10 +1,13 @@
 return {
   'akinsho/toggleterm.nvim',
   event = "VeryLazy",
-  keys = {
-    { "<leader>g", function() _Lazygit_toggle() end, desc = "Lazy Git"},
-    { "<leader>e", function() _LF_toggle() end, desc = "LF File Manager" },
-  },
+  -- keys = {
+  --   { "<leader>g", function() _Lazygit_toggle() end, desc = "Lazy Git"},
+  --   { "<leader>e", function() _LF_toggle() end, desc = "LF File Manager" },
+  -- },
+  keys = function()
+    return require("utils.map").load_mapping("toggleterm")
+  end,
   opts = {
     open_mapping = [[<C-\>]],
     direction = 'float',

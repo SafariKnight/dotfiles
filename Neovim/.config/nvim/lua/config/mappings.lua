@@ -1,5 +1,4 @@
 local M = {}
-
 --- Someone find how to break this setup, including dumb ways (I want to idiot proof this)
 M.abc = {
 	n = {
@@ -12,8 +11,52 @@ M.abc = {
 	},
 }
 
+M.harpoon = function()
+  local mark = require("harpoon.mark")
+  local ui = require("harpoon.ui")
+	local marked_files = {}
+	for idx = 1, mark.get_length() do
+		local file = mark.get_marked_file_name(idx)
+		if file == "" then
+			file = "(empty)"
+		end
+		marked_files[idx] = string.format("%s", file)
+	end
+	local function get_entry(idx)
+		local file_name = marked_files[idx] or idx .. " (Unset)"
+		return "Goto file " .. file_name
+	end
+	local file1 = get_entry(1)
+	local file2 = get_entry(2)
+	local file3 = get_entry(3)
+	local file4 = get_entry(4)
+	return {
+		n = {
+			["<leader>hp"] = { mark.add_file, "Add Mark" },
+			["<leader>hu"] = { ui.toggle_quick_menu, "Open UI" },
+			["<leader>j"] = { function() ui.nav_file(1) end, file1 },
+			["<leader>k"] = { function() ui.nav_file(2) end, file2 },
+			["<leader>u"] = { function() ui.nav_file(3) end, file3 },
+			["<leader>i"] = { function() ui.nav_file(4) end, file4 },
+		},
+	}
+end
+
+M.undotree = {
+	n = {
+		["<leader>t"] = { "<CMD>UndotreeToggle<CR>", "Undotree" },
+	},
+}
+
+M.telescope = {
+	n = {
+		["<C-p>"] = { require("telescope.builtin").find_files, "Search Files" },
+		["<C-q>"] = { require("telescope.builtin").buffers, "Switch Buffers" },
+	},
+}
+
 M.lspconfig = {
-	plugin = true,
+	-- plugin = true,
 	n = {
 		["<leader>lwa"] = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
 		["<leader>lwd"] = { vim.lsp.buf.add_workspace_folder, "Remove Folder" },
@@ -29,25 +72,36 @@ M.lspconfig = {
 		["<leader>lLm"] = { "<CMD>Mason<CR>", "Mason" },
 
 		["<leader>li"] = { vim.lsp.buf.signature_help, "Signature Documentation" },
-		["<leader>lf"] = { function() vim.lsp.buf.format({ async = true }) end, "Format" },
+		["<leader>lf"] = {
+			function()
+				vim.lsp.buf.format({ async = true })
+			end,
+			"Format",
+		},
+		["<leader>ld"] = { vim.diagnostic.open_float, "Line Diagnostics" },
 
 		["gd"] = { vim.lsp.buf.definition, "Definition" },
 		["gD"] = { vim.lsp.buf.declaration, "Declaration" },
 		["gr"] = { require("telescope.builtin").lsp_references, "References" },
 		["gi"] = { vim.lsp.buf.implementation, "Implementation" },
-
 	},
 }
 
 M.lspsaga = {
-	plugin = true,
 	n = {
 		["<leader>lss"] = { "<CMD>Lspsaga lsp_finder<CR>", "Info" },
 		["<leader>lsr"] = { "<CMD>Lspsaga rename<CR>", "Rename" },
 
-    ["<leader>lc"] = { "<CMD>Lspsaga code_action<CR>", "Code Action" },
-    ["<leader>ld"] = { "<CMD>Lspsaga show_line_diagnostics<CR>", "Line Diagnostics" },
+		["<leader>lc"] = { "<CMD>Lspsaga code_action<CR>", "Code Action" },
 		["K"] = { "<CMD>Lspsaga hover_doc<CR>", "Documentation Float" },
 	},
 }
+
+M.toggleterm = {
+  n = {
+    ["<leader>e"] = { function() _LF_toggle() end, "LF File Manager" },
+    ["<leader>g"] = { function () _Lazygit_toggle() end, "Lazygit" },
+  }
+}
+
 return M
