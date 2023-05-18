@@ -32,8 +32,8 @@ M.harpoon = function()
 	local file4 = get_entry(4)
 	return {
 		n = {
-			["<leader>hp"] = { mark.add_file, "Add Mark" },
-			["<leader>hu"] = { ui.toggle_quick_menu, "Open UI" },
+			["<leader>hp"] = { function() mark.add_file() end, "Add Mark" },
+			["<leader>hu"] = { function() ui.toggle_quick_menu() end, "Open UI" },
 			["<leader>j"] = { function() ui.nav_file(1) end, file1 },
 			["<leader>k"] = { function() ui.nav_file(2) end, file2 },
 			["<leader>u"] = { function() ui.nav_file(3) end, file3 },
@@ -50,13 +50,12 @@ M.undotree = {
 
 M.telescope = {
 	n = {
-		["<C-p>"] = { require("telescope.builtin").find_files, "Search Files" },
-		["<C-q>"] = { require("telescope.builtin").buffers, "Switch Buffers" },
+		["<C-p>"] = { "<CMD>Telescope fd<CR>", "Search Files" },
+		["<C-q>"] = { "<CMD>Telescope buffer<CR>", "Switch Buffers" },
 	},
 }
 
 M.lspconfig = {
-	-- plugin = true,
 	n = {
 		["<leader>lwa"] = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
 		["<leader>lwd"] = { vim.lsp.buf.add_workspace_folder, "Remove Folder" },
@@ -82,7 +81,7 @@ M.lspconfig = {
 
 		["gd"] = { vim.lsp.buf.definition, "Definition" },
 		["gD"] = { vim.lsp.buf.declaration, "Declaration" },
-		["gr"] = { require("telescope.builtin").lsp_references, "References" },
+		["gr"] = { "<CMD>Telescope lsp_references<CR>", "References" },
 		["gi"] = { vim.lsp.buf.implementation, "Implementation" },
 	},
 }
@@ -103,5 +102,4 @@ M.toggleterm = {
     ["<leader>g"] = { function () _Lazygit_toggle() end, "Lazygit" },
   }
 }
-
 return M
