@@ -23,8 +23,8 @@ return {
 			{ "williamboman/mason.nvim", config = true },
 			{ "folke/neodev.nvim", config = true },
 			{ "williamboman/mason-lspconfig.nvim", opts = { ensure_installed = servers_key } },
-			"jose-elias-alvarez/null-ls.nvim",
-      "hrsh7th/cmp-nvim-lsp",
+			{ "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+			"hrsh7th/cmp-nvim-lsp",
 			"RRethy/vim-illuminate",
 		},
 		opts = {
@@ -48,10 +48,10 @@ return {
 			for server, opts in pairs(servers) do
 				opts = vim.tbl_deep_extend("force", opts, {
 					-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
-          capabilities = require("utils.lsp").capabilities,
+					capabilities = require("utils.lsp").capabilities,
 					on_attach = require("utils.lsp").on_attach,
 				})
-        -- print(vim.inspect(opts))
+				-- print(vim.inspect(opts))
 				lspconf[server].setup(opts)
 			end
 			local nls = require("null-ls")
@@ -77,33 +77,7 @@ return {
 		opts = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			local kind_icons = {
-				Text = "",
-				Method = "󰆧",
-				Function = "󰊕",
-				Constructor = "",
-				Field = "󰇽",
-				Variable = "󰂡",
-				Class = "󰠱",
-				Interface = "",
-				Module = "",
-				Property = "󰜢",
-				Unit = "",
-				Value = "󰎠",
-				Enum = "",
-				Keyword = "󰌋",
-				Snippet = "",
-				Color = "󰏘",
-				File = "󰈙",
-				Reference = "",
-				Folder = "󰉋",
-				EnumMember = "",
-				Constant = "󰏿",
-				Struct = "",
-				Event = "",
-				Operator = "󰆕",
-				TypeParameter = "󰅲",
-			}
+			local icons = require("utils").icons.kinds
 			local t = function(str)
 				return vim.api.nvim_replace_termcodes(str, true, true, true)
 			end
@@ -160,7 +134,7 @@ return {
 				}),
 				formatting = {
 					format = function(_, vim_item)
-						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+						vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 						return vim_item
 					end,
 				},

@@ -7,7 +7,6 @@ local default_mappings = require("config.mappings")
 M.load_mapping = function(section, function_opts)
   vim.schedule(function()
   local map_section = function(sect)
-    print(vim.inspect(sect))
     for mode, keys in pairs(sect) do
       for lhs, keybind_info in pairs(keys) do
         local rhs = keybind_info[1]

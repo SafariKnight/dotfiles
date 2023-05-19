@@ -6,6 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
+  enabled = false,
   init = function ()
     require("utils.map").load_mapping("telescope")
   end,

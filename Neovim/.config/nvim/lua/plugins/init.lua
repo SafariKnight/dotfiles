@@ -1,7 +1,9 @@
 return {
 	{
 		"mbbill/undotree",
-		keys = function() return require("utils.map").load_mapping("undotree") end,
+    init = function()
+      require("utils.map").load_mapping("undotree")
+    end,
 		cmd = "UndotreeToggle",
 	},
 	{
