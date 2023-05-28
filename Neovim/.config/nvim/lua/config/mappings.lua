@@ -2,12 +2,14 @@ local M = {}
 --- Someone find how to break this setup, including dumb ways (I want to idiot proof this)
 M.abc = {
 	n = {
-		["H"] = { "<CMD>bp<CR>", "Previous Buffer" },
-		["L"] = { "<CMD>bn<CR>", "Next Buffer" },
-		["<C-j>"] = { "<C-w>j", "Window down" },
-		["<C-k>"] = { "<C-w>k", "Window up" },
-		["<C-h>"] = { "<C-w>h", "Window left" },
-		["<C-l>"] = { "<C-w>l", "Window right" },
+    -- Center after actions
+    ["<C-d>"] = { "<C-d>zz", "Down half a page"},
+    ["<C-u>"] = { "<C-u>zz", "Up half a page"},
+    ["n"] = { "nzz", "Next result (Center)"},
+    ["N"] = { "Nzz", "Prev result (Center)"},
+
+    ["J"] = { "maJ'a", "Append next line on current line"},
+		["<leader>e"] = { "<CMD>Oil<CR>", "Oil File Manager" },
 	},
 }
 
@@ -21,29 +23,28 @@ M.harpoon = {
 		},
 		["<leader>hu"] = {
 			function()
-				require("harpoon.ui").toggle_quick_menu()
-			end,
+				require("harpoon.ui").toggle_quick_menu() end,
 			"Open UI",
 		},
-		["<leader>j"] = {
+    ["<M-j>"] = {
 			function()
 				require("harpoon.ui").nav_file(1)
 			end,
 			"Goto mark 1",
 		},
-		["<leader>k"] = {
+		["<M-k>"] = {
 			function()
 				require("harpoon.ui").nav_file(2)
 			end,
 			"Goto mark 2",
 		},
-		["<leader>u"] = {
+		["<M-l>"] = {
 			function()
 				require("harpoon.ui").nav_file(3)
 			end,
 			"Goto mark 3",
 		},
-		["<leader>i"] = {
+		["<M-h>"] = {
 			function()
 				require("harpoon.ui").nav_file(4)
 			end,
@@ -61,15 +62,25 @@ M.undotree = {
 M.telescope = {
 	n = {
 		["<C-p>"] = { "<CMD>Telescope fd<CR>", "Search Files" },
-		["<C-q>"] = { "<CMD>Telescope buffer<CR>", "Switch Buffers" },
+		["<C-b>"] = { "<CMD>Telescope buffers<CR>", "Switch Buffers" },
 	},
 }
 
 M.fzf_lua = {
-  n = {
-    ["<C-p>"] = { function() require("fzf-lua").files() end, "Search Files" },
-    ["<C-q>"] = { function() require("fzf-lua").buffers() end, "Switch Buffers" }
-  }
+	n = {
+		["<C-p>"] = {
+			function()
+				require("fzf-lua").files()
+			end,
+			"Search Files",
+		},
+		["<C-q>"] = {
+			function()
+				require("fzf-lua").buffers()
+			end,
+			"Switch Buffers",
+		},
+	},
 }
 
 M.lspconfig = {
@@ -109,32 +120,6 @@ M.lspconfig = {
 			end,
 			"Format",
 		},
-		["<leader>ld"] = {
-			function()
-				vim.diagnostic.open_float()
-			end,
-			"Line Diagnostics",
-		},
-
-		["gd"] = {
-			function()
-				vim.lsp.buf.definition()
-			end,
-			"Definition",
-		},
-		["gD"] = {
-			function()
-				vim.lsp.buf.declaration()
-			end,
-			"Declaration",
-		},
-		["gr"] = { "<CMD>Telescope lsp_references<CR>", "References" },
-		["gi"] = {
-			function()
-				vim.lsp.buf.implementation()
-			end,
-			"Implementation",
-		},
 	},
 }
 
@@ -143,6 +128,8 @@ M.lspsaga = {
 		["<leader>lss"] = { "<CMD>Lspsaga lsp_finder<CR>", "Info" },
 		["<leader>lsr"] = { "<CMD>Lspsaga rename<CR>", "Rename" },
 
+		["<leader>lwd"] = { "<CMD>Lspsaga show_workspace_diagnostics<CR>", "Diagnostics" },
+		["<leader>ld"] = { "<CMD>Lspsaga show_line_diagnostics<CR>", "Line Diagnostics" },
 		["<leader>lc"] = { "<CMD>Lspsaga code_action<CR>", "Code Action" },
 		["K"] = { "<CMD>Lspsaga hover_doc<CR>", "Documentation Float" },
 	},
@@ -150,12 +137,6 @@ M.lspsaga = {
 
 M.toggleterm = {
 	n = {
-		["<leader>e"] = {
-			function()
-				_LF_toggle()
-			end,
-			"LF File Manager",
-		},
 		["<leader>g"] = {
 			function()
 				_Lazygit_toggle()
@@ -164,4 +145,21 @@ M.toggleterm = {
 		},
 	},
 }
+
+M.dap = {
+	n = {
+		["<leader>dc"] = { "<CMD>DapContinue<CR>", "Continue" },
+		["<leader>du"] = {
+			function()
+				require("dapui").toggle()
+			end,
+			"Toggle UI",
+		},
+		["<leader>di"] = { "<CMD>DapStepInto<CR>", "Into" },
+		["<leader>do"] = { "<CMD>DapStepOut<CR>", "Out" },
+		["<leader>dv"] = { "<CMD>DapStepOver<CR>", "Over" },
+		["<leader>db"] = { "<CMD>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
+	},
+}
+
 return M

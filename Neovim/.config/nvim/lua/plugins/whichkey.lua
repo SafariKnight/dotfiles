@@ -22,6 +22,8 @@ return {
         ["<leader>ls"] = { name = "+Symbol" },
         ["<leader>lL"] = { name = "+Plugin" },
         ["<leader>h"] = { name = "+Harpoon" },
+        ["<leader>w"] = { name = "+Window" },
+        ["<leader>d"] = { name = "+DAP" },
       })
     end,
   },

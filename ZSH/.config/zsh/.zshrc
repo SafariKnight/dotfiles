@@ -10,7 +10,6 @@ plug "zap-zsh/fnm"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-completions"
 plug "zsh-users/zsh-syntax-highlighting"
-
 eval "$(starship init zsh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh)"

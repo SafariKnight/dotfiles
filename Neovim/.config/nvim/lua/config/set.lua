@@ -39,7 +39,7 @@ vim.o.incsearch = true
 vim.o.termguicolors = true
 
 vim.o.scrolloff = 8
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "yes:1"
 
 vim.o.updatetime = 50
 
@@ -66,3 +66,5 @@ if vim.fn.has('wsl') then
 else
   vim.o.clipboard = "unnamedplus"
 end
+
+vim.o.cursorline = true

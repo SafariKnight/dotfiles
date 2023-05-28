@@ -1,15 +1,15 @@
 return {
 	"nvim-telescope/telescope.nvim",
-  event = "VeryLazy",
+	tag = "0.1.1",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
-  enabled = false,
-  init = function ()
-    require("utils.map").load_mapping("telescope")
-  end,
+	init = function()
+		require("utils.map").load_mapping("telescope")
+	end,
 	opts = function()
 		local actions = require("telescope.actions")
 		return {
@@ -22,14 +22,21 @@ return {
 				},
 			},
 			defaults = {
-				theme = "dropdown",
+				prompt_prefix = "   ",
+				entry_prefix = "  ",
+				selection_caret = "  ",
+        -- border = false,
+				-- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+				borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+				layout_strategy = "horizontal",
+				layout_config = {
+          horizontal = {
+            height = 0.66
+          }
+				},
 			},
 			pickers = {
-				find_files = {
-					theme = "dropdown",
-				},
 				buffers = {
-					theme = "dropdown",
 					mappings = {
 						i = {
 							["<C-d>"] = actions.delete_buffer + actions.move_to_top,

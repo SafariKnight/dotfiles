@@ -1,11 +1,10 @@
 local M = {}
 
-local default_mappings = require("config.mappings")
 ---Load a mapping from mappings.lua
 ---@param section string
 ---@param function_opts? table
 M.load_mapping = function(section, function_opts)
-  vim.schedule(function()
+  local default_mappings = require("config.mappings")
   local map_section = function(sect)
     for mode, keys in pairs(sect) do
       for lhs, keybind_info in pairs(keys) do
@@ -22,7 +21,6 @@ M.load_mapping = function(section, function_opts)
   end
 
   map_section(mappings)
-end)
 end
 
 return M

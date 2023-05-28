@@ -6,7 +6,7 @@ format = '$directory '
 right_format = '$git_branch'
 
 [directory]
-truncation_length = 5
+truncation_length = 3
 format = '\[[$path]($style)[$read_only]($read_only_style)\]'
 read_only = ': '
 read_only_style = "red"

@@ -1,9 +1,14 @@
-local M = {}
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+local M = {}
+M.capabilities = vim.tbl_deep_extend(
+	"force",
+	vim.lsp.protocol.make_client_capabilities(),
+	require("cmp_nvim_lsp").default_capabilities()
+)
 M.on_attach = function(client, bufnr)
 	require("utils.map").load_mapping("lspconfig", { buffer = bufnr })
 	require("utils.map").load_mapping("lspsaga", { buffer = bufnr })
+  -- require("utils.map").load_mapping("trouble", { buffer = bufnr })
 
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
