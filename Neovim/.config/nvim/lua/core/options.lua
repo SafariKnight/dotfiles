@@ -1,7 +1,7 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
-  
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -15,9 +15,9 @@ vim.o.mouse = 'a'
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 -- Use win32yank as the clipboard provider on wsl
-if vim.fn.has('wsl') then
-  vim.opt.clipboard = "unnamedplus"
-  vim.env.NVIM_TUI_ENABLE_CURSOR_SHAPE = "1"
+if vim.fn.has 'wsl' then
+  vim.opt.clipboard = 'unnamedplus'
+  vim.env.NVIM_TUI_ENABLE_CURSOR_SHAPE = '1'
   vim.g.clipboard = {
     name = 'win32yank-wsl',
     copy = {
@@ -31,7 +31,7 @@ if vim.fn.has('wsl') then
     cache_enabled = 1,
   }
 else
-  vim.o.clipboard = "unnamedplus"
+  vim.o.clipboard = 'unnamedplus'
 end
 -- Enable break indent
 vim.o.breakindent = true

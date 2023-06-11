@@ -2,7 +2,7 @@ local M = {}
 --- Someone find how to break this setup, including dumb ways (I want to idiot proof this)
 M.abc = {
 	n = {
-		['<space>'] = { '<NOP>', "Remove Space mapping"},
+		['<space>'] = { '<NOP>', "Remove Space mapping" },
 
 		-- Center after actions
 		["<C-d>"] = { "<C-d>zz", "Down half a page" },
@@ -18,7 +18,7 @@ M.abc = {
 		['j'] = { "v:count == 0 ? 'gj' : 'j'", 'Down', opts = { expr = true, } },
 	},
 	v = {
-		['<space>'] = { '<NOP>', "Remove Space mapping"},
+		['<space>'] = { '<NOP>', "Remove Space mapping" },
 	}
 }
 

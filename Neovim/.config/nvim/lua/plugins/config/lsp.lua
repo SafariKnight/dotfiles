@@ -10,7 +10,7 @@ local servers = {
 
 local M = {}
 M.on_attach = function(_, bufnr)
-  require("core.map")("lspconfig", { buffer = bufnr })
+  require 'core.map'('lspconfig', { buffer = bufnr })
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -37,13 +37,19 @@ M.lsp_config = function()
       }
     end,
   }
+
+  local nls = require 'null-ls'
+  local builtin = nls.builtins
+  nls.setup {
+    sources = {
+      builtin.formatting.stylua,
+    },
+  }
 end
 
 M.cmp_config = function()
   local cmp = require 'cmp'
   local luasnip = require 'luasnip'
-  -- [[ Configure nvim-cmp ]]
-  -- See `:help cmp`
   require('luasnip.loaders.from_vscode').lazy_load()
   luasnip.config.setup {}
 
