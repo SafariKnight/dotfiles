@@ -1,11 +1,11 @@
 return {
 
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  { 'tpope/vim-fugitive', lazy = false },
+  { 'tpope/vim-rhubarb',  lazy = false },
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  { 'tpope/vim-sleuth',   lazy = false },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -47,10 +47,16 @@ return {
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+    opts = require('plugins.config.which_key'),
+    keys = { '<space>' },
+  },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
@@ -72,6 +78,7 @@ return {
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
+    lazy = false,
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
@@ -81,11 +88,11 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
+    event = 'UIEnter',
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
@@ -95,6 +102,7 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    event = 'UIEnter',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
@@ -104,11 +112,16 @@ return {
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    keys = { { 'gc', mode = 'v' }, { 'gcc' } }
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
+    cmd = { 'Telescope' },
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -127,9 +140,11 @@ return {
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    config = require('plugins.config.treesitter').config
   },
 }
