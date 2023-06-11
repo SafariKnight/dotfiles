@@ -144,4 +144,12 @@ M.dap = {
 	},
 }
 
+M.gitsigns = {
+	n = {
+		["<leader>gp"] = { require('gitsigns').prev_hunk, 'Previous Hunk' },
+		["<leader>gn"] = { require('gitsigns').prev_hunk, 'Next Hunk' },
+		["<leader>gs"] = { require('gitsigns').preview_hunk, 'Previous Hunk' },
+	}
+}
+
 return M
