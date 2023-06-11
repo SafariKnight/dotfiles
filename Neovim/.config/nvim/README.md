@@ -4,5 +4,4 @@ Currently not finished
 
 Things to do
     * Convert to multiple files
-    * [Keymaps system](https://github.com/SafariKnight/dotfiles/blob/main/Neovim/.config/nvim/lua/utils/map.lua)
     * Setup more plugins
