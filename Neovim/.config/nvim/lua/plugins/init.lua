@@ -1,5 +1,4 @@
 return {
-
   -- Git related plugins
   { 'tpope/vim-fugitive', lazy = false },
   { 'tpope/vim-rhubarb', lazy = false },
@@ -83,7 +82,7 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    event = 'UIEnter',
+    event = 'VeryLazy',
     opts = {
       options = {
         icons_enabled = false,
@@ -156,5 +155,11 @@ return {
     config = function()
       require('leap').add_default_mappings()
     end,
+  },
+  {
+    'echasnovski/mini.nvim',
+    event = 'VeryLazy',
+    opts = require('plugins.config.mini').opts,
+    config = require('plugins.config.mini').config
   },
 }
