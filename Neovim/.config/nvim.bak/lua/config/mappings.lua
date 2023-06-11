@@ -2,24 +2,15 @@ local M = {}
 --- Someone find how to break this setup, including dumb ways (I want to idiot proof this)
 M.abc = {
 	n = {
-		['<space>'] = { '<NOP>', "Remove Space mapping"},
+    -- Center after actions
+    ["<C-d>"] = { "<C-d>zz", "Down half a page"},
+    ["<C-u>"] = { "<C-u>zz", "Up half a page"},
+    ["n"] = { "nzz", "Next result (Center)"},
+    ["N"] = { "Nzz", "Prev result (Center)"},
 
-		-- Center after actions
-		["<C-d>"] = { "<C-d>zz", "Down half a page" },
-		["<C-u>"] = { "<C-u>zz", "Up half a page" },
-		["n"] = { "nzz", "Next result (Center)" },
-		["N"] = { "Nzz", "Prev result (Center)" },
-
-		["J"] = { "maJ'a", "Append next line on current line" },
+    ["J"] = { "maJ'a", "Append next line on current line"},
 		["<leader>e"] = { "<CMD>Oil<CR>", "Oil File Manager" },
-
-		-- Better J and K
-		['k'] = { "v:count == 0 ? 'gk' : 'k'", 'Up', opts = { expr = true, } },
-		['j'] = { "v:count == 0 ? 'gj' : 'j'", 'Down', opts = { expr = true, } },
 	},
-	v = {
-		['<space>'] = { '<NOP>', "Remove Space mapping"},
-	}
 }
 
 M.harpoon = {
@@ -32,11 +23,10 @@ M.harpoon = {
 		},
 		["<leader>hu"] = {
 			function()
-				require("harpoon.ui").toggle_quick_menu()
-			end,
+				require("harpoon.ui").toggle_quick_menu() end,
 			"Open UI",
 		},
-		["<M-j>"] = {
+    ["<M-j>"] = {
 			function()
 				require("harpoon.ui").nav_file(1)
 			end,
@@ -73,6 +63,23 @@ M.telescope = {
 	n = {
 		["<C-p>"] = { "<CMD>Telescope fd<CR>", "Search Files" },
 		["<C-b>"] = { "<CMD>Telescope buffers<CR>", "Switch Buffers" },
+	},
+}
+
+M.fzf_lua = {
+	n = {
+		["<C-p>"] = {
+			function()
+				require("fzf-lua").files()
+			end,
+			"Search Files",
+		},
+		["<C-q>"] = {
+			function()
+				require("fzf-lua").buffers()
+			end,
+			"Switch Buffers",
+		},
 	},
 }
 
@@ -128,18 +135,29 @@ M.lspsaga = {
 	},
 }
 
+M.toggleterm = {
+	n = {
+		["<leader>g"] = {
+			function()
+				_Lazygit_toggle()
+			end,
+			"Lazygit",
+		},
+	},
+}
+
 M.dap = {
 	n = {
-		["<F2>"] = { "<CMD>DapStepOver<CR>", "Over" },
-		["<F3>"] = { "<CMD>DapStepOut<CR>", "Out" },
-		["<F4>"] = { "<CMD>DapStepInto<CR>", "Into" },
-		["<F5>"] = { "<CMD>DapContinue<CR>", "Continue" },
+		["<leader>dc"] = { "<CMD>DapContinue<CR>", "Continue" },
 		["<leader>du"] = {
 			function()
 				require("dapui").toggle()
 			end,
 			"Toggle UI",
 		},
+		["<leader>di"] = { "<CMD>DapStepInto<CR>", "Into" },
+		["<leader>do"] = { "<CMD>DapStepOut<CR>", "Out" },
+		["<leader>dv"] = { "<CMD>DapStepOver<CR>", "Over" },
 		["<leader>db"] = { "<CMD>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
 	},
 }

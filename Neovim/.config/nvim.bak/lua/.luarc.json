@@ -1,0 +1,31 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "ten"
+    ],
+    "workspace.library": [
+        "/home/safari/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/usr/share/nvim/runtime/lua",
+        "/home/safari/.local/share/nvim/lazy/",
+        "/home/safari/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/telescope-fzf-native.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/null-ls.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/cmp-nvim-lsp/lua",
+        "/home/safari/.local/share/nvim/lazy/lazy.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/vim-illuminate/lua",
+        "/home/safari/.local/share/nvim/lazy/lualine.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/telescope.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/nvim-treesitter/lua",
+        "/home/safari/.local/share/nvim/lazy/mason.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/nvim-lspconfig/lua",
+        "/home/safari/.local/share/nvim/lazy/plenary.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/mini.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/neodev.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/leap.nvim/lua",
+        "/home/safari/.local/share/nvim/lazy/catppuccin/lua",
+        "/home/safari/.local/share/nvim/lazy/nvim-web-devicons/lua",
+        "/home/safari/.dotfiles/Neovim/.config/nvim/lua",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
+    ]
+}
