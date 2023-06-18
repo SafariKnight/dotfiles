@@ -1,4 +1,6 @@
 return {
+  'echasnovski/mini.nvim',
+  event = 'VeryLazy',
   opts = {
     surround = {
       mappings = {
@@ -32,7 +34,7 @@ return {
     local activate = function(module) -- The only function I've done well ever
       require('mini.' .. module).setup(opts[module])
     end
-    activate 'pairs'
+
     activate 'move'
     activate 'ai'
   end,

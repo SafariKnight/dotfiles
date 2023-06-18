@@ -1,29 +1,9 @@
 local M = {}
+
 M.bg = "#000000"
 M.fg = "#ffffff"
+M.day_brightness = 0.3
 
-M.vscode = function ()
-  local c = require('vscode.colors').get_colors()
-  local dark_bg = M.darken(c.vscBack, 0.4)
-  local darker_bg = M.darken(c.vscBack, 0.6)
-  require('vscode').setup({
-    style = 'dark',
-    italic_comments = true,
-    group_overrides = {
-      TelescopeTitle = { bg = c.vscPink, fg = c.vscBack },
-      TelescopeSelection = { bg = c.vscPopupHighlightBlue },
-      TelescopeNormal = { bg = darker_bg, fg = c.vscFront },
-      TelescopePromptBorder = { bg = darker_bg, fg = darker_bg },
-      TelescopePreviewBorder = { bg = darker_bg, fg = darker_bg },
-      TelescopePromptTitle = { bg = darker_bg, fg = darker_bg },
-      TelescopePromptCounter = { bg = darker_bg, fg = darker_bg },
-      TelescopeResultsNormal = { bg = dark_bg, fg = c.vscFront },
-      TelescopeResultsBorder = { bg = dark_bg, fg = dark_bg },
-    }
-  })
-
-  vim.cmd.colorscheme 'vscode'
-end
 ---@param c  string
 local function hexToRgb(c)
   c = string.lower(c)
