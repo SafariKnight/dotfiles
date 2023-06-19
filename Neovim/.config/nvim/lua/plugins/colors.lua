@@ -2,7 +2,7 @@ return {
   'catppuccin/nvim',
   name = 'catppuccin',
   priority = 1000,
-  -- enabled = false,
+  enabled = false,
   lazy = false,
   config = function()
     require('catppuccin').setup {
@@ -22,4 +22,30 @@ return {
     }
     vim.cmd.colorscheme 'catppuccin'
   end,
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    dependencies = {
+      { 'xiyaowong/transparent.nvim', opts = {} },
+    },
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup {
+        highlight_groups = {
+          TelescopeTitle = { bg = 'love', fg = 'base' },
+          TelescopeNormal = { bg = 'overlay', fg = 'text' },
+          TelescopeBorder = { bg = 'overlay', fg = 'overlay' },
+          TelescopePromptTitle = { bg = 'overlay', fg = 'overlay' },
+          TelescopePromptNormal = { bg = 'overlay', fg = 'text' },
+          TelescopePromptCounter = { bg = 'overlay', fg = 'overlay' },
+          TelescopeResultsNormal = { bg = 'surface', fg = 'text' },
+          TelescopeResultsBorder = { bg = 'surface', fg = 'surface' },
+          CmpGhostText = { fg = 'muted' },
+        },
+      }
+      -- set_colors()
+      -- vim.cmd.colorscheme ''
+    end,
+  },
 }

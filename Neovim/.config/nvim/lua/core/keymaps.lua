@@ -11,7 +11,7 @@ M.abc = {
     ['N'] = { 'Nzz', 'Prev result (Center)' },
 
     ['J'] = { "maJ'a", 'Append next line on current line' },
-    ['<leader>e'] = { '<CMD>Oil<CR>', 'Oil File Manager' },
+    -- ['<leader>e'] = { '<CMD>Oil<CR>', 'Oil File Manager' },
 
     -- Better J and K (With wrapping)
     ['k'] = { "v:count == 0 ? 'gk' : 'k'", 'Up', opts = { expr = true } },
@@ -82,6 +82,7 @@ M.telescope = {
   n = {
     ['<C-p>'] = { '<CMD>Telescope fd<CR>', 'Find File' },
     ['<leader>ff'] = { '<CMD>Telescope fd<CR>', 'File' },
+    ['<leader>fe'] = { '<CMD>Telescope file_browser<CR>', 'Explorer' },
     -- ['<C-q>'] = { '<CMD>Telescope buffers<CR>', 'Find Buffer' },
   },
 }

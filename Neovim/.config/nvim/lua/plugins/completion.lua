@@ -16,11 +16,12 @@ return {
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip.loaders.from_snipmate').lazy_load()
       luasnip.config.setup {}
       cmp.setup {
         formatting = {
           format = function(_, item)
-            local icons = require("core.icons").kinds
+            local icons = require('core.icons').kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
@@ -28,7 +29,7 @@ return {
           end,
         },
         completion = {
-          completeopt = "menu,menuone,noinsert",
+          completeopt = 'menu,menuone,noinsert',
         },
         snippet = {
           expand = function(args)
@@ -66,11 +67,11 @@ return {
         },
         experimental = {
           ghost_text = {
-            hl_group = "CmpGhostText",
+            hl_group = 'CmpGhostText',
           },
         },
-        preselect = 'item'
+        preselect = 'item',
       }
-    end
+    end,
   },
 }
