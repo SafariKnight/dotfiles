@@ -1,6 +1,12 @@
 return {
   -- :Git commands
-  { 'tpope/vim-fugitive', lazy = false },
+  {
+    'tpope/vim-fugitive',
+    lazy = false,
+    init = function ()
+      keybind['<leader>g'] = { '<CMD>Git<CR>', 'Git Fugitive'}
+    end
+  },
   { 'tpope/vim-rhubarb', lazy = false },
 
   {

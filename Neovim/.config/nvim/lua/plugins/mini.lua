@@ -1,7 +1,27 @@
 return {
   'echasnovski/mini.nvim',
-  event = 'VeryLazy',
+  version = false,
+  lazy = false,
+  -- event = 'VeryLazy',
+  init = function()
+    vim.g.loaded_netrw = 1 -- Go away netrw
+    vim.g.loaded_netrwPlugin = 1
+  end,
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
   opts = {
+    files = {
+      options = {
+        use_as_default_explorer = true,
+      },
+      windows = {
+        preview = true,
+      },
+    },
+    comment = {
+      ignore_blank_line = true,
+    },
     surround = {
       mappings = {
         add = 'gza', -- Add surrounding in Normal and Visual modes
@@ -35,7 +55,10 @@ return {
       require('mini.' .. module).setup(opts[module])
     end
 
-    activate 'move'
     activate 'ai'
+    activate 'comment'
+    activate 'move'
+    activate 'files'
+    activate 'pairs'
   end,
 }

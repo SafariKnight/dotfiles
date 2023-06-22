@@ -13,7 +13,6 @@ return {
           return vim.fn.executable 'make' == 1
         end,
       },
-      'nvim-telescope/telescope-file-browser.nvim',
     },
     init = function()
       require 'core.map' 'telescope'
@@ -28,10 +27,6 @@ return {
             override_generic_sorter = true,
             override_file_sorter = true,
             case_mode = 'smart_case',
-          },
-          file_browser = {
-            theme = 'ivy',
-            hijack_netrw = true,
           },
         },
         defaults = {
@@ -66,7 +61,6 @@ return {
         },
       }
       telescope.load_extension 'fzf'
-      telescope.load_extension 'file_browser'
     end,
   },
   { -- Not sure if I should use this

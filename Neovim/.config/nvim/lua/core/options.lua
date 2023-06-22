@@ -1,5 +1,6 @@
--- Set highlight on search
+-- Better searching
 vim.o.hlsearch = false
+vim.o.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -8,9 +9,6 @@ vim.wo.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 -- Use win32yank as the clipboard provider on wsl
 if vim.fn.has 'wsl' then
   vim.opt.clipboard = 'unnamedplus'
@@ -30,8 +28,15 @@ if vim.fn.has 'wsl' then
 else
   vim.o.clipboard = 'unnamedplus'
 end
+
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Do your best neovim please
+vim.o.smartindent = true
+
+-- Should've changed this so long ago
+vim.o.wrap = false
 
 -- Save undo history
 vim.o.undofile = true
@@ -44,18 +49,20 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
--- Set tabs to 2 spaces
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+-- Set tabs to 4 spaces
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Hey this is pretty cool
+vim.o.scrolloff = 8

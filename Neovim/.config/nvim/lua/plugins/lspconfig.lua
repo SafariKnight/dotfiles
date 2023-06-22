@@ -21,7 +21,7 @@ return {
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', branch = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', branch = 'legacy', opts = {}, enabled = false },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       { 'folke/neodev.nvim', opts = {} },
@@ -29,6 +29,15 @@ return {
       -- Interaction between cmp and lspconfig
       'hrsh7th/cmp-nvim-lsp',
     },
+    init = function()
+      -- disable lsp watcher. Too slow on linux
+      local ok, wf = pcall(require, 'vim.lsp._watchfiles')
+      if ok then
+        wf._watchfunc = function()
+          return function() end
+        end
+      end
+    end,
     config = function()
       local mason_lspconfig = require 'mason-lspconfig'
       local on_attach = require('core.lsp').on_attach
@@ -49,9 +58,10 @@ return {
           }
         end,
       }
-
-      vim.api.nvim_set_hl(0, 'FidgetTitle', { ctermbg = 'none', bg = 'none' })
-      vim.api.nvim_set_hl(0, 'FidgetBody', { ctermbg = 'none', bg = 'none' })
+      for name, icon in pairs(require('core.icons').diagnostics) do
+        name = 'DiagnosticSign' .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
+      end
     end,
   },
   {
@@ -64,6 +74,8 @@ return {
       return {
         sources = {
           builtin.formatting.stylua,
+
+          -- don't ask why go gets 3 formatters
           builtin.formatting.gofumpt,
           builtin.formatting.goimports_reviser,
           builtin.formatting.golines,

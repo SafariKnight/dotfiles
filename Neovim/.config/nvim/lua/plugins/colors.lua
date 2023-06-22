@@ -25,10 +25,11 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    dependencies = {
-      { 'xiyaowong/transparent.nvim', opts = {} },
-    },
+    -- dependencies = {
+    --   { 'xiyaowong/transparent.nvim', opts = {} },
+    -- },
     lazy = false,
+    enabled = false,
     priority = 1000,
     config = function()
       require('rose-pine').setup {
@@ -46,6 +47,16 @@ return {
       }
       -- set_colors()
       -- vim.cmd.colorscheme ''
+    end,
+  },
+  {
+    'sainnhe/sonokai',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.sonokai_style = 'shusia'
+      vim.g.sonokai_better_performance = 1
+      vim.cmd.colorscheme 'sonokai'
     end,
   },
 }

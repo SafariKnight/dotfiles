@@ -24,7 +24,7 @@ M.abc = {
 
 M.trouble = {
   n = {
-    ['<leader>lwd'] = {
+    ['<leader>xw'] = {
       '<CMD>Trouble workspace_diagnostics<CR>',
       'Workspace Diagnostics',
     },
@@ -82,41 +82,39 @@ M.telescope = {
   n = {
     ['<C-p>'] = { '<CMD>Telescope fd<CR>', 'Find File' },
     ['<leader>ff'] = { '<CMD>Telescope fd<CR>', 'File' },
-    ['<leader>fe'] = { '<CMD>Telescope file_browser<CR>', 'Explorer' },
-    -- ['<C-q>'] = { '<CMD>Telescope buffers<CR>', 'Find Buffer' },
   },
 }
 
 M.lspconfig = {
   n = {
-    ['<leader>lwa'] = {
+    ['<leader>wa'] = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
       'Add Folder',
     },
-    ['<leader>lwd'] = {
+    ['<leader>wd'] = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
       'Remove Folder',
     },
-    ['<leader>lws'] = {
+    ['<leader>ws'] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
       'List Folders',
     },
 
-    ['<leader>lLi'] = { '<CMD>LspInfo<CR>', 'LSP Info' },
-    ['<leader>lLr'] = { '<CMD>LspRestart<CR>', 'LSP Restart' },
-    ['<leader>lLm'] = { '<CMD>Mason<CR>', 'Mason' },
+    ['<leader>Li'] = { '<CMD>LspInfo<CR>', 'LSP Info' },
+    ['<leader>Lr'] = { '<CMD>LspRestart<CR>', 'LSP Restart' },
+    ['<leader>Lm'] = { '<CMD>Mason<CR>', 'Mason' },
 
-    ['<leader>li'] = {
+    ['<leader>sh'] = {
       function()
         vim.lsp.buf.signature_help()
       end,
-      'Signature Documentation',
+      '[S]ignature [H]elp',
     },
     ['<leader>lf'] = {
       function()
