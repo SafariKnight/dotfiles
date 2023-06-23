@@ -3,25 +3,17 @@ return {
   { 'tpope/vim-sleuth', lazy = false },
 
   -- Dispatch is just good okay?
+  -- Although anyone have anything to just run programs?
   { 'tpope/vim-dispatch', lazy = false },
 
-  { -- vim-vinegar but neovim (Replaced by mini.files)
-    'stevearc/oil.nvim',
-    enabled = false,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    lazy = false,
-    cmd = { 'Oil' },
-    opts = {
-      keymaps = {
-        ['q'] = 'actions.close',
-      },
-    },
+  -- This is actually amazing wth, screw leaps lmao (that's a joke)
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
     init = function()
-      vim.g.loaded_netrw = 1 -- Go away netrw
-      vim.g.loaded_netrwPlugin = 1
-      keybind['<leader>fe'] = { '<CMD>Oil<CR>', 'Browser' }
+      require 'core.map' 'flash'
     end,
+    ---@type Flash.Config
+    opts = {},
   },
 }

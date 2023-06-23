@@ -1,6 +1,7 @@
 _G.set_colors = function(colorscheme)
-  -- vim.o.termguicolors = true
+  vim.o.termguicolors = true
   colorscheme = colorscheme or 'sonokai'
+  -- colorscheme = colorscheme or 'rose-pine'
   vim.cmd.colorscheme(colorscheme)
 end
 

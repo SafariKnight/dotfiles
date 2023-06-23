@@ -57,6 +57,12 @@ return {
       vim.g.sonokai_style = 'shusia'
       vim.g.sonokai_better_performance = 1
       vim.cmd.colorscheme 'sonokai'
+      local hi = function(group) -- Copied from... somewhere I can't remember
+        return function(highlights)
+          vim.api.nvim_set_hl(0, group, highlights)
+        end
+      end
+      hi 'CmpGhostText' { fg = 'grey' }
     end,
   },
 }

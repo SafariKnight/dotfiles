@@ -3,9 +3,9 @@ return {
   {
     'tpope/vim-fugitive',
     lazy = false,
-    init = function ()
-      keybind['<leader>g'] = { '<CMD>Git<CR>', 'Git Fugitive'}
-    end
+    init = function()
+      keybind['<leader>og'] = { '<CMD>Git<CR>', 'Git' }
+    end,
   },
   { 'tpope/vim-rhubarb', lazy = false },
 

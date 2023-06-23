@@ -39,18 +39,34 @@ return {
         },
         icons = {
           breadcrumb = '',
-          group = '',
+          group = ' ',
         },
       }
 
       wk.register {
-        ['<leader>g'] = { name = '+Git' },
-        ['<leader>l'] = { name = '+LSP' },
-        ['<leader>ls'] = { name = '+Symbol' },
-        ['<leader>lw'] = { name = '+Workspace' },
-        ['<leader>lL'] = { name = '+Utils' },
-        ['<leader>f'] = { name = '+Find' },
+        ['<leader>l'] = { name = 'Line' },
+        ['<leader>w'] = { name = 'Workspace' },
+        ['<leader>b'] = { name = 'Buffer' },
+        ['<leader>s'] = { name = 'Symbol' },
+        ['<leader>a'] = { name = 'Add' },
+        ['<leader>d'] = { name = 'Remove' },
+        ['<leader>o'] = { name = 'Open' },
       }
+    end,
+  },
+  {
+    'stevearc/dressing.nvim',
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.input(...)
+      end
     end,
   },
 }

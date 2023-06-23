@@ -22,28 +22,84 @@ M.abc = {
   },
 }
 
+M.flash = {
+  n = {
+    ['s'] = {
+      function()
+        require('flash').jump()
+      end,
+      'Flash',
+    },
+    ['S'] = {
+      function()
+        require('flash').treesitter()
+      end,
+      'Flash Treesitter',
+    },
+  },
+  v = {
+    ['s'] = {
+      function()
+        require('flash').jump()
+      end,
+      'Flash',
+    },
+    ['S'] = {
+      function()
+        require('flash').treesitter()
+      end,
+      'Flash Treesitter',
+    },
+  },
+  o = {
+    ['s'] = {
+      function()
+        require('flash').jump()
+      end,
+      'Flash',
+    },
+    ['S'] = {
+      function()
+        require('flash').treesitter()
+      end,
+      'Flash Treesitter',
+    },
+    ['r'] = {
+      function()
+        require('flash').remote()
+      end,
+      'Flash Remote',
+    },
+  },
+}
+
 M.trouble = {
   n = {
-    ['<leader>xw'] = {
-      '<CMD>Trouble workspace_diagnostics<CR>',
-      'Workspace Diagnostics',
+    ['<leader>wd'] = {
+      '<CMD>TroubleToggle workspace_diagnostics<CR>',
+      'Diagnostics',
+    },
+    ['<leader>bd'] = {
+      '<CMD>TroubleToggle document_diagnostics<CR>',
+      'Diagnostics',
     },
   },
 }
 
 M.harpoon = {
   n = {
-    ['<leader>hp'] = {
+    ['<leader>am'] = {
       function()
         require('harpoon.mark').add_file()
       end,
-      'Add Mark',
+      'Mark',
     },
-    ['<leader>hu'] = {
+
+    ['<leader>om'] = {
       function()
         require('harpoon.ui').toggle_quick_menu()
       end,
-      'Open UI',
+      'Marks',
     },
     ['<M-j>'] = {
       function()
@@ -74,65 +130,44 @@ M.harpoon = {
 
 M.undotree = {
   n = {
-    ['<leader>t'] = { '<CMD>UndotreeToggle<CR>', 'Undotree' },
+    ['<leader>ot'] = { '<CMD>UndotreeToggle<CR>', 'Undotree' },
   },
 }
 
 M.telescope = {
   n = {
-    ['<C-p>'] = { '<CMD>Telescope fd<CR>', 'Find File' },
-    ['<leader>ff'] = { '<CMD>Telescope fd<CR>', 'File' },
+    ['<C-p>'] = { '<CMD>Telescope fd<CR>', 'Search File' },
+    ['<leader>pf'] = { '<CMD>Telescope fd<CR>', 'File' },
   },
 }
 
 M.lspconfig = {
   n = {
-    ['<leader>wa'] = {
-      function()
-        vim.lsp.buf.add_workspace_folder()
-      end,
-      'Add Folder',
-    },
-    ['<leader>wd'] = {
-      function()
-        vim.lsp.buf.add_workspace_folder()
-      end,
-      'Remove Folder',
-    },
-    ['<leader>ws'] = {
-      function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end,
-      'List Folders',
-    },
+    ['<leader>ol'] = { '<CMD>LspInfo<CR>', 'Lsp Info' },
+    ['<leader>om'] = { '<CMD>Mason<CR>', 'Mason' },
 
-    ['<leader>Li'] = { '<CMD>LspInfo<CR>', 'LSP Info' },
-    ['<leader>Lr'] = { '<CMD>LspRestart<CR>', 'LSP Restart' },
-    ['<leader>Lm'] = { '<CMD>Mason<CR>', 'Mason' },
-
-    ['<leader>sh'] = {
+    ['<leader>os'] = {
       function()
         vim.lsp.buf.signature_help()
       end,
-      '[S]ignature [H]elp',
+      'Signature',
     },
-    ['<leader>lf'] = {
+    ['<leader>bf'] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
       'Format',
     },
-    ['<leader>ld'] = { vim.diagnostic.open_float, 'Line Diagnostics' },
+    ['<leader>ld'] = { vim.diagnostic.open_float, 'Diagnostics' },
+    ['K'] = { vim.lsp.buf.hover, 'Documentation Float' },
   },
 }
 
 M.lspsaga = {
   n = {
-    ['<leader>lss'] = { '<CMD>Lspsaga lsp_finder<CR>', 'Info' },
-    ['<leader>lsr'] = { '<CMD>Lspsaga rename<CR>', 'Rename' },
-
-    ['<leader>lc'] = { '<CMD>Lspsaga code_action<CR>', 'Code Action' },
-    ['K'] = { '<CMD>Lspsaga hover_doc<CR>', 'Documentation Float' },
+    ['<leader>si'] = { '<CMD>Lspsaga lsp_finder<CR>', 'Info' },
+    ['<leader>sr'] = { '<CMD>Lspsaga rename<CR>', 'Rename' },
+    ['<leader>la'] = { '<CMD>Lspsaga code_action<CR>', 'Action' },
   },
 }
 
@@ -142,13 +177,13 @@ M.dap = {
     ['<F3>'] = { '<CMD>DapStepOut<CR>', 'Out' },
     ['<F4>'] = { '<CMD>DapStepInto<CR>', 'Into' },
     ['<F5>'] = { '<CMD>DapContinue<CR>', 'Continue' },
-    ['<leader>du'] = {
+    ['<leader>od'] = {
       function()
         require('dapui').toggle()
       end,
       'Toggle UI',
     },
-    ['<leader>db'] = { '<CMD>DapToggleBreakpoint<CR>', 'Toggle Breakpoint' },
+    ['<leader>lb'] = { '<CMD>DapToggleBreakpoint<CR>', 'Toggle Breakpoint' },
   },
 }
 
