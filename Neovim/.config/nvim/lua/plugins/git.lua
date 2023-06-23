@@ -15,6 +15,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     -- Disabled because I didn't use it and
     -- It didn't work well with transparency
+    -- Might renable if I find a use for it (I stopped using transparency)
     enabled = false,
     opts = {
       -- See `:help gitsigns.txt`

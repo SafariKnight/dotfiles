@@ -137,7 +137,7 @@ M.undotree = {
 M.telescope = {
   n = {
     ['<C-p>'] = { '<CMD>Telescope fd<CR>', 'Search File' },
-    ['<leader>pf'] = { '<CMD>Telescope fd<CR>', 'File' },
+    ['<leader>ff'] = { '<CMD>Telescope fd<CR>', 'File' },
   },
 }
 

@@ -51,6 +51,7 @@ return {
         ['<leader>a'] = { name = 'Add' },
         ['<leader>d'] = { name = 'Remove' },
         ['<leader>o'] = { name = 'Open' },
+        ['<leader>f'] = { name = 'Find' },
       }
     end,
   },
