@@ -18,6 +18,7 @@ M.abc = {
         ['j'] = { "v:count == 0 ? 'gj' : 'j'", 'Down', opts = { expr = true } },
 
         ['<C-c>'] = { '<Esc>', '' },
+        ['<leader>;'] = { '<C-z>', 'Minimize Neovim' },
     },
     v = {
         ['<space>'] = { '<NOP>', 'Remove Space mapping' },
@@ -255,10 +256,10 @@ M.fzf_lua = {
 M.java = {
     n = {
         ['<leader>jf'] = {
-            function()
+            function() -- could gradle generate like a few less files thank you
                 require('telescope.builtin').fd {
                     find_command = {
-                        'rg',
+                        'rg', -- idk how to glob search with fd
                         '--files',
                         '--glob',
                         '**/*.java',

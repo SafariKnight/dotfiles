@@ -137,7 +137,7 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
 
-require 'core.map' 'java'
+-- require 'core.map' 'java'
 
 require('which-key').register {
     ['<leader>j'] = { name = 'Java' },
