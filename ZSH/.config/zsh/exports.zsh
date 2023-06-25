@@ -3,7 +3,9 @@ export RUSTUP_HOME="$HOME/.dev/.rustup"
 export CARGO_HOME="$HOME/.dev/.cargo"
 # export PATH="$HOME/.local/share/fnm/:$PATH"
 export PATH="$HOME/PATH/:$PATH"
-export EDITOR="/usr/bin/nvim"
+export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@17/include"
+export EDITOR="/usr/local/bin/nvim"
 eval "$(fnm env --use-on-cd)"
 . $HOME/.dev/.cargo/env
 

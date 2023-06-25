@@ -5,3 +5,4 @@ alias cls=clear
 alias pman="sudo pacman"
 alias clipboard="win32yank -i --crlf"
 alias shutdown="wsl.exe --shutdown"
+alias gradlew="./gradlew"

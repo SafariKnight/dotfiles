@@ -92,4 +92,4 @@ map ab targz
 map au unarchive
 
 # LazyGit
-map gg $lazygit $pwd
+# map gg $lazygit $pwd

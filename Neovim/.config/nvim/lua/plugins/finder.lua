@@ -100,7 +100,6 @@ return {
     'ibhagwan/fzf-lua',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
-      { 'catppuccin/nvim', name = 'catppuccin' },
       'nvim-lua/plenary.nvim',
     },
     cmd = 'FzfLua',
