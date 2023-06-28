@@ -29,6 +29,15 @@ else
   vim.o.clipboard = 'unnamedplus'
 end
 
+vim.o.swapfile = false
+vim.o.backup = false
+
+if vim.fn.has("linux") == 1 then
+  vim.o.undodir = os.getenv "HOME" .. "/.vim/undodir"
+elseif vim.fn.has("windows") == 1 then
+  vim.o.undodir = vim.fn.expand("$LOCALAPPDATA") .. "\\.vim\\undodir"
+end
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -66,3 +75,28 @@ vim.o.termguicolors = true
 
 -- Hey this is pretty cool
 vim.o.scrolloff = 8
+
+-- I should've used these so long ago
+-- vim.cmd [[
+-- function! VimFolds(lnum)
+--     " get content of current line and the line below
+--     let l:cur_line = getline(a:lnum)
+--     let l:next_line = getline(a:lnum+1)
+--
+--     if l:cur_line =~# '^"{'
+--         return '>' . (matchend(l:cur_line, '"{*') - 1)
+--     else
+--         if l:cur_line ==# '' && (matchend(l:next_line, '"{*') - 1) == 1
+--             return 0
+--         else
+--             return '='
+--         endif
+--     endif
+-- endfunction
+-- set foldexpr=VimFolds(v:lnum)
+-- ]]
+vim.o.foldmethod = 'marker'
+-- vim.o.foldmethod = 'expr,marker'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldcolumn = '1'

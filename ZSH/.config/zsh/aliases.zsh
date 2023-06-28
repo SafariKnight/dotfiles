@@ -7,3 +7,10 @@ alias clipboard="win32yank -i --crlf"
 alias shutdown="wsl.exe --shutdown"
 alias gradlew="./gradlew"
 alias f=fg
+
+# I have this because new Scanner(System.in) doesn't work with `gradlew run`
+# and because it removes a bunch of stuff I don't look at
+# plus I can easily add arguments so that's neat
+alias gradr="gradlew build; java -jar app/build/libs/app.jar"
+# Run without building
+alias jarr="java -jar app/build/libs/app.jar"

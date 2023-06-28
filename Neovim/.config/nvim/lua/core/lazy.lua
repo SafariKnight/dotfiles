@@ -28,6 +28,9 @@ local opts = {
   defaults = {
     lazy = true,
   },
+  ui = {
+    icons = require('core.icons').lazy
+  },
 }
 
 require('lazy').setup(plugins, opts)

@@ -93,6 +93,9 @@ return {
                     builtin.formatting.gofumpt,
                     builtin.formatting.goimports_reviser,
                     builtin.formatting.golines,
+
+                    -- don't bully me pls
+                    builtin.formatting.google_java_format,
                 },
             }
         end,
@@ -101,7 +104,7 @@ return {
     {
         'folke/trouble.nvim',
         dependencies = {
-            'nvim-tree/nvim-web-devicons',
+            -- 'nvim-tree/nvim-web-devicons',
             'neovim/nvim-lspconfig',
         },
         cmd = { 'Trouble', 'TroubleToggle' },
@@ -137,7 +140,7 @@ return {
             },
         },
         dependencies = {
-            { 'nvim-tree/nvim-web-devicons' },
+            -- { 'nvim-tree/nvim-web-devicons' },
             --Please make sure you install markdown and markdown_inline parser
             { 'nvim-treesitter/nvim-treesitter' },
         },

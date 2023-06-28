@@ -1,34 +1,34 @@
--- This part is a mess just close your eyes and scroll past
-local jdtls_dir = vim.fn.stdpath 'data' .. '/mason/packages/jdtls'
-local plugins_dir = jdtls_dir .. '/plugins/'
-local config_dir = jdtls_dir .. '/config_linux'
-local path_to_jar = plugins_dir
-    .. 'org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar'
-local path_to_lombok = jdtls_dir .. '/lombok.jar'
-local workspace_dir = os.getenv 'HOME' .. '/.dev/java_workspaces/'
-
-local extendedClientCapabilites = require('jdtls').extendedClientCapabilities
-
-local on_attach = require('core.lsp').on_attach
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = false
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-local function get_jdtls_jvm_args()
-    local args = {}
-    for a in string.gmatch((vim.env.JDTLS_JVM_ARGS or ''), '%S+') do
-        local arg = string.format('--jvm-arg=%s', a)
-        table.insert(args, arg)
-    end
-    return unpack(args)
+local status_ok, jdtls = pcall(require, 'jdtls')
+if not status_ok then
+    return
 end
--- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
-local config = {
-    -- The command that starts the language server
-    -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
-    cmd = {
 
+local jdtls_path = vim.fn.stdpath 'data' .. '/mason/packages/jdtls/'
+local install_path =
+    require('mason-registry').get_package('jdtls'):get_install_path()
+local equinox_version = '1.6.400.v20210924-0641'
+
+WORKSPACE_PATH = vim.fn.stdpath 'data' .. '/workspace/'
+if vim.fn.has 'mac' == 1 then
+    OS_NAME = 'mac'
+elseif vim.fn.has 'unix' == 1 then
+    OS_NAME = 'linux'
+elseif vim.fn.has 'win32' == 1 then
+    OS_NAME = 'win'
+else
+    vim.notify('Unsupported OS', vim.log.levels.WARN, { title = 'Jdtls' })
+end
+
+local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
+
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+local workspace_dir = WORKSPACE_PATH .. project_name
+
+local extended_client_capabilites = require('jdtls').extendedClientCapabilities
+
+local config = {
+    cmd = {
         -- 💀
         'java', -- or '/path/to/java17_or_newer/bin/java'
         -- depends on if `java` is in your $PATH env variable and if it points to the right version.
@@ -38,47 +38,45 @@ local config = {
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
         '-Dlog.protocol=true',
         '-Dlog.level=ALL',
-        '-javaagent:' .. path_to_lombok,
-        '-Xmx1g',
+        '-javaagent:' .. install_path .. '/lombok.jar',
+        '-Xms1g',
         '--add-modules=ALL-SYSTEM',
         '--add-opens',
         'java.base/java.util=ALL-UNNAMED',
         '--add-opens',
         'java.base/java.lang=ALL-UNNAMED',
-        --
         -- 💀
         '-jar',
-        path_to_jar,
+        jdtls_path
+            .. 'plugins/org.eclipse.equinox.launcher_'
+            .. equinox_version
+            .. '.jar',
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
-        --
         -- 💀
         '-configuration',
-        config_dir,
+        jdtls_path .. 'config_' .. OS_NAME,
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
         -- Must point to the                      Change to one of `linux`, `win` or `mac`
         -- eclipse.jdt.ls installation            Depending on your system.
 
-        -- 💀
-        -- See `data directory configuration` section in the README
         '-data',
         workspace_dir,
-        get_jdtls_jvm_args(),
     },
+    on_attach = require('core.lsp').on_attach,
+    capabilities = require('core.lsp').capabilities,
 
-    on_attach = on_attach,
-    capabilties = capabilities,
     -- 💀
     -- This is the default if not provided, you can remove it. Or adjust as needed.
     -- One dedicated LSP server & client will be started per unique root_dir
-    root_dir = require('jdtls.setup').find_root { '.git', 'mvnw', 'gradlew' },
+    root_dir = require('jdtls.setup').find_root(root_markers),
 
-    -- Here you can configure eclipse.jdt.ls specific settings
-    -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-    -- for a list of options
     settings = {
         java = {
+            format = {
+                enabled = false,
+            },
             signatureHelp = { enabled = true },
             contentProvider = { preferred = 'fernflower' },
             completion = {
@@ -111,7 +109,7 @@ local config = {
                     template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
                 },
                 hashCodeEquals = {
-                    useJava7Objects = false,
+                    useJava7Objects = true,
                 },
                 useBlocks = true,
             },
@@ -127,17 +125,16 @@ local config = {
     -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
     init_options = {
         bundles = {},
-        extendedClientCapabilities = extendedClientCapabilites,
+        extendedClientCapabilities = extended_client_capabilites,
     },
     handlers = {
         ['language/status'] = function() end,
     },
 }
+
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
-require('jdtls').start_or_attach(config)
-
--- require 'core.map' 'java'
+jdtls.start_or_attach(config)
 
 require('which-key').register {
     ['<leader>j'] = { name = 'Java' },

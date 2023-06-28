@@ -11,14 +11,14 @@ M.abc = {
         ['N'] = { 'Nzz', 'Prev result (Center)' },
 
         ['J'] = { "maJ'a", 'Append next line on current line' },
-        -- ['<leader>e'] = { '<CMD>Oil<CR>', 'Oil File Manager' },
 
         -- Better J and K (With wrapping)
         ['k'] = { "v:count == 0 ? 'gk' : 'k'", 'Up', opts = { expr = true } },
         ['j'] = { "v:count == 0 ? 'gj' : 'j'", 'Down', opts = { expr = true } },
 
         ['<C-c>'] = { '<Esc>', '' },
-        ['<leader>;'] = { '<C-z>', 'Minimize Neovim' },
+        ['<leader><leader>'] = { '<CMD>wa<CR><C-z>', 'Minimize' },
+        ['zv'] = { '<CMD>set foldmethod=marker<CR>', 'Update Folds'}
     },
     v = {
         ['<space>'] = { '<NOP>', 'Remove Space mapping' },
@@ -95,11 +95,11 @@ M.trouble = {
 
 M.spectre = {
     n = {
-        ['<leader>fS'] = {
+        ['<leader>wS'] = {
             function()
                 require('spectre').open()
             end,
-            '& Replace',
+            'Find & Replace',
         },
         ['<leader>bS'] = {
             function()
@@ -149,12 +149,6 @@ M.harpoon = {
             end,
             'Goto mark 4',
         },
-    },
-}
-
-M.undotree = {
-    n = {
-        ['<leader>ot'] = { '<CMD>UndotreeToggle<CR>', 'Undotree' },
     },
 }
 
@@ -267,6 +261,31 @@ M.java = {
                 }
             end,
             'Find Java Files',
+        },
+        ['<leader>ji'] = {
+            function()
+                require('jdtls').organize_imports()
+            end,
+            'Organize Imports',
+        },
+        ['<leader>jv'] = {
+            "<CMD>lua require('jdtls').extract_variable()<CR>",
+            'Extract Variable',
+        },
+        ['<leader>jm'] = {
+            "<CMD>lua require('jdtls').extract_method()<CR>",
+            'Extract Method',
+        },
+    },
+    v = {
+        ['<leader>jv'] = {
+            "<Esc><CMD>lua require('jdtls').extract_variable { true }<CR>",
+            'Extract Variable',
+        },
+
+        ['<leader>jm'] = {
+            "<Esc><CMD>lua require('jdtls').extract_method { true }<CR>",
+            'Extract Method',
         },
     },
 }
