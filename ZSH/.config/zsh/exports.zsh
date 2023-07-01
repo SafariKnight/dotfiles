@@ -18,5 +18,9 @@ eval "$(fnm env --use-on-cd)"
 # 	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 # GUI
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+# export LIBGL_ALWAYS_INDIRECT=1
+# export LIBGL_ALWAYS_INDIRECT=1
+# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
+export GALLIUM_DRIVE=llvmpipe

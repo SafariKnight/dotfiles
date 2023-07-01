@@ -68,35 +68,11 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
 vim.o.termguicolors = true
 
 -- Hey this is pretty cool
 vim.o.scrolloff = 8
 
 -- I should've used these so long ago
--- vim.cmd [[
--- function! VimFolds(lnum)
---     " get content of current line and the line below
---     let l:cur_line = getline(a:lnum)
---     let l:next_line = getline(a:lnum+1)
---
---     if l:cur_line =~# '^"{'
---         return '>' . (matchend(l:cur_line, '"{*') - 1)
---     else
---         if l:cur_line ==# '' && (matchend(l:next_line, '"{*') - 1) == 1
---             return 0
---         else
---             return '='
---         endif
---     endif
--- endfunction
--- set foldexpr=VimFolds(v:lnum)
--- ]]
 vim.o.foldmethod = 'marker'
--- vim.o.foldmethod = 'expr,marker'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'

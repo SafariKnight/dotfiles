@@ -54,8 +54,9 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.sonokai_style = 'shusia'
       vim.g.sonokai_better_performance = 1
+      vim.g.sonokai_style = 'shusia'
+      -- vim.g.sonokai_style = 'default'
       vim.cmd.colorscheme 'sonokai'
       local hi = function(group) -- Copied from... somewhere I can't remember
         return function(highlights)

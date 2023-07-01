@@ -3,7 +3,7 @@ return {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     lazy = false,
-    enabled = false,
+    -- enabled = false,
     opts = {
       options = {
         icons_enabled = true,

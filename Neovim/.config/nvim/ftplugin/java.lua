@@ -1,7 +1,8 @@
-local status_ok, jdtls = pcall(require, 'jdtls')
-if not status_ok then
-    return
-end
+-- local status_ok, jdtls = pcall(require, 'jdtls')
+-- if not status_ok then
+--     return
+-- end
+local jdtls = require 'jdtls'
 
 local jdtls_path = vim.fn.stdpath 'data' .. '/mason/packages/jdtls/'
 local install_path =

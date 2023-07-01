@@ -18,6 +18,7 @@ return {
         removed = '- ',
     },
 
+    -- Kinds {{{
     kinds = {
         Array = ' ',
         Boolean = ' ',
@@ -55,6 +56,8 @@ return {
         Value = ' ',
         Variable = ' ',
     },
+    -- }}}
+    -- Lazy {{{
     lazy = {
         -- Icons {{{
         cmd = ' ',
@@ -79,7 +82,7 @@ return {
             '‒',
         },
         -- }}}
-        -- No Icons {{{
+        -- -- No Icons {{{
         -- cmd = '',
         -- config = '',
         -- event = '',
@@ -101,6 +104,7 @@ return {
         --     '',
         --     '',
         -- },
-        -- }}}
+        -- -- }}}
+    -- }}}
     },
 }

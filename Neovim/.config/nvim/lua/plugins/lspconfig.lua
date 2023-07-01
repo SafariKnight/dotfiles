@@ -7,6 +7,7 @@ local servers = {
     },
     rust_analyzer = {},
     gopls = {},
+    tsserver = {},
 }
 
 return {
@@ -96,6 +97,11 @@ return {
 
                     -- don't bully me pls
                     builtin.formatting.google_java_format,
+
+                    -- I can't stay on one thing can I?
+                    builtin.formatting.prettierd.with({
+                        extra_args = { '--tab-width', '4'}
+                    })
                 },
             }
         end,

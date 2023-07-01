@@ -7,6 +7,7 @@ alias clipboard="win32yank -i --crlf"
 alias shutdown="wsl.exe --shutdown"
 alias gradlew="./gradlew"
 alias f=fg
+alias ls='exa --group-directories-first'
 
 # I have this because new Scanner(System.in) doesn't work with `gradlew run`
 # and because it removes a bunch of stuff I don't look at
