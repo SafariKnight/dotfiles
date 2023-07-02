@@ -1,0 +1,67 @@
+-- local M = {}
+-- --- Someone find how to break this setup, including dumb ways (I want to idiot proof this)
+-- M.abc = 
+--
+-- M.flash = 
+--
+-- M.trouble = 
+--
+-- M.spectre = 
+--
+-- M.harpoon = 
+--
+-- M.telescope = 
+--
+-- M.lspconfig = 
+--
+-- -- M.lspsaga = {
+-- --     n = {
+-- --         ['<leader>si'] = { '<CMD>Lspsaga lsp_finder<CR>', 'Finder' },
+-- --     },
+-- -- }
+--
+-- M.dap = 
+--
+-- M.gitsigns = {
+--     n = {
+--         ['<leader>gp'] = {
+--             function()
+--                 require('gitsigns').prev_hunk()
+--             end,
+--             'Previous Hunk',
+--         },
+--         ['<leader>gn'] = {
+--             function()
+--                 require('gitsigns').prev_hunk()
+--             end,
+--             'Next Hunk',
+--         },
+--         ['<leader>gs'] = {
+--             function()
+--                 require('gitsigns').preview_hunk()
+--             end,
+--             'Preview Hunk',
+--         },
+--     },
+-- }
+--
+-- M.fzf_lua = {
+--     n = {
+--         ['<C-p>'] = {
+--             function()
+--                 require('fzf-lua').files()
+--             end,
+--             'Search Files',
+--         },
+--         -- ['<C-q>'] = {
+--         --   function()
+--         --     require('fzf-lua').buffers()
+--         --   end,
+--         --   'Switch Buffers',
+--         -- },
+--     },
+-- }
+--
+-- M.java = 
+--
+-- return M

@@ -1,8 +1,11 @@
+local function get_maps(section)
+    return require("core.keymaps." .. section)
+end
 ---Load a mapping from mappings.lua
 ---@param section string
 ---@param function_opts table?
 return function(section, function_opts)
-    local default_mappings = require 'core.keymaps'
+    -- local default_mappings = require 'core.keymaps'
     local map_section = function(sect)
         for mode, keys in pairs(sect) do
             for lhs, keybind_info in pairs(keys) do
@@ -21,7 +24,7 @@ return function(section, function_opts)
             end
         end
     end
-    local mappings = default_mappings[section] or default_mappings['abc']
+    local mappings = get_maps(section) or get_maps('abc')
     if type(mappings) == 'function' then
         mappings = mappings()
     end

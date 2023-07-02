@@ -28,6 +28,7 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
+    -- lazy = false,
     config = function()
       local wk = require 'which-key'
       wk.setup {
