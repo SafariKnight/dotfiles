@@ -19,11 +19,22 @@ return {
         ['K'] = { vim.lsp.buf.hover, 'Documentation Float' },
         ['<leader>la'] = { vim.lsp.buf.code_action, 'Action' },
         ['<leader>sr'] = { vim.lsp.buf.rename, 'Rename' },
-        ['gr'] = { '<CMD>Telescope lsp_references<CR>', 'References' },
         ['gd'] = { vim.lsp.buf.definition, 'Definition' },
-        ['<leader>fs'] = {
+        ['gr'] = { '<CMD>Telescope lsp_references<CR>', 'References' },
+        ['<leader>sf'] = {
             '<CMD>Telescope lsp_document_symbols<CR>',
-            'Symbols',
+            'Find',
+        },
+
+    },
+    v = {
+        ['<leader>sf'] = {
+            function()
+                require('telescope.builtin').lsp_document_symbols {
+                    default_text = get_visual_selection(),
+                }
+            end,
+            'Find',
         },
     },
 }

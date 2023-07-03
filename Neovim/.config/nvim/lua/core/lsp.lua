@@ -6,7 +6,7 @@ M.on_attach = function(client, bufnr)
 
   if client.name == 'jdtls' then
     require 'core.map' ('java', { buffer = bufnr })
-    require('jdtls.setup').add_commands()
+    -- require('jdtls.setup').add_commands()
   end
 
   -- Create a command `:Format` local to the LSP buffer
