@@ -4,6 +4,9 @@ return {
         ['<leader>ff'] = { '<CMD>Telescope fd<CR>', 'File' },
         ['<leader>ft'] = { '<CMD>Telescope<CR>', 'Telescope Builtins' },
         ['<leader>fh'] = { '<CMD>Telescope help_tags<CR>', 'Help' },
+        ['<C-s>'] = { '<CMD>Telescope grep_string<CR>', 'Search Current Word'},
+        ['<leader>fw'] = { '<CMD>Telescope grep_string<CR>', 'Current Word'}
+
 
         -- Very bad idea
         -- [':'] = {'<CMD>Telescope commands<CR>', 'Commands'},
