@@ -1,9 +1,10 @@
-_G.set_colors = function(colorscheme)
-  vim.o.termguicolors = true
-  colorscheme = colorscheme or 'sonokai'
-  -- colorscheme = colorscheme or 'rose-pine'
-  vim.cmd.colorscheme(colorscheme)
-end
+-- _G.set_colors = function(colorscheme)
+--   vim.o.termguicolors = true
+--   colorscheme = colorscheme or 'sonokai'
+--   -- colorscheme = colorscheme or 'everforest'
+--   -- colorscheme = colorscheme or 'rose-pine'
+--   vim.cmd.colorscheme(colorscheme)
+-- end
 
 _G.keybind = {
   mode = 'n',

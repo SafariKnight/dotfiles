@@ -12,25 +12,25 @@ return {
             end,
             'Marks',
         },
-        ['<M-j>'] = {
+        ['<C-j>'] = {
             function()
                 require('harpoon.ui').nav_file(1)
             end,
             'Goto mark 1',
         },
-        ['<M-k>'] = {
+        ['<C-k>'] = {
             function()
                 require('harpoon.ui').nav_file(2)
             end,
             'Goto mark 2',
         },
-        ['<M-l>'] = {
+        ['<C-l>'] = {
             function()
                 require('harpoon.ui').nav_file(3)
             end,
             'Goto mark 3',
         },
-        ['<M-h>'] = {
+        ['<C-h>'] = {
             function()
                 require('harpoon.ui').nav_file(4)
             end,

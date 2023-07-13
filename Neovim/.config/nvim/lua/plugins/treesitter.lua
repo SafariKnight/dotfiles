@@ -4,6 +4,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   build = ':TSUpdate',
   config = function()
@@ -19,8 +20,10 @@ return {
         'lua',
         'python',
         'rust',
-        'tsx',
+        'javascript',
         'typescript',
+        -- 'jsx',
+        'tsx',
         'vimdoc',
         'vim',
         'markdown',
@@ -34,6 +37,9 @@ return {
       indent = { enable = true },
       incremental_selection = {
         enable = false,
+      },
+      context_commentstring = {
+        enabled = true,
       },
       textobjects = {
         select = {

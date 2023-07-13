@@ -10,6 +10,6 @@ return {
             end,
             'Toggle UI',
         },
-        ['<leader>lb'] = { '<CMD>DapToggleBreakpoint<CR>', 'Toggle Breakpoint' },
+        ['<leader>ab'] = { '<CMD>DapToggleBreakpoint<CR>', 'Toggle Breakpoint' },
     },
 }

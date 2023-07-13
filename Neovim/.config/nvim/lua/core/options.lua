@@ -42,7 +42,7 @@ end
 vim.o.breakindent = true
 
 -- Do your best neovim please
-vim.o.smartindent = true
+-- vim.o.smartindent = true
 
 -- Should've changed this so long ago
 vim.o.wrap = false

@@ -26,7 +26,7 @@ return {
                 formatting = {
                     format = function(_, item)
                         -- local icons = require('core.icons').kinds
-                        print(vim.inspect(item))
+                        -- print(vim.inspect(item))
                         if #item.abbr > 20 then
                             item.abbr = string.sub(item.abbr, 0, 20) .. '~'
                         end

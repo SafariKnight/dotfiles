@@ -8,6 +8,9 @@ local servers = {
     rust_analyzer = {},
     gopls = {},
     tsserver = {},
+    html = {},
+    cssls = {},
+    emmet_ls = {},
 }
 
 return {
@@ -30,7 +33,12 @@ return {
             },
 
             -- Additional lua configuration, makes nvim stuff amazing!
-            { 'folke/neodev.nvim', opts = {} },
+            {
+                'folke/neodev.nvim',
+                opts = {
+                    library = { plugins = { 'nvim-dap-ui' }, types = true },
+                },
+            },
 
             -- Interaction between cmp and lspconfig
             'hrsh7th/cmp-nvim-lsp',
@@ -99,9 +107,9 @@ return {
                     builtin.formatting.google_java_format,
 
                     -- I can't stay on one thing can I?
-                    builtin.formatting.prettierd.with({
-                        extra_args = { '--tab-width', '4'}
-                    })
+                    builtin.formatting.prettierd.with {
+                        extra_args = { '--tab-width', '4' },
+                    },
                 },
             }
         end,
@@ -121,6 +129,7 @@ return {
         'williamboman/mason.nvim',
         opts = {
             ensure_installed = {
+                'prettierd',
                 'shfmt',
                 'stylua',
             },

@@ -8,9 +8,9 @@ return {
         vim.g.loaded_netrw = 1 -- Go away netrw
         vim.g.loaded_netrwPlugin = 1
     end,
-    -- dependencies = {
-    --     'nvim-tree/nvim-web-devicons',
-    -- },
+    dependencies = {
+        'nvim-tree/nvim-web-devicons',
+    },
     opts = {
         files = {
             options = {
@@ -57,7 +57,7 @@ return {
         end
 
         activate 'ai'
-        activate 'comment'
+        -- activate 'comment'
         activate 'move'
         activate 'files'
         activate 'pairs'
