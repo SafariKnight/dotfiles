@@ -1,7 +1,7 @@
 return {
     n = {
         ['<leader>ol'] = { '<CMD>LspInfo<CR>', 'Lsp Info' },
-        ['<leader>om'] = { '<CMD>Mason<CR>', 'Mason' },
+        ['<leader>oM'] = { '<CMD>Mason<CR>', 'Mason' },
 
         ['<leader>os'] = {
             function()
