@@ -1,11 +1,11 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   -- lazy = false,
-  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
+  event = { 'BufReadPre', 'BufNewFile' },
   build = ':TSUpdate',
   config = function()
     require('nvim-treesitter.configs').setup {
@@ -75,15 +75,15 @@ return {
             ['[]'] = '@class.outer',
           },
         },
-        swap = {
-          enable = true,
-          swap_next = {
-            ['<leader>sj'] = '@parameter.inner',
-          },
-          swap_previous = {
-            ['<leader>sk'] = '@parameter.inner',
-          },
-        },
+        -- swap = {
+        --   enable = true,
+        --   swap_next = {
+        --     ['<leader>sj'] = '@parameter.inner',
+        --   },
+        --   swap_previous = {
+        --     ['<leader>sk'] = '@parameter.inner',
+        --   },
+        -- },
       },
     }
   end,

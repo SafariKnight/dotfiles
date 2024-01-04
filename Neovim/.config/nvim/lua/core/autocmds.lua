@@ -1,30 +1,31 @@
-local autocmd = vim.api.nvim_create_autocmd
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
 
--- Remember folds and cursor
--- local function remember(mode)
--- 	-- stylua: ignore
--- 	local ignoredFts = { "TelescopePrompt", "DressingSelect", "DressingInput", "toggleterm", "gitcommit", "replacer", "harpoon", "help", "qf" }
--- 	if vim.tbl_contains(ignoredFts, vim.bo.filetype) or vim.bo.buftype ~= "" or not vim.bo.modifiable then return end
---
--- 	if mode == "save" then
--- 		cmd.mkview(1)
--- 	else
--- 		pcall(function() cmd.loadview(1) end) -- pcall, since new files have no view yet
--- 	end
+-- Session Stuff (Disabled) {{{
+-- local get_session_file = function ()
+--     local session_dir = vim.fn.expand(vim.fn.stdpath 'state' .. '/sessions/') -- Sessions directory
+--     return session_dir .. vim.fn.getcwd():gsub('/', "%%") .. '.vim' -- Session file for current directory
 -- end
--- autocmd("BufWinLeave", {
--- 	pattern = "?*", -- pattern required, otherwise does not trigger
--- 	callback = function() remember("save") end,
+--
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--   group = vim.api.nvim_create_augroup('Restore Session', { clear = true }),
+--   callback = function()
+--     local session = get_session_file()
+--     if session and vim.fn.filereadable(session) then -- If the session file exists and is readable
+--       vim.cmd('silent! source ' .. vim.fn.fnameescape(session)) -- Load the session file
+--       vim.schedule(function()
+--         vim.cmd('silent! bufdo edit!') -- Restore highlights
+--       end) -- Delayed to run after neovim launches (doesn't work without this)
+--     end
+--   end,
 -- })
--- autocmd("BufWinEnter", {
--- 	pattern = "?*",
--- 	callback = function() remember("load") end,
--- })
+--
+-- vim.api.nvim_create_autocmd('VimLeavePre', {
+--   group = vim.api.nvim_create_augroup('Save Session', { clear = true }),
+--   callback = function()
+--     local tmp = vim.o.sessionoptions
+--     tmp = table.concat({ 'buffers', 'curdir', 'tabpages', 'winsize', 'skiprtp' }, ',')
+--     vim.cmd('mks! ' .. vim.fn.fnameescape(get_session_file()))
+--     vim.o.sessionoptions = tmp
+--   end,
+--   nested = true,
+-- }) }}}
+
