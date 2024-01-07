@@ -23,7 +23,7 @@ return {
         'javascript',
         'typescript',
         -- 'jsx',
-        'tsx',
+        -- 'tsx',
         'vimdoc',
         'vim',
         'markdown',
