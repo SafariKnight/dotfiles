@@ -1,36 +1,36 @@
 return {
   {
     -- Autocompletion
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
     version = false,
-    event = 'InsertEnter',
+    event = "InsertEnter",
     dependencies = {
       -- Snippet Engine
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
 
       -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+      -- 'rafamadriz/friendly-snippets',
 
-      -- I think I put too many parameters in java constructors
-      'hrsh7th/cmp-nvim-lsp-signature-help',
+      -- I'm forgetful
+      "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function()
-      local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
-      require('luasnip.loaders.from_vscode').lazy_load()
-      require('luasnip.loaders.from_snipmate').lazy_load()
-      luasnip.config.setup {}
-      vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-      cmp.setup {
+      local cmp = require("cmp")
+      local luasnip = require("luasnip")
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_snipmate").lazy_load()
+      luasnip.config.setup({})
+      vim.opt.completeopt = { "menu", "menuone", "noselect" }
+      cmp.setup({
         formatting = {
           format = function(_, item)
             -- local icons = require('core.icons').kinds
             -- print(vim.inspect(item))
             if #item.abbr > 20 then
-              item.abbr = string.sub(item.abbr, 0, 20) .. '~'
+              item.abbr = string.sub(item.abbr, 0, 20) .. "~"
             end
-            item.menu = ''
+            item.menu = ""
             -- if icons[item.kind] then
             --     item.kind = icons[item.kind] .. item.kind
             -- end
@@ -42,35 +42,33 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
-        mapping = cmp.mapping.preset.insert {
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-Space>'] = cmp.mapping.complete {},
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
-          ['<Tab>'] = cmp.mapping(function(fallback)
+        mapping = cmp.mapping.preset.insert({
+          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-d>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete({}),
+          -- behavior = cmp.ConfirmBehavior.Replace,
+          ["<C-t>"] = cmp.mapping.confirm({ select = true }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             else
               fallback()
             end
-          end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             else
               fallback()
             end
-          end, { 'i', 's' }),
-        },
+          end, { "i", "s" }),
+        }),
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'nvim_lsp_signature_help' },
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "nvim_lsp_signature_help" },
         },
         sorting = {
           comparators = {
@@ -81,8 +79,8 @@ return {
             -- copied from cmp-under, but I don't think I need the plugin for this.
             -- I might add some more of my own.
             function(entry1, entry2)
-              local _, entry1_under = entry1.completion_item.label:find '^_+'
-              local _, entry2_under = entry2.completion_item.label:find '^_+'
+              local _, entry1_under = entry1.completion_item.label:find("^_+")
+              local _, entry2_under = entry2.completion_item.label:find("^_+")
               entry1_under = entry1_under or 0
               entry2_under = entry2_under or 0
               if entry1_under > entry2_under then
@@ -100,17 +98,17 @@ return {
         },
         view = {
           entries = {
-            name = 'custom',
-            selection_order = 'near_cursor',
+            name = "custom",
+            selection_order = "near_cursor",
           },
         },
         experimental = {
           ghost_text = {
-            hl_group = 'CmpGhostText',
+            hl_group = "CmpGhostText",
           },
         },
-        preselect = 'item',
-      }
+        preselect = "item",
+      })
     end,
   },
 }

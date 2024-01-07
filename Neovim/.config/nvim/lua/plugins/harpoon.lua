@@ -1,18 +1,17 @@
--- tbh I want to try something else but idk what
 return {
   'ThePrimeagen/harpoon', -- Harpoon Man
   keys = function()
     local hp = require 'harpoon'
     return {
       {
-        '<leader>ha',
+        '<A-a>',
         function()
           hp:list():append()
         end,
         desc = 'Add mark',
       },
       {
-        '<leader>hu',
+        '<A-u>',
         function()
           hp.ui:toggle_quick_menu(hp:list())
         end,
@@ -21,28 +20,28 @@ return {
 
       -- I use colemak btw
       {
-        '<C-n>',
+        '<A-n>',
         function()
           hp:list():select(1)
         end,
         desc = 'Harpoon Mark 1',
       },
       {
-        '<C-e>',
+        '<A-e>',
         function()
           hp:list():select(2)
         end,
         desc = 'Harpoon Mark 2',
       },
       {
-        '<C-i>',
+        '<A-i>',
         function()
           hp:list():select(3)
         end,
         desc = 'Harpoon Mark 3',
       },
       {
-        '<C-o>',
+        '<A-o>',
         function()
           hp:list():select(4)
         end,

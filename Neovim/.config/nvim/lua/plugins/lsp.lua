@@ -52,8 +52,10 @@ return {
     end,
     config = function()
       local mason_lspconfig = require 'mason-lspconfig'
-      local opts = require("core.lsp")
 
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
       require('mason').setup()
       -- Ensure the servers above are installed
       mason_lspconfig.setup {
@@ -62,29 +64,17 @@ return {
 
       mason_lspconfig.setup_handlers {
         function(server_name)
-          if server_name ~= 'jdtls' then
-            require('lspconfig')[server_name].setup {
-              capabilities = opts.capabilities,
-              on_attach = opts.on_attach,
-              settings = servers[server_name],
-            }
-          end
+          require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            settings = servers[server_name],
+          }
         end,
       }
-      require('lspconfig').gdscript.setup({
-        cmd = { 'ncat.exe', '127.0.0.1', '6005'},
-        on_attach = opts.on_attach,
-        capabilities = opts.capabilities,
-      })
-
-      -- require('lspconfig').jdtls.setup {
-      --     on_attach = on_attach,
-      --     capabilities = capabilities,
-      -- }
-      for name, icon in pairs(require('core.icons').diagnostics) do
-        name = 'DiagnosticSign' .. name
-        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
-      end
+      -- require('lspconfig').gdscript.setup({
+      --   cmd = { 'ncat.exe', '127.0.0.1', '6005'},
+      --   on_attach = opts.on_attach,
+      --   capabilities = capabilities,
+      -- })
     end,
   },
   -- builtin.formatting.stylua,
@@ -101,15 +91,6 @@ return {
   -- builtin.formatting.prettierd.with {
   --     extra_args = { '--tab-width', '4' },
   -- },
-  {
-    'folke/trouble.nvim',
-    dependencies = {
-      -- 'nvim-tree/nvim-web-devicons',
-      'neovim/nvim-lspconfig',
-    },
-    cmd = { 'Trouble', 'TroubleToggle' },
-    opts = {},
-  },
   {
     'williamboman/mason.nvim',
     opts = {

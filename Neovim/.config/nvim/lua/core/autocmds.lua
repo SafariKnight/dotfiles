@@ -1,31 +1,56 @@
+-- LSP On Attach {{{
+vim.api.nvim_create_autocmd({ 'LspAttach' }, {
+  group = vim.api.nvim_create_augroup('LspOnAttach', { clear = true }),
+  callback = function(e)
+    local bufnr = e.buf
+    vim.keymap.set(
+      'n',
+      '<leader>vr',
+      vim.lsp.buf.rename,
+      { desc = 'Rename', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>va',
+      vim.lsp.buf.code_action,
+      { desc = 'Code Action', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '[d',
+      vim.diagnostic.goto_prev,
+      { desc = 'Previous Diagnostic', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>vh',
+      vim.lsp.buf.hover,
+      { desc = 'Hover', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      ']d',
+      vim.diagnostic.goto_next,
+      { desc = 'Next Diagnostic', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>vf',
+      vim.diagnostic.open_float,
+      { desc = 'Diagnostics Float', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      'gd',
+      vim.lsp.buf.definition,
+      { desc = 'Goto Definition', buffer = bufnr }
+    )
 
--- Session Stuff (Disabled) {{{
--- local get_session_file = function ()
---     local session_dir = vim.fn.expand(vim.fn.stdpath 'state' .. '/sessions/') -- Sessions directory
---     return session_dir .. vim.fn.getcwd():gsub('/', "%%") .. '.vim' -- Session file for current directory
--- end
---
--- vim.api.nvim_create_autocmd('VimEnter', {
---   group = vim.api.nvim_create_augroup('Restore Session', { clear = true }),
---   callback = function()
---     local session = get_session_file()
---     if session and vim.fn.filereadable(session) then -- If the session file exists and is readable
---       vim.cmd('silent! source ' .. vim.fn.fnameescape(session)) -- Load the session file
---       vim.schedule(function()
---         vim.cmd('silent! bufdo edit!') -- Restore highlights
---       end) -- Delayed to run after neovim launches (doesn't work without this)
---     end
---   end,
--- })
---
--- vim.api.nvim_create_autocmd('VimLeavePre', {
---   group = vim.api.nvim_create_augroup('Save Session', { clear = true }),
---   callback = function()
---     local tmp = vim.o.sessionoptions
---     tmp = table.concat({ 'buffers', 'curdir', 'tabpages', 'winsize', 'skiprtp' }, ',')
---     vim.cmd('mks! ' .. vim.fn.fnameescape(get_session_file()))
---     vim.o.sessionoptions = tmp
---   end,
---   nested = true,
--- }) }}}
-
+    -- Create a command `:Format` local to the LSP buffer
+    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+      -- vim.lsp.buf.format()
+      require('conform').format()
+    end, { desc = 'Format current buffer with LSP' })
+  end,
+})
+-- }}}
