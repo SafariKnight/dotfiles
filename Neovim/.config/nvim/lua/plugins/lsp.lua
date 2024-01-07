@@ -15,16 +15,16 @@ local servers = {
 return {
   {
     -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    event = { 'BufReadPre', 'BufNewFile' },
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
 
       -- Additional lua configuration, makes nvim stuff amazing!
       {
-        'folke/neodev.nvim',
+        "folke/neodev.nvim",
         opts = {
           library = {
             enabled = true,
@@ -39,11 +39,11 @@ return {
       },
 
       -- Interaction between cmp and lspconfig
-      'hrsh7th/cmp-nvim-lsp',
+      "hrsh7th/cmp-nvim-lsp",
     },
     init = function()
       -- disable lsp watcher. Too slow on linux
-      local ok, wf = pcall(require, 'vim.lsp._watchfiles')
+      local ok, wf = pcall(require, "vim.lsp._watchfiles")
       if ok then
         wf._watchfunc = function()
           return function() end
@@ -51,25 +51,24 @@ return {
       end
     end,
     config = function()
-      local mason_lspconfig = require 'mason-lspconfig'
+      local mason_lspconfig = require("mason-lspconfig")
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-      require('mason').setup()
-      -- Ensure the servers above are installed
-      mason_lspconfig.setup {
+      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+      require("mason").setup()
+      mason_lspconfig.setup({
+        -- Ensure the servers above are installed
         ensure_installed = vim.tbl_keys(servers),
-      }
-
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            settings = servers[server_name],
-          }
-        end,
-      }
+        handlers = {
+          function(server_name)
+            require("lspconfig")[server_name].setup({
+              capabilities = capabilities,
+              settings = servers[server_name],
+            })
+          end,
+        },
+      })
       -- require('lspconfig').gdscript.setup({
       --   cmd = { 'ncat.exe', '127.0.0.1', '6005'},
       --   on_attach = opts.on_attach,
@@ -77,32 +76,21 @@ return {
       -- })
     end,
   },
-  -- builtin.formatting.stylua,
-  --
-  -- -- don't ask why go gets 3 formatters
-  -- builtin.formatting.gofumpt,
-  -- builtin.formatting.goimports_reviser,
-  -- builtin.formatting.golines,
-  --
-  -- -- don't bully me pls
-  -- builtin.formatting.google_java_format,
-  --
-  -- -- I can't stay on one thing can I?
-  -- builtin.formatting.prettierd.with {
-  --     extra_args = { '--tab-width', '4' },
-  -- },
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        'prettierd',
-        'shfmt',
-        'stylua',
+        "prettierd",
+        "shfmt",
+        "stylua",
+        "gofumpt",
+        "goimports_reviser",
+        "golines",
       },
     },
     config = function(_, opts)
-      vim.api.nvim_create_user_command('MasonInstallAll', function()
-        vim.cmd('MasonInstall ' .. table.concat(opts.ensure_installed, ' '))
+      vim.api.nvim_create_user_command("MasonInstallAll", function()
+        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
       end, {})
     end,
   },

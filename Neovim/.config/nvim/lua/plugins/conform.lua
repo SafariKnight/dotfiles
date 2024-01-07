@@ -8,6 +8,7 @@ return {
       html = { { 'prettierd' } },
       css = { { 'prettierd' } },
       rust = { { 'rustfmt'} },
+      go = { "gofumpt", "goimports_reviser", "golines" },
     },
   },
 }

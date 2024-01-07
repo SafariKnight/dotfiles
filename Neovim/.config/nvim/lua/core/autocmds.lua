@@ -15,24 +15,24 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
       vim.lsp.buf.code_action,
       { desc = 'Code Action', buffer = bufnr }
     )
-    vim.keymap.set(
-      'n',
-      '[d',
-      vim.diagnostic.goto_prev,
-      { desc = 'Previous Diagnostic', buffer = bufnr }
-    )
+    -- vim.keymap.set(
+    --   'n',
+    --   '[d',
+    --   vim.diagnostic.goto_prev,
+    --   { desc = 'Previous Diagnostic', buffer = bufnr }
+    -- )
     vim.keymap.set(
       'n',
       '<leader>vh',
       vim.lsp.buf.hover,
       { desc = 'Hover', buffer = bufnr }
     )
-    vim.keymap.set(
-      'n',
-      ']d',
-      vim.diagnostic.goto_next,
-      { desc = 'Next Diagnostic', buffer = bufnr }
-    )
+    -- vim.keymap.set(
+    --   'n',
+    --   ']d',
+    --   vim.diagnostic.goto_next,
+    --   { desc = 'Next Diagnostic', buffer = bufnr }
+    -- )
     vim.keymap.set(
       'n',
       '<leader>vf',

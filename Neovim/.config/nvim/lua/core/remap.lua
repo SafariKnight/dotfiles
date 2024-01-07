@@ -29,4 +29,4 @@ vim.keymap.set({ 'n', 'v', 'i', 'x' }, '<C-c>', '<ESC>')
 vim.keymap.set('n', '<leader>q', '<CMD>wa<CR><C-z>', { desc = 'Minimize' })
 
 -- Netrw is goat
-vim.keymap.set('n', '<leader>m', '<CMD>Ex<Cr>', { desc = 'File Explorer' })
+vim.keymap.set('n', '<leader>m', vim.cmd.Ex, { desc = 'File Explorer' })
