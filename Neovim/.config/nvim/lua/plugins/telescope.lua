@@ -33,10 +33,6 @@ return {
             case_mode = "smart_case",
           },
         },
-        -- defaults = {
-        --   mappings = {
-        --   },
-        -- },
         pickers = {
           buffers = {
             theme = "dropdown",
@@ -49,7 +45,7 @@ return {
               n = {
                 ["dd"] = actions.delete_buffer,
                 ["Vd"] = actions.delete_buffer,
-                ["q"] = actions.close,
+                ["q"] = actions.close, -- Why isn't this default?
               },
             },
           },

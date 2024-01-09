@@ -1,3 +1,2 @@
 vim.loader.enable()
-require 'core'
-
+require("core")
