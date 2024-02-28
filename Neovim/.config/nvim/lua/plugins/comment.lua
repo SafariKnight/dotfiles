@@ -1,6 +1,6 @@
 return { -- TODO: Find a different (preferably inbuilt) solution for this
   "numToStr/Comment.nvim",
-  enabled = false,
+  enabled = true,
   opts = {},
   keys = {
     { "gc", mode = { "n", "v" } },

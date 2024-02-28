@@ -9,7 +9,7 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
 
-      -- Adds a number of user-friendly snippets
+      -- Adds too many damn snippets like what the hell
       -- 'rafamadriz/friendly-snippets',
 
       -- I'm forgetful
@@ -18,7 +18,7 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      -- require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load()
       -- require("luasnip.loaders.from_snipmate").lazy_load()
       luasnip.config.setup({})
       vim.opt.completeopt = { "menu", "menuone", "noselect" }

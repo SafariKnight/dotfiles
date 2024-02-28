@@ -9,7 +9,7 @@ local servers = {
   tsserver = {},
   html = {},
   cssls = {},
-  emmet_ls = {},
+  emmet_language_server = {},
 }
 
 return {
@@ -67,6 +67,15 @@ return {
               settings = servers[server_name],
             })
           end,
+          -- ["tsserver"] = function ()
+          --   require("lspconfig").tsserver.setup({
+          --     capabilities = capabilities,
+          --     settings = servers.tsserver,
+          --     handlers = {
+          --       ["textDocument/publishDiagnostics"] = function() end,
+          --     }
+          --   })
+          -- end
         },
       })
       -- require('lspconfig').gdscript.setup({
@@ -81,6 +90,7 @@ return {
     opts = {
       ensure_installed = {
         "prettierd",
+        "eslint_d",
         "shfmt",
         "stylua",
         "gofumpt",
