@@ -5,13 +5,13 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
     local bufnr = e.buf
     vim.keymap.set(
       'n',
-      '<leader>vr',
+      '<leader>sr',
       vim.lsp.buf.rename,
       { desc = 'Rename', buffer = bufnr }
     )
     vim.keymap.set(
       'n',
-      '<leader>va',
+      '<leader>sa',
       vim.lsp.buf.code_action,
       { desc = 'Code Action', buffer = bufnr }
     )
@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
     -- )
     vim.keymap.set(
       'n',
-      '<leader>vh',
+      '<leader>sh',
       vim.lsp.buf.hover,
       { desc = 'Hover', buffer = bufnr }
     )
@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
     -- )
     vim.keymap.set(
       'n',
-      '<leader>vf',
+      '<leader>sf',
       vim.diagnostic.open_float,
       { desc = 'Diagnostics Float', buffer = bufnr }
     )

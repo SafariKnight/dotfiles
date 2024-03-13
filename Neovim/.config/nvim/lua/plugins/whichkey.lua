@@ -12,7 +12,6 @@ return {
       ['<leader>'] = 'SPC',
       ['<cr>'] = 'RET',
       ['<tab>'] = 'TAB',
-      [','] = 'BOS',
     },
   },
 }

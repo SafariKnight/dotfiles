@@ -27,6 +27,3 @@ vim.keymap.set({ "n", "v", "i", "x" }, "<C-c>", "<ESC>")
 
 -- this is gud
 vim.keymap.set("n", "<leader>q", "<CMD>wa<CR><C-z>", { desc = "Minimize" })
-
--- Netrw is goat (don't @ me)
-vim.keymap.set("n", "<leader>m", vim.cmd.Ex, { desc = "File Explorer" })

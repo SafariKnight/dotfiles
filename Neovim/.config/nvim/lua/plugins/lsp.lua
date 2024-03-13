@@ -1,8 +1,27 @@
 local servers = {
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = true },
       telemetry = { enable = false },
+      runtime = {
+        version = "Lua 5.4",
+        pathstrict = true,
+        path = {
+          "?.lua",
+          "?/init.lua",
+          vim.fn.expand("~/.luarocks/share/lua/5.4/?.lua"),
+          vim.fn.expand("~/.luarocks/share/lua/5.4/?/init.lua"),
+          -- linuxbrew_home .. "share/lua/5.4/?.lua",
+          -- linuxbrew_home .. "share/lua/5.4/?/init.lua",
+          -- "/usr/share/5.3/?.lua",
+          -- "/usr/share/lua/5.3/?/init.lua",
+        },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          "~/.luarocks/share/lua/5.4",
+        },
+      },
     },
   },
   rust_analyzer = {},

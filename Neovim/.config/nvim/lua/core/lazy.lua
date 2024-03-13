@@ -20,7 +20,7 @@ local opts = {
     lazy = true,
   },
   ui = {
-    icons = require("core.icons").lazy,
+    -- icons = require("core.icons").lazy,
   },
 }
 

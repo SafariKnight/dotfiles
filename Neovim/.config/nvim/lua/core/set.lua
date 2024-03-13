@@ -84,4 +84,7 @@ vim.o.foldcolumn = '1'
 -- Leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
--- 
+
+
+-- Luarocks RTP
+vim.o.runtimepath = vim.opt.runtimepath:append(",~/.luarocks/share")
