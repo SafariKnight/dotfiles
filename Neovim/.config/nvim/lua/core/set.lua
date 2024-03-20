@@ -88,3 +88,6 @@ vim.g.maplocalleader = ','
 
 -- Luarocks RTP
 vim.o.runtimepath = vim.opt.runtimepath:append(",~/.luarocks/share")
+
+-- Cache for base46 plugin
+vim.g.base46_cache = vim.fn.stdpath('data') .. '/base46_cache/'

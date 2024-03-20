@@ -1,27 +1,8 @@
 local servers = {
   lua_ls = {
     Lua = {
+      workspace = { checkThirdParty = true },
       telemetry = { enable = false },
-      runtime = {
-        version = "Lua 5.4",
-        pathstrict = true,
-        path = {
-          "?.lua",
-          "?/init.lua",
-          vim.fn.expand("~/.luarocks/share/lua/5.4/?.lua"),
-          vim.fn.expand("~/.luarocks/share/lua/5.4/?/init.lua"),
-          -- linuxbrew_home .. "share/lua/5.4/?.lua",
-          -- linuxbrew_home .. "share/lua/5.4/?/init.lua",
-          -- "/usr/share/5.3/?.lua",
-          -- "/usr/share/lua/5.3/?/init.lua",
-        },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          "~/.luarocks/share/lua/5.4",
-        },
-      },
     },
   },
   rust_analyzer = {},
@@ -41,34 +22,23 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
 
-      -- Additional lua configuration, makes nvim stuff amazing!
       {
         "folke/neodev.nvim",
-        opts = {
-          library = {
-            enabled = true,
-            plugins = true,
-            types = true,
-            runtime = true,
-          },
-          setup_jsonls = true,
-          lspconfig = true,
-          pathstrict = true,
-        },
+        opts = {},
       },
 
       -- Interaction between cmp and lspconfig
       "hrsh7th/cmp-nvim-lsp",
     },
-    init = function()
-      -- disable lsp watcher. Too slow on linux
-      local ok, wf = pcall(require, "vim.lsp._watchfiles")
-      if ok then
-        wf._watchfunc = function()
-          return function() end
-        end
-      end
-    end,
+    -- init = function()
+    --   -- disable lsp watcher. Too slow on linux
+    --   local ok, wf = pcall(require, "vim.lsp._watchfiles")
+    --   if ok then
+    --     wf._watchfunc = function()
+    --       return function() end
+    --     end
+    --   end
+    -- end,
     config = function()
       local mason_lspconfig = require("mason-lspconfig")
 
@@ -76,6 +46,9 @@ return {
       capabilities.textDocument.completion.completionItem.snippetSupport = true
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
       require("mason").setup()
+      -- require("lspconfig").lua_ls.setup({
+      --   capabilities = capabilities,
+      -- })
       mason_lspconfig.setup({
         -- Ensure the servers above are installed
         ensure_installed = vim.tbl_keys(servers),

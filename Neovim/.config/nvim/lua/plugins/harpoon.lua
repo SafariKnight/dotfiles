@@ -1,5 +1,6 @@
 return {
   'ThePrimeagen/harpoon', -- Harpoon Man
+  enabled = false,
   keys = function()
     local hp = require 'harpoon'
     return {

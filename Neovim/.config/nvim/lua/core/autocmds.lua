@@ -1,56 +1,67 @@
+local au = vim.api.nvim_create_autocmd
+local group = vim.api.nvim_create_augroup
+
 -- LSP On Attach {{{
-vim.api.nvim_create_autocmd({ 'LspAttach' }, {
-  group = vim.api.nvim_create_augroup('LspOnAttach', { clear = true }),
+au({ "LspAttach" }, {
+  group = group("LspOnAttach", { clear = true }),
   callback = function(e)
     local bufnr = e.buf
+
     vim.keymap.set(
-      'n',
-      '<leader>sr',
+      "n",
+      "<leader>cr",
       vim.lsp.buf.rename,
-      { desc = 'Rename', buffer = bufnr }
+      { desc = "Rename", buffer = bufnr }
     )
     vim.keymap.set(
-      'n',
-      '<leader>sa',
+      "n",
+      "<leader>ca",
       vim.lsp.buf.code_action,
-      { desc = 'Code Action', buffer = bufnr }
+      { desc = "Code Action", buffer = bufnr }
     )
-    -- vim.keymap.set(
-    --   'n',
-    --   '[d',
-    --   vim.diagnostic.goto_prev,
-    --   { desc = 'Previous Diagnostic', buffer = bufnr }
-    -- )
     vim.keymap.set(
-      'n',
-      '<leader>sh',
+      "n",
+      "K",
       vim.lsp.buf.hover,
-      { desc = 'Hover', buffer = bufnr }
+      { desc = "Hover", buffer = bufnr }
     )
-    -- vim.keymap.set(
-    --   'n',
-    --   ']d',
-    --   vim.diagnostic.goto_next,
-    --   { desc = 'Next Diagnostic', buffer = bufnr }
-    -- )
     vim.keymap.set(
-      'n',
-      '<leader>sf',
+      "n",
+      "<leader>cd",
       vim.diagnostic.open_float,
-      { desc = 'Diagnostics Float', buffer = bufnr }
+      { desc = "Diagnostics Float", buffer = bufnr }
     )
     vim.keymap.set(
-      'n',
-      'gd',
+      "n",
+      "gd",
       vim.lsp.buf.definition,
-      { desc = 'Goto Definition', buffer = bufnr }
+      { desc = "Goto Definition", buffer = bufnr }
+    )
+    vim.keymap.set(
+      "n",
+      "gD",
+      vim.lsp.buf.declaration,
+      { desc = "Goto Declaration", buffer = bufnr }
     )
 
     -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
       -- vim.lsp.buf.format()
-      require('conform').format()
-    end, { desc = 'Format current buffer with LSP' })
+      require("conform").format()
+    end, { desc = "Format current buffer with LSP" })
+    vim.keymap.set(
+      "n",
+      "<leader>cf",
+      vim.cmd.Format,
+      { desc = "Format", buffer = bufnr }
+    )
   end,
 })
 -- }}}
+
+-- au({ "ColorScheme" }, {
+--   group = group("ColorOverrides", { clear = true}),
+--   callback = function(e)
+--     vim.api.nvim_set_hl()
+--   end,
+-- })

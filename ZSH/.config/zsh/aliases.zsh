@@ -8,7 +8,11 @@ alias shutdown="wsl.exe --shutdown"
 alias gradlew="./gradlew"
 alias f=fg
 alias ls='exa --group-directories-first'
-alias vi='nvim'
+alias vim='nvim'
+alias vi='vim'
+alias ovim='NVIM_APPNAME="ovim" nvim'
+alias scoop='scoop.exe'
+alias p='pwsh.exe -c'
 
 # I have this because new Scanner(System.in) doesn't work with `gradlew run`
 # and because it removes a bunch of stuff I don't look at

@@ -25,5 +25,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Line Down" })
 -- don't hate me pls
 vim.keymap.set({ "n", "v", "i", "x" }, "<C-c>", "<ESC>")
 
--- this is gud
-vim.keymap.set("n", "<leader>q", "<CMD>wa<CR><C-z>", { desc = "Minimize" })
+vim.keymap.set("n", "<leader>qm", "<CMD>wa<CR><C-z>", { desc = "Minimize" }) -- this is gud
+vim.keymap.set("n", "<leader>qw", "<CMD>wqa!<CR>", { desc = "Quit And Save" })
+vim.keymap.set("n", "<leader>qQ", "<CMD>qa!<CR>", { desc = "Quit without saving" })

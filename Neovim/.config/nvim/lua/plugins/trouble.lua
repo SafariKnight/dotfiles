@@ -3,9 +3,9 @@ return {
   init = function()
     vim.keymap.set(
       "n",
-      "<leader>tt",
+      "<leader>xx",
       "<CMD>TroubleToggle workspace_diagnostics<CR>",
-      { desc = "Toggle Trouble" }
+      { desc = "Trouble" }
     )
     vim.keymap.set("n", "]d", function()
       require("trouble").next({ skip_groups = true, jump = true })

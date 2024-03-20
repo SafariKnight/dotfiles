@@ -1,156 +1,126 @@
+---@diagnostic disable: unused-local, undefined-field
+-- Util Functions {{{
+
+local bg_default = "#000000"
+local fg_default = "#ffffff"
+
+---@param c  string
+local function hexToRgb(c)
+  c = string.lower(c)
+  return {
+    tonumber(c:sub(2, 3), 16),
+    tonumber(c:sub(4, 5), 16),
+    tonumber(c:sub(6, 7), 16),
+  }
+end
+
+---@param foreground string foreground color
+---@param background string background color
+---@param alpha number|string number between 0 and 1. 0 results in bg, 1 results in fg
+local function blend(foreground, background, alpha)
+  alpha = type(alpha) == "string" and (tonumber(alpha, 16) / 0xff) or alpha
+  local bg = hexToRgb(background)
+  local fg = hexToRgb(foreground)
+
+  local blendChannel = function(i)
+    local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
+    return math.floor(math.min(math.max(0, ret), 255) + 0.5)
+  end
+
+  return string.format(
+    "#%02x%02x%02x",
+    blendChannel(1),
+    blendChannel(2),
+    blendChannel(3)
+  )
+end
+
+local function darken(hex, amount, bg)
+  return blend(hex, bg or bg_default, amount)
+end
+
+local function lighten(hex, amount, fg)
+  return blend(hex, fg or fg_default, amount)
+end
+
+--- }}}
+
 return {
-  -- Tokyonight {{{
   {
-    'folke/tokyonight.nvim',
+    "linrongbin16/colorbox.nvim", -- Collection of colorschemes
     lazy = false,
     priority = 1000,
     enabled = false,
+
+    build = function()
+      require("colorbox").update()
+    end,
     config = function()
-      require('tokyonight').setup {
-        style = 'night',
-        on_highlights = function(hl, c)
-          hl.CmpGhostText = {
-            fg = c.fg_dark,
-          }
-          -- hl.Normal = {
-          --   bg = 'none',
-          -- }
-          -- hl.NormalFloat = {
-          --   bg = 'none',
-          -- }
-        end,
-      }
-      vim.cmd.colorscheme 'tokyonight'
+      require("colorbox").setup({ filter = false })
     end,
   },
-
-  -- }}}
-
-  -- Kanagawa {{{
-
   {
-    'rebelot/kanagawa.nvim',
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    enabled = false,
-    opts = {
-      compile = true
-    },
-    config = function(_, opts)
-      require('kanagawa').setup(opts)
-      vim.cmd.colorscheme 'kanagawa'
-    end
+    -- enabled = false,
+    config = function()
+      require("kanagawa").setup({
+        compile = true,
+        theme = "wave",
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none",
+              },
+            },
+          },
+        },
+        overrides = function(colors)
+          ---@class ThemeColors
+          local theme = colors.theme
+          ---@class PaletteColors
+          local palette = colors.palette
+          return {
+            TelescopeTitle = {
+              fg = theme.ui.bg,
+              -- bg = theme.ui.special,
+              bg = palette.oniViolet,
+              bold = true,
+            },
+            FloatTitle = {
+              fg = theme.ui.bg,
+              -- bg = theme.ui.special,
+              bg = palette.oniViolet,
+              bold = true,
+            },
+            Float = { bg = theme.ui.float.bg },
+            FloatBorder = { fg = theme.ui.float.bg, bg = theme.ui.float.bg },
+            TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+            TelescopeResultsNormal = {
+              fg = theme.ui.fg_dim,
+              bg = theme.ui.bg_m1,
+            },
+            TelescopeResultsBorder = {
+              fg = theme.ui.bg_m1,
+              bg = theme.ui.bg_m1,
+            },
+            TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+            TelescopePreviewBorder = {
+              bg = theme.ui.bg_dim,
+              fg = theme.ui.bg_dim,
+            },
+            TelescopeSelectionCaret = {
+              link = "TelescopeSelection",
+            },
+            QuickScopePrimary = { fg = palette.lotusAqua, undercurl = true },
+            QuickScopeSecondary = { fg = palette.lotusRed, undercurl = true },
+          }
+        end,
+      })
+      vim.cmd.colorscheme("kanagawa")
+    end,
   },
-
-  -- }}}
-
-  -- Stuff {{{
-  -- 'catppuccin/nvim',
-  -- name = 'catppuccin',
-  -- priority = 1000,
-  -- enabled = false,
-  -- lazy = false,
-  -- config = function()
-  --   require('catppuccin').setup {
-  --     flavour = 'mocha', -- Only flavour I liked tbh
-  --     custom_highlights = function(colors)
-  --       return { -- Borderless Telescope
-  --         TelescopeTitle = { bg = colors.flamingo, fg = colors.base },
-  --         TelescopeNormal = { bg = colors.mantle, fg = colors.text },
-  --         TelescopeBorder = { bg = colors.mantle, fg = colors.mantle },
-  --         TelescopePromptTitle = {
-  --           bg = colors.mantle,
-  --           fg = colors.mantle,
-  --         },
-  --         TelescopePromptCounter = {
-  --           bg = colors.mantle,
-  --           fg = colors.mantle,
-  --         },
-  --         TelescopeResultsNormal = {
-  --           bg = colors.crust,
-  --           fg = colors.text,
-  --         },
-  --         TelescopeResultsBorder = {
-  --           bg = colors.crust,
-  --           fg = colors.crust,
-  --         },
-  --         CmpGhostText = { fg = colors.overlay2 },
-  --       }
-  --     end,
-  --   }
-  --   vim.cmd.colorscheme 'catppuccin'
-  -- end,
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   -- dependencies = {
-  --   --   { 'xiyaowong/transparent.nvim', opts = {} },
-  --   -- },
-  --   lazy = false,
-  --   enabled = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('rose-pine').setup {
-  --       highlight_groups = {
-  --         TelescopeTitle = { bg = 'love', fg = 'base' },
-  --         TelescopeNormal = { bg = 'overlay', fg = 'text' },
-  --         TelescopeBorder = { bg = 'overlay', fg = 'overlay' },
-  --         TelescopePromptTitle = { bg = 'overlay', fg = 'overlay' },
-  --         TelescopePromptNormal = { bg = 'overlay', fg = 'text' },
-  --         TelescopePromptCounter = { bg = 'overlay', fg = 'overlay' },
-  --         TelescopeResultsNormal = { bg = 'surface', fg = 'text' },
-  --         TelescopeResultsBorder = { bg = 'surface', fg = 'surface' },
-  --         CmpGhostText = { fg = 'muted' },
-  --       },
-  --     }
-  --   end,
-  -- },
-  -- {
-  --   'sainnhe/sonokai',
-  --   lazy = false,
-  --   priority = 1000,
-  --   enabled = false,
-  --   config = function()
-  --     vim.g.sonokai_better_performance = 1
-  --     vim.g.sonokai_style = 'shusia'
-  --     -- vim.g.sonokai_style = 'default'
-  --     vim.cmd.colorscheme 'sonokai'
-  --     local hi = function(group) -- Copied from... somewhere I can't remember
-  --       return function(highlights)
-  --         vim.api.nvim_set_hl(0, group, highlights)
-  --       end
-  --     end
-  --     hi 'CmpGhostText' { fg = 'grey' }
-  --   end,
-  -- },
-  -- {
-  --   'sainnhe/edge',
-  --   lazy = false,
-  --   priority = 1000,
-  --   -- enabled = false,
-  --   config = function()
-  --     vim.g.edge_better_performance = 1
-  --     -- vim.g.edge_style = 'shusia'
-  --     vim.g.edge_style = 'aura'
-  --     vim.cmd.colorscheme 'edge'
-  --     local hi = function(group) -- Copied from... somewhere I can't remember
-  --       return function(highlights)
-  --         vim.api.nvim_set_hl(0, group, highlights)
-  --       end
-  --     end
-  --     hi 'CmpGhostText' { fg = 'grey' }
-  --   end,
-  -- },
-  -- }}}
-
-  {
-    'sainnhe/gruvbox-material',
-    priority = 1000,
-    lazy = false,
-    config = function ()
-      vim.g.gruvbox_material_background = 'hard'
-      vim.g.gruvbox_material_foreground = 'mix'
-      vim.cmd.colorscheme('gruvbox-material')
-    end
-  }
 }

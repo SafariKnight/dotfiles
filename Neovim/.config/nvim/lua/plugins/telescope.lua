@@ -4,7 +4,7 @@ return {
     init = function()
       vim.keymap.set(
         "n",
-        "<leader>f",
+        "<leader><space>",
         "<CMD>Telescope fd<CR>",
         { desc = "Switch File" }
       )
@@ -12,13 +12,13 @@ return {
         "n",
         "<leader>/",
         "<CMD>Telescope live_grep<CR>",
-        { desc = "Search Project-Wide" }
+        { desc = "Live Grep" }
       )
       vim.keymap.set(
         "n",
-        "<leader>b",
+        "<leader>,",
         "<CMD>Telescope buffers<CR>",
-        { desc = "Search Through Buffers" }
+        { desc = "Switch Buffer" }
       )
     end,
     cmd = { "Telescope" },
@@ -32,6 +32,11 @@ return {
             override_file_sorter = true,
             case_mode = "smart_case",
           },
+        },
+        defaults = {
+          prompt_prefix = "   ",
+          selection_caret = "  ",
+          entry_prefix = "  ",
         },
         pickers = {
           buffers = {
@@ -54,7 +59,7 @@ return {
     end,
     config = function(_, opts)
       require("telescope").setup(opts)
-      local plugins = { "fzf" }
+      local plugins = { "fzf", "grapple" }
       for _, plugin in ipairs(plugins) do
         require("telescope").load_extension(plugin)
       end
@@ -74,7 +79,12 @@ return {
     "stevearc/dressing.nvim",
     opts = {
       input = { enabled = true },
-      select = { enabled = true },
+      select = {
+        enabled = true,
+        telescope = {
+          borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+        },
+      },
     },
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
