@@ -47,23 +47,9 @@ end
 
 return {
   {
-    "linrongbin16/colorbox.nvim", -- Collection of colorschemes
-    lazy = false,
-    priority = 1000,
-    enabled = false,
-
-    build = function()
-      require("colorbox").update()
-    end,
-    config = function()
-      require("colorbox").setup({ filter = false })
-    end,
-  },
-  {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    -- enabled = false,
     config = function()
       require("kanagawa").setup({
         compile = true,

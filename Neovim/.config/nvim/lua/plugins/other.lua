@@ -1,5 +1,6 @@
 return {
   "rgroli/other.nvim",
+  enabled = false,
   config = function()
     require("other-nvim").setup({
       mappings = {

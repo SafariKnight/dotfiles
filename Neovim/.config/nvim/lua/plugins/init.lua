@@ -16,4 +16,45 @@ return {
     event = "LspAttach",
     opts = {},
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "UiEnter",
+    main = "ibl",
+    opts = {},
+  },
+  -- {
+  --   "uga-rosa/ccc.nvim",
+  --   ft = "css",
+  --   config = function()
+  --     local ccc = require("ccc")
+  --     ccc.setup({
+  --       highlighter = {
+  --         auto_enable = true,
+  --         lsp = true,
+  --       },
+  --       lsp = true,
+  --       inputs = {
+  --         ccc.input.hsl,
+  --         ccc.input.oklch,
+  --       },
+  --       outputs = {
+  --         ccc.output.css_hsl,
+  --         ccc.output.css_oklch,
+  --       },
+  --     })
+  --   end,
+  --   cmd = { "CccPick", "CccConvert" },
+  -- },
+  {
+    "NvChad/nvim-colorizer.lua",
+    main = "colorizer",
+    ft = { "css" },
+    enabled = true,
+    opts = {
+      user_default_options = {
+        css = true,
+        mode = "background",
+      },
+    },
+  },
 }

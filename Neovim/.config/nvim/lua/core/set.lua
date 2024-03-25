@@ -45,7 +45,7 @@ end
 vim.o.breakindent = true
 
 -- Do your best neovim please
--- vim.o.smartindent = true
+vim.o.smartindent = true
 
 -- Should've changed this so long ago
 vim.o.wrap = false
@@ -88,6 +88,9 @@ vim.g.maplocalleader = ','
 
 -- Luarocks RTP
 vim.o.runtimepath = vim.opt.runtimepath:append(",~/.luarocks/share")
+
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
 -- Cache for base46 plugin
 vim.g.base46_cache = vim.fn.stdpath('data') .. '/base46_cache/'

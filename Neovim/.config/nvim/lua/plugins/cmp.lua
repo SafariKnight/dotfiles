@@ -1,3 +1,32 @@
+-- Icons {{{
+local kind_icons = {
+  Text = "",
+  Method = "󰆧",
+  Function = "󰊕",
+  Constructor = "",
+  Field = "󰇽",
+  Variable = "󰂡",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "",
+  Value = "󰎠",
+  Enum = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "",
+  Folder = "󰉋",
+  EnumMember = "",
+  Constant = "󰏿",
+  Struct = "",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "󰅲",
+}
+-- }}}
 return {
   {
     -- Autocompletion
@@ -23,12 +52,17 @@ return {
       luasnip.config.setup({})
       vim.opt.completeopt = { "menu", "menuone", "noselect" }
       cmp.setup({
+        window = {
+          completion = {
+            col_offset = -3
+          }
+        },
         formatting = {
-          format = function(_, item)
-            if #item.abbr > 20 then
-              item.abbr = string.sub(item.abbr, 0, 20) .. "~"
-            end
-            item.menu = ""
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, item)
+            local kind = item.kind
+            item.kind = kind_icons[kind]
+            item.menu = "(" .. kind .. ")"
             return item
           end,
         },

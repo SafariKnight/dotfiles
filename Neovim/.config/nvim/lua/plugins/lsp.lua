@@ -70,6 +70,11 @@ return {
           -- end
         },
       })
+      -- Why doesn't mason have this?
+      require("lspconfig").css_variables.setup({
+
+        capabilities = capabilities,
+      })
       -- require('lspconfig').gdscript.setup({
       --   cmd = { 'ncat.exe', '127.0.0.1', '6005'},
       --   on_attach = opts.on_attach,
