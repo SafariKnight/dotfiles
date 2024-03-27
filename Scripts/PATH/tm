@@ -3,7 +3,10 @@
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$({ fd . ~/dotfiles ~/.dev/projects ~/.dev/deci/level3 --type d --max-depth 1 --no-ignore-vcs & fd . ~/.dev/aoc --type d --exact-depth 2; } | fzf)
+  selected=$({ fd . \
+  ~/dotfiles  ~/projects/ ~/projects/DECI/ --type d --max-depth 1 \
+  # & fd . ~/.dev/aoc --type d --exact-depth 2;
+  } | fzf)
 fi
 
 if [[ -z $selected ]]; then
