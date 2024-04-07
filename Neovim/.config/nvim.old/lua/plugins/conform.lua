@@ -1,6 +1,12 @@
-return {
+return { -- Formatting
   "stevearc/conform.nvim",
-  cmd = { "Format" },
+  -- cmd = { "Format" },
+  init = function()
+    vim.api.nvim_create_user_command("Format", function(_)
+      require("conform").format()
+    end, { desc = "Format buffer" })
+    map("n", "<leader>cf", vim.cmd.Format, { desc = "Format" })
+  end,
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },

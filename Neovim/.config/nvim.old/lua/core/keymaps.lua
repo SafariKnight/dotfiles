@@ -19,11 +19,11 @@ vim.keymap.set(
   { desc = "Down", expr = true }
 )
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Line Up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Line Down" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Line Up" })
 
 -- don't hate me pls
-vim.keymap.set({ "n", "v", "i", "x" }, "<C-c>", "<ESC>")
+-- vim.keymap.set({ "n", "v", "i", "x" }, "<C-c>", "<ESC>")
 
 vim.keymap.set("n", "<leader>qm", "<CMD>wa<CR><C-z>", { desc = "Minimize" }) -- this is gud
 vim.keymap.set("n", "<leader>qw", "<CMD>wqa!<CR>", { desc = "Quit And Save" })

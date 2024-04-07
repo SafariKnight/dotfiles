@@ -36,5 +36,6 @@ return {
     activate("comment")
     activate("pairs")
     activate("surround")
+    activate("statusline") -- Found out this exists thank god
   end,
 }

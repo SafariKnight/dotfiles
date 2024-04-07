@@ -1,91 +1,31 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-
-  lazy = false,
+  -- event = "VeryLazy", -- Suprised that this works well
+  main = 'nvim-treesitter.configs',
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "JoosepAlviste/nvim-ts-context-commentstring",
+    { "nvim-treesitter/nvim-treesitter-context", opts = {} },
   },
-  event = { "BufReadPre", "BufNewFile" },
-  build = ":TSUpdate",
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = {
-        "c",
-        "cpp",
-        "go",
-        "gomod",
-        "gosum",
-        "gowork",
-        "lua",
-        "python",
-        "rust",
-        "javascript",
-        "typescript",
-        -- 'jsx',
-        -- 'tsx',
-        "vimdoc",
-        "vim",
-        "markdown",
-        "markdown_inline",
-      },
-
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-      auto_install = true,
-
-      highlight = { enable = true },
-      indent = { enable = true },
-      incremental_selection = {
-        enable = false,
-      },
-      context_commentstring = {
-        enabled = true,
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = false, -- Automatically jump forward to textobj, similar to targets.vim
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            ["]m"] = "@function.outer",
-            ["]]"] = "@class.outer",
-          },
-          goto_next_end = {
-            ["]M"] = "@function.outer",
-            ["]["] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[m"] = "@function.outer",
-            ["[["] = "@class.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@function.outer",
-            ["[]"] = "@class.outer",
-          },
-        },
-        -- swap = {
-        --   enable = true,
-        --   swap_next = {
-        --     ['<leader>sj'] = '@parameter.inner',
-        --   },
-        --   swap_previous = {
-        --     ['<leader>sk'] = '@parameter.inner',
-        --   },
-        -- },
-      },
-    })
+  init = function(plugin)
+    -- Taken from LazyVim
+    require("lazy.core.loader").add_to_rtp(plugin)
+    require("nvim-treesitter.query_predicates")
   end,
+  opts = {
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "html", "css", "scss" },
+    highlight = { enable = true },
+    indent = { enable = true },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        },
+      },
+    }
+  }
 }

@@ -1,3 +1,4 @@
+
 -- Better searching
 vim.o.hlsearch = false
 vim.o.incsearch = true
@@ -77,9 +78,9 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 8
 
 -- I should've used these so long ago
-vim.o.foldmethod = 'marker'
+-- vim.o.foldmethod = 'marker'
 -- vim.o.foldmethod = 'manual'
-vim.o.foldcolumn = '1'
+-- vim.o.foldcolumn = '1'
 
 -- Leader
 vim.g.mapleader = ' '

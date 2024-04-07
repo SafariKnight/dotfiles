@@ -1,15 +1,5 @@
-vim.loader.enable()
-vim.g.mapleader = " "
-
-map = vim.keymap.set
-
-require("kh.options")
-require("kh.keymaps")
-
-vim.cmd.colorscheme("habamax")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -22,16 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  { import = "plugins" }
+  { import = "plugins" },
 }
 
-local lazy_opts = {
-  install = {
-    colorscheme = { "habamax" },
+local opts = {
+  defaults = {
+    lazy = true,
   },
-  default = {
-    lazy = false,
-  },
+
   performance = {
     rtp = {
       disabled_plugins = {
@@ -65,6 +53,9 @@ local lazy_opts = {
       },
     },
   },
+  ui = {
+    -- icons = require("core.icons").lazy,
+  },
 }
 
-require("lazy").setup(plugins, lazy_opts)
+require("lazy").setup(plugins, opts)
