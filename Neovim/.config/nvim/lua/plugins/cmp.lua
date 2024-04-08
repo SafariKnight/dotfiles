@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
   dependencies = {
     -- Completion sources
     "hrsh7th/cmp-nvim-lsp",
@@ -21,10 +22,10 @@ return {
           return require("luasnip").lsp_expand(args.body)
         end,
       },
---      window = {
---        completion = cmp.config.window.bordered(),
---        documentation = cmp.config.window.bordered(),
---      },
+      --      window = {
+      --        completion = cmp.config.window.bordered(),
+      --        documentation = cmp.config.window.bordered(),
+      --      },
 
       formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -68,25 +69,25 @@ return {
 
       sources = {
         { name = "nvim_lsp", group_index = 1 },
-        { name = "luasnip", group_index = 1 },
-        { name = "buffer", group_index = 2 },
+        { name = "luasnip",  group_index = 1 },
+        { name = "buffer",   group_index = 2 },
       },
     })
 
-    cmp.setup.cmdline({ '/', '?' }, {
+    cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        { name = 'buffer' },
+        { name = "buffer" },
       },
     })
 
-    cmp.setup.cmdline(':', {
+    cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        { name = "path", group_index = 1 },
+        { name = "path",    group_index = 1 },
         { name = "cmdline", group_index = 2 },
       },
-      matching = { disallow_symbol_nonprefix_matching = false }
+      matching = { disallow_symbol_nonprefix_matching = false },
     })
   end,
 }

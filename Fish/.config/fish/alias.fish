@@ -6,6 +6,6 @@ alias clipin="win32yank.exe -i --crlf"
 alias clipout="win32yank.exe -o --lf"
 alias p='pwsh.exe -c'
 alias scoop='scoop.exe'
-alias ls='exa --group-directories-first'
+alias ls='eza --group-directories-first'
 
 alias ovim='NVIM_APPNAME=ovim nvim'

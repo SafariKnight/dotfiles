@@ -22,12 +22,12 @@ if vim.fn.has 'wsl' then
   vim.g.clipboard = {
     name = 'win32yank-wsl',
     copy = {
-      ['+'] = 'win32yank.exe -i --crlf',
-      ['*'] = 'win32yank.exe -i --crlf',
+      ['+'] = 'win32yank -i --crlf',
+      ['*'] = 'win32yank -i --crlf',
     },
     paste = {
-      ['+'] = 'win32yank.exe -o --lf',
-      ['*'] = 'win32yank.exe -o --lf',
+      ['+'] = 'win32yank -o --lf',
+      ['*'] = 'win32yank -o --lf',
     },
     cache_enabled = 1,
   }
@@ -85,7 +85,7 @@ vim.opt.splitbelow = true
 -- `:help 'list'`
 -- `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- show which line your cursos is on
 vim.opt.cursorline = false
