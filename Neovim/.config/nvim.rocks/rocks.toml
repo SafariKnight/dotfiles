@@ -1,0 +1,54 @@
+# This is your rocks.nvim plugins declaration file.
+# Here is a small yet pretty detailed example on how to use it:
+#
+# [plugins]
+# nvim-treesitter = "semver_version"  # e.g. "1.0.0"
+
+# List of non-Neovim rocks.
+# This includes things like `toml` or other lua packages.
+[rocks]
+
+# List of Neovim plugins to install alongside their versions.
+# If the plugin name contains a dot then you must add quotes to the key name!
+[plugins]
+"rocks.nvim" = "2.21.1"
+"rocks-git.nvim" = "1.4.0"
+"rocks-config.nvim" = "1.4.0"
+"mini.nvim" = "0.9.0"
+"telescope.nvim" = "scm"
+"telescope-frecency.nvim" = { version = "scm", config = false }
+"telescope-ui-select.nvim" = { version = "scm", config = false }
+"nightfox.nvim" = "3.9.3"
+
+# cmp
+nvim-cmp = "0.0.1"
+cmp-nvim-lsp = { version = "scm", config = false }
+cmp-path = { version = "scm", config = false }
+cmp-buffer = { version = "scm", config = false }
+cmp-cmdline = { version = "scm", config = false }
+
+luasnip = { version = "2.2.0", config = false }
+cmp_luasnip = { version = "scm", config = false }
+
+# Treesitter parsers
+tree-sitter-toml = "scm"
+
+# LSP
+nvim-lspconfig = { version = "0.1.7", config = false }
+"mason.nvim" = { version = "1.10.0", opt = true }
+"mason-lspconfig.nvim" = "1.27.0"
+"mason-tool-installer.nvim" = { version = "scm", opt = true }
+"neodev.nvim" = "2.5.2"
+
+[plugins."diagflow.nvim"]
+git = "dgagn/diagflow.nvim"
+config = { scope = "line", show_sign = true }
+
+[plugins."telescope-fzf-native.nvim"]
+git = "nvim-telescope/telescope-fzf-native.nvim"
+build = "make"
+config = false
+
+[config]
+plugins_dir = "plugins/"
+auto_setup = true
