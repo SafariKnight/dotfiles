@@ -10,7 +10,7 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Source Code Pro" :height 130)
+(set-face-attribute 'default nil :font "MonoLisa" :height 120)
 
 
 ;; Initialize package sources
@@ -55,7 +55,7 @@
   :config
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
-  (load-theme 'doom-dracula t)
+  (load-theme 'doom-one t)
   )
 
 (use-package rainbow-delimiters
@@ -157,19 +157,30 @@
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-  (when (file-directory-p "~/projects")
-    (setq proectile-project-search-path `("~/projects")))
+  (when (file-directory-p "~/dev/projects")
+    (setq projectile-project-search-path `("~/dev/projects")))
+  (when (file-directory-p "~/dotfiles")
+    (setq projectile-project-search-path `("~/dotfiles")))
   (setq projectile-switch-project-action #'projectile-dired))
 		   
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package magit)
+
+(use-package evil-collection
+  :after magit)
 
 
+;; why does this even need to exist
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(delete-selection-mode nil)
  '(package-selected-packages
-   '(projectile hydra which-key rainbow-delimiters ivy-rich helpful general evil-collection doom-themes doom-modeline counsel command-log-mode all-the-icons)))
+   '(magit counsel-projectile projectile hydra which-key rainbow-delimiters ivy-rich helpful general evil-collection doom-themes doom-modeline counsel command-log-mode all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

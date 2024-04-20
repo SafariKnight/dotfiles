@@ -1,6 +1,7 @@
 vim.loader.enable()
 vim.g.mapleader = " "
 
+---@diagnostic disable-next-line: lowercase-global
 map = vim.keymap.set
 
 require("kh.options")
@@ -30,7 +31,7 @@ local lazy_opts = {
     colorscheme = { "habamax" },
   },
   default = {
-    lazy = false,
+    lazy = true,
   },
   performance = {
     rtp = {
