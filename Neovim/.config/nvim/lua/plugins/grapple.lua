@@ -15,7 +15,7 @@ return {
     { "<A-i>", "<cmd>Grapple select index=3<cr>", desc = "Grapple to Third tag" },
     { "<A-o>", "<cmd>Grapple select index=4<cr>", desc = "Grapple to Forth tag" },
 
-    { "<leader>xg", "<cmd>Grapple quickfix<cr>", desc = "Grapple Tags" },
+    -- { "<leader>xg", "<cmd>Grapple quickfix<cr>", desc = "Grapple Tags" },
 
     {
       "[g",

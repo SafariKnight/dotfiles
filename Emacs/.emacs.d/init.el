@@ -10,6 +10,14 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
+;; Backup file configuration
+(setq backup-directory-alist '(("." . "~/dev/temp/emacs"))
+      backup-by-copying t
+      version-control t
+      delete-old-versions t
+      kept-new-versions 10
+      kept-old-versions 5)
+
 (set-face-attribute 'default nil :font "MonoLisa" :height 120)
 
 
