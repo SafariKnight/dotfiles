@@ -1,0 +1,1 @@
+("~/dev/projects/DECI/" "~/dotfiles/" "~/dev/projects/csharptest/")

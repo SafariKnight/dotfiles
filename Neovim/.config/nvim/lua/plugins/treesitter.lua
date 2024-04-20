@@ -1,10 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- event = "VeryLazy", -- Suprised that this works well
+  event = "VeryLazy", -- Suprised that this works well
   main = 'nvim-treesitter.configs',
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    { "nvim-treesitter/nvim-treesitter-context", opts = {} },
   },
   init = function(plugin)
     -- Taken from LazyVim
@@ -12,7 +11,22 @@ return {
     require("nvim-treesitter.query_predicates")
   end,
   opts = {
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "html", "css", "scss" },
+    ensure_installed = {
+      "c",
+      "lua",
+      "vim",
+      "vimdoc",
+      "query",
+      "javascript",
+      "typescript",
+      "html",
+      "css",
+      "scss",
+      "go",
+      "gosum",
+      "gomod",
+      "gotmpl",
+    },
     highlight = { enable = true },
     indent = { enable = true },
     textobjects = {
