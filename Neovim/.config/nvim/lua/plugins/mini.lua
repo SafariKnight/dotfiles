@@ -23,6 +23,7 @@ return {
     end
 
     activate("ai")
+    -- activate("animate")
     activate("comment")
     activate("pairs")
     activate("statusline")

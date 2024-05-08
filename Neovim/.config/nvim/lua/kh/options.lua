@@ -3,36 +3,36 @@ vim.o.hlsearch = false
 vim.o.incsearch = true
 
 -- preview substitutions live, as you type!
-vim.o.inccommand = 'split'
+vim.o.inccommand = "split"
 
 -- hey this looks better
-vim.o.cmdheight = 1
+-- vim.o.cmdheight = 0
 
 -- make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- disable mouse
-vim.o.mouse = ''
+vim.o.mouse = ""
 
 -- use win32yank as the clipboard provider on wsl
-if vim.fn.has 'wsl' then
-  vim.opt.clipboard = 'unnamedplus'
-  vim.env.nvim_tui_enable_cursor_shape = '1'
-  vim.g.clipboard = {
-    name = 'win32yank-wsl',
-    copy = {
-      ['+'] = 'win32yank -i --crlf',
-      ['*'] = 'win32yank -i --crlf',
-    },
-    paste = {
-      ['+'] = 'win32yank -o --lf',
-      ['*'] = 'win32yank -o --lf',
-    },
-    cache_enabled = 1,
-  }
+if vim.fn.has("wsl") then
+  vim.o.clipboard = "unnamedplus"
+  vim.env.nvim_tui_enable_cursor_shape = "1"
+  -- vim.g.clipboard = {
+  --   name = 'win32yank-wsl',
+  --   copy = {
+  --     ['+'] = 'win32yank -i --crlf',
+  --     ['*'] = 'win32yank -i --crlf',
+  --   },
+  --   paste = {
+  --     ['+'] = 'win32yank -o --lf',
+  --     ['*'] = 'win32yank -o --lf',
+  --   },
+  --   cache_enabled = 1,
+  -- }
 else
-  vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = "unnamedplus"
 end
 
 vim.o.swapfile = false
@@ -40,10 +40,10 @@ vim.o.backup = false
 
 -- save undo history
 vim.o.undofile = true
-if vim.fn.has 'linux' == 1 then
-  vim.o.undodir = vim.fn.expand '~/.vim/undodir'
-elseif vim.fn.has 'windows' == 1 then
-  vim.o.undodir = vim.fn.expand '$localappdata' .. '\\.vim\\undodir'
+if vim.fn.has("linux") == 1 then
+  vim.o.undodir = vim.fn.expand("~/.vim/undodir")
+elseif vim.fn.has("windows") == 1 then
+  vim.o.undodir = vim.fn.expand("$localappdata") .. "\\.vim\\undodir"
 end
 
 -- enable break indent
@@ -60,7 +60,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- decrease update time
 vim.o.updatetime = 50
@@ -93,3 +93,6 @@ vim.opt.cursorline = false
 -- 300 (default) is so short man
 vim.o.timeout = true
 vim.o.timeoutlen = 800
+
+-- Fold stuff
+vim.o.foldmethod = "marker"

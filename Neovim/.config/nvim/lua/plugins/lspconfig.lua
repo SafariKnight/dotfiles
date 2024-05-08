@@ -20,6 +20,7 @@ local servers = {
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNew" },
+  -- event = "VeryLazy",
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -45,7 +46,7 @@ return {
     end
   end,
   config = function()
-    local on_attach = function(client, buffer)
+    local on_attach = function(_, buffer)
       local map = function(mode, lhs, rhs, opts)
         opts = vim.tbl_deep_extend("force", opts, { buffer = buffer })
         vim.keymap.set(mode, lhs, rhs, opts)
@@ -53,9 +54,23 @@ return {
 
       map("n", "gd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
       map("n", "gs", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-      map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Action" })
-      map("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format" })
+
+      -- Designed like new default mappings
+      map("n", "crr", vim.lsp.buf.code_action, { desc = "Code Action" })
+      map(
+        { "v", "x" },
+        "<leader>ca",
+        vim.lsp.buf.code_action,
+        { desc = "Code Action" }
+      )
+      map("n", "crn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
+      map("n", "crf", vim.lsp.buf.format, { desc = "Format" })
+
+      -- New Default Mappings are better :p
+      -- map({ "n", "v", "x" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Action" })
+      -- map("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format" })
     end
+
     vim.api.nvim_create_autocmd("LSPAttach", {
       group = vim.api.nvim_create_augroup("LSPBinds", { clear = true }),
       callback = function(e)
@@ -69,6 +84,7 @@ return {
       Hint = require("kh.icons").BoldHint,
       Info = require("kh.icons").BoldInformation,
     }
+
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

@@ -78,7 +78,6 @@ mason_lsp.setup_handlers({
 })
 
 -- require("neodev").setup()
-nnnnnnnnn
 local ensure = vim.tbl_deep_extend("force", vim.tbl_keys(servers), {
   "shfmt",
   "stylua",

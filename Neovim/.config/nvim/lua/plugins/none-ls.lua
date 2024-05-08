@@ -1,7 +1,8 @@
 return {
   "nvimtools/none-ls.nvim",
   dependencies = {
-    "ThePrimeagen/refactoring.nvim"
+    "ThePrimeagen/refactoring.nvim",
+    "nvim-lua/plenary.nvim",
   },
   opts = function()
     local null_ls = require("null-ls")
