@@ -4,6 +4,6 @@ return {
   enabled = false,
   dependencies = { "luarocks.nvim" },
   opts = {
-    backend = "ueberzug",
+    backend = "kitty",
   },
 }
