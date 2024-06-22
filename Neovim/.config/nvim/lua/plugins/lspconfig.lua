@@ -130,7 +130,7 @@ return {
       "gofumpt",
       "goimports-reviser",
       "golines",
-      "csharpier",
+      -- "csharpier",
     }
 
     for _, v in ipairs(vim.tbl_keys(servers)) do
