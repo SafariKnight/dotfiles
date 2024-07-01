@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   selected=$({ fd . \
-  ~/dotfiles  ~/dev/projects/ ~/dev/projects/DECI --type d --max-depth 1 \
+  ~/dotfiles  ~/dev/projects/ ~/dev/projects/deci --type d --max-depth 1
   # & fd . ~/.dev/aoc --type d --exact-depth 2;
   } | fzf)
 fi

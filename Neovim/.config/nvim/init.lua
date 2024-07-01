@@ -70,7 +70,7 @@ local lazy_opts = {
 
 require("lazy").setup(plugins, lazy_opts)
 
--- Neovide (I don't use it often)
+-- Neovide
 if vim.g.neovide then
   vim.o.guifont = "MonoLisa:h13"
 end
