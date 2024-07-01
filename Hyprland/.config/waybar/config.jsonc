@@ -3,10 +3,11 @@
     // all in px
     "height": 30,
     "spacing": 0,
-    "margin-left": 16, 
-    "margin-right": 16,
+    "margin-left": 5,
+    "margin-right": 5,
     "margin-top": 5,
     "modules-left": [
+        "clock",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -16,7 +17,6 @@
         "pulseaudio",
         "network",
         "hyprland/language",
-        "clock",
         "tray"
     ],
     // Modules configuration
@@ -24,20 +24,21 @@
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
+        // "format": "{name} {icon}",
         // "format": "{name}: {icon}",
-        "format": "{name}",
+        "format": "{icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            // "3": "",
+            // "4": "",
             "urgent": "",
             "focused": "",
-            "default": ""
+            // "default": ""
         },
         "persistent-workspaces": {
-          "*": 5, // 5 workspaces by default on every monitor
+          "*": 3, // 3 workspaces by default on every monitor
         }
     },
     "hyprland/language": {
@@ -93,7 +94,7 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "Africa/Cairo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
