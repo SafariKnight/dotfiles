@@ -6,7 +6,7 @@ else
   selected=$({ fd . \
   ~/dotfiles  ~/dev/projects/ ~/dev/projects/deci --type d --max-depth 1
   # & fd . ~/.dev/aoc --type d --exact-depth 2;
-  } | fzf)
+  } | rofi -dmenu)
 fi
 
 if [[ -z $selected ]]; then
