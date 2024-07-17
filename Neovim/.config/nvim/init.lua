@@ -31,7 +31,7 @@ local lazy_opts = {
     colorscheme = { "onedark" },
   },
   default = {
-    lazy = true,
+    lazy = false,
   },
   performance = {
     rtp = {

@@ -36,7 +36,7 @@
             // "default": ""
         },
         "persistent-workspaces": {
-          "*": 3, // 3 workspaces by default on every monitor
+          "*": 3,
         }
     },
     "hyprland/language": {

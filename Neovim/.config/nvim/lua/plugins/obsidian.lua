@@ -10,7 +10,8 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "/mnt/d/Notes/Personal/",
+        path = vim.fn.expand("~") .. "/Notes/"
+        -- path = "/mnt/d/Notes/Personal/",
       },
     },
   },

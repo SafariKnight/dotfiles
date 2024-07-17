@@ -17,22 +17,22 @@ vim.o.mouse = ""
 
 -- use win32yank as the clipboard provider on wsl
 if vim.fn.has("wsl") then
-  vim.o.clipboard = "unnamedplus"
-  vim.env.nvim_tui_enable_cursor_shape = "1"
-  -- vim.g.clipboard = {
-  --   name = 'win32yank-wsl',
-  --   copy = {
-  --     ['+'] = 'win32yank -i --crlf',
-  --     ['*'] = 'win32yank -i --crlf',
-  --   },
-  --   paste = {
-  --     ['+'] = 'win32yank -o --lf',
-  --     ['*'] = 'win32yank -o --lf',
-  --   },
-  --   cache_enabled = 1,
-  -- }
+	vim.o.clipboard = "unnamedplus"
+	vim.env.nvim_tui_enable_cursor_shape = "1"
+	-- vim.g.clipboard = {
+	--   name = 'win32yank-wsl',
+	--   copy = {
+	--     ['+'] = 'win32yank -i --crlf',
+	--     ['*'] = 'win32yank -i --crlf',
+	--   },
+	--   paste = {
+	--     ['+'] = 'win32yank -o --lf',
+	--     ['*'] = 'win32yank -o --lf',
+	--   },
+	--   cache_enabled = 1,
+	-- }
 else
-  vim.o.clipboard = "unnamedplus"
+	vim.o.clipboard = "unnamedplus"
 end
 
 vim.o.swapfile = false
@@ -41,15 +41,15 @@ vim.o.backup = false
 -- save undo history
 vim.o.undofile = true
 if vim.fn.has("linux") == 1 then
-  vim.o.undodir = vim.fn.expand("~/.vim/undodir")
+	vim.o.undodir = vim.fn.expand("~/.vim/undodir")
 elseif vim.fn.has("windows") == 1 then
-  vim.o.undodir = vim.fn.expand("$localappdata") .. "\\.vim\\undodir"
+	vim.o.undodir = vim.fn.expand("$localappdata") .. "\\.vim\\undodir"
 end
 
--- enable break indent
+-- -- enable break indent
 vim.o.breakindent = true
-
--- do your best neovim please
+--
+-- -- do your best neovim please
 vim.o.smartindent = true
 
 -- should've changed this so long ago
@@ -68,7 +68,7 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 vim.o.tabstop = 2
-vim.o.softtabstop = 2
+vim.o.softtabstop = 0
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 

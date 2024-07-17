@@ -27,9 +27,10 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Fira Sans semibold", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
+    font-family: "Inter Semibold", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
     font-size: 10pt;
     min-height: 0;
+    color: @text;
 }
 
 window {
@@ -69,7 +70,7 @@ button {
 
 #network.disconnected,
 #network.disabled,
-#workspaces button.urgent {
+#workspaces urgent {
   color: @red;
 }
 
