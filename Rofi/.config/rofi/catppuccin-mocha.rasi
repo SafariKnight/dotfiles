@@ -1,6 +1,6 @@
 /* VERY Modified */
 * {
-  bg-col:  #1e1e2e;
+  bg-col:  #11111b;
   bg-col-light: #1e1e2e;
   border-col: #1e1e2e;
   selected-col: #1e1e2e;
@@ -12,10 +12,9 @@
 
   background-color: @bg-col;
   text-color: @fg-col;
-
-  font: "Fira Sans Regular 14";
 }
 
 selected {
-    text-color: #f38ba8; /* Why doesn't this work */
+    text-color: #f38ba8;
+    font-weight: 900;
 }

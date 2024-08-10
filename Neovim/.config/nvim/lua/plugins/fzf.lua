@@ -38,14 +38,14 @@ return {
       {
         "<leader><space>",
         function()
-          fzf.files()
+          fzf.files({ cmd = "fd --type f"})
         end,
         desc = "Find File",
       },
       {
         "<leader>ff",
         function()
-          fzf.files()
+          fzf.files({ cmd = "fd --type f"})
         end,
         desc = "File",
       },

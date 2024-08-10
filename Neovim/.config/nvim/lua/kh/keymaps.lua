@@ -1,8 +1,8 @@
 -- Centered Actions
--- map("n", "<C-d>", "<C-d>zz", { desc = "Down half a page" })
--- map("n", "<C-u>", "<C-u>zz", { desc = "Up   half a page" })
--- map("n", "n", "nzz", { desc = "Next result" })
--- map("n", "N", "Nzz", { desc = "Previous result" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Down half a page" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Up   half a page" })
+map("n", "n", "nzz", { desc = "Next result" })
+map("n", "N", "Nzz", { desc = "Previous result" })
 
 -- Improved default mappings
 map("n", "J", "maJ'a", { desc = "Append next line on current line" })

@@ -1,3 +1,3 @@
-return {
-  { "tpope/vim-sleuth", lazy = false },
-}
+-- For misc plugins
+-- Currently don't have any
+return {}

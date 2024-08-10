@@ -1,4 +1,3 @@
-
 return {
   "folke/which-key.nvim",
   lazy = false,
@@ -16,7 +15,7 @@ return {
     icons = {
       breadcrumb = "", -- symbol used in the command line area that shows your active key combo
       separator = " ", -- symbol used between a key and it's label
-      group = "+",     -- symbol prepended to a group
+      group = "+", -- symbol prepended to a group
     },
   },
   config = function(_, opts)
@@ -24,14 +23,12 @@ return {
     wk.setup(opts)
 
     wk.register({
-      c = { name = "code" },
-      f = { name = "find" },
-    }, {
-      prefix = "<leader>",
+      { "<leader>c", group = "code" },
+      { "<leader>f", group = "find" },
     })
 
     wk.register({
-      ["cr"] = { name = "refactor" },
+      { "cr", group = "refactor" },
       -- ["crr"] = { name = "Code Action" },
       -- ["crn"] = { name = "Rename Symbol"}
     })

@@ -1,0 +1,60 @@
+import date from "./js/widgets/bar/date.js";
+import ws from "./js/widgets/bar/workspaces.js";
+import title from "./js/widgets/bar/title.js";
+import language from "./js/widgets/bar/language.js"
+/**
+ * @param {number} monitor
+ */
+const Bar = (monitor = 0) =>
+  Widget.Window({
+    name: `bar${monitor}`,
+    monitor: monitor,
+    anchor: ["top", "left", "right"],
+    margins: [3, 3, 0, 3],
+    exclusivity: "exclusive",
+    layer: "top",
+    css: "padding: 1px",
+    child: Widget.CenterBox({
+      startWidget: Widget.Box({
+        children: [
+          Widget.Box({
+            children: [date(), ws()],
+            className: "left",
+          }),
+        ],
+        hexpand: true,
+      }),
+      centerWidget: Widget.Box({
+        children: [title()],
+        hpack: "center",
+        className: "center",
+      }),
+      endWidget: Widget.Box({
+        children: [
+          Widget.Box({
+            children: [
+              language()
+            ],
+            className: "right",
+          }),
+        ],
+        hexpand: true,
+      }),
+    }),
+  });
+const loadCss = () => {
+  /**@type {string}*/const mainScss = `${App.configDir}/scss/style.scss`;
+
+  /**@type {string}*/const tempCss = `/tmp/ags/style.css`;
+
+  Utils.exec(`sass ${mainScss} ${tempCss}`);
+  App.resetCss();
+  App.applyCss(tempCss);
+};
+
+Utils.monitorFile(`${App.configDir}/scss`, loadCss);
+loadCss()
+
+App.config({
+  windows: [Bar()],
+});

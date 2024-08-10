@@ -1,5 +1,6 @@
 return {
   "nvimtools/none-ls.nvim",
+  event = "BufReadPre",
   dependencies = {
     "ThePrimeagen/refactoring.nvim",
     "nvim-lua/plenary.nvim",

@@ -1,6 +1,7 @@
 configuration {
   modes: [ combi, drun ];
   combi-modes: [ window, drun, run ];
+  font: "Inter 15";
 }
 
 @theme "catppuccin-mocha"
@@ -9,6 +10,7 @@ window {
   location: north;
   y-offset: -32;
   width: 100%;
+  height: 35px;
   children: [ horibox ];
 }
 
@@ -16,7 +18,7 @@ window {
     anchor:     north;
     location:   north;
     width:      100%;
-    padding:    4px;
+    padding:    0 4px;
     children:   [ horibox ];
 }
 

@@ -19,7 +19,7 @@ local servers = {
 
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNew" },
+  event = { "BufReadPre" },
   -- event = "VeryLazy",
   dependencies = {
     "williamboman/mason.nvim",
@@ -117,6 +117,10 @@ return {
           settings = servers[server],
         })
       end,
+    })
+
+    require("lspconfig").gdscript.setup({
+      capabilities = capabilities
     })
 
     require("diagflow").setup({
