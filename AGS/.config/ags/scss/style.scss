@@ -1,28 +1,19 @@
-@use 'assets/variables' as *;
+@use "assets/variables" as *;
 
 * {
   font-family: Inter Semibold;
 }
+
 window {
   // background-color: $base;
   margin-top: 3px;
-  background-color: $crust;
+  background-color: transparent;
   border-radius: 16px;
 }
 
 .left {
   background-color: $surface0;
   border-radius: 16px;
-}
-
-.right {
-  background-color: $surface0;
-}
-
-.language__label {
-  min-width: 150px;
-  border-radius: 16px;
-  background-color: $surface1;
 }
 
 .time__label {
@@ -52,4 +43,28 @@ window {
 
 .ws__btn--active {
   color: $sky;
+}
+
+.center {
+}
+
+.window__title {
+  background: $crust;
+  border-radius: 16px;
+  padding: 0 16px;
+}
+
+.window__empty {
+  padding: 0;
+  background: transparent;
+}
+
+.right {
+  background-color: $surface0;
+}
+
+.language__label {
+  min-width: 150px;
+  border-radius: 16px;
+  background-color: $surface1;
 }

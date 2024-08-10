@@ -21,6 +21,7 @@ const Bar = (monitor: number = 0) =>
       centerWidget: Widget.Box({
         children: [title()],
         hpack: "center",
+        hexpand: true,
         className: "center",
       }),
       endWidget: Widget.Box({

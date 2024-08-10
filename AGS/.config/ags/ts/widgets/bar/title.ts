@@ -6,16 +6,10 @@ export default () =>
     name: "window-title",
     setup: (self) => {
       self.label = hyprland.active.client.title;
+      self.toggleClassName("window__empty", self.label === "");
+      self.hook(hyprland, (self) => {
+        self.label = hyprland.active.client.title;
+        self.toggleClassName("window__empty", self.label === "");
+      });
     },
-  }).hook(hyprland, (self) => {
-    self.label = hyprland.active.client.title;
   });
-
-// export default function() {
-//   return LabelkV
-//   // return Widget.Label({
-//   //   label: Label().bind,
-//   //   name: "window-title",
-//   //   className: "window__title"
-//   // })
-// }
