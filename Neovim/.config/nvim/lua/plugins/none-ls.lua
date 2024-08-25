@@ -12,12 +12,12 @@ return {
       sources = {
         builtin.formatting.stylua,
         builtin.formatting.shfmt,
-        builtin.formatting.prettierd,
+        builtin.formatting.prettier,
         builtin.formatting.csharpier,
 
         -- builtin.completion.spell,
 
-        builtin.code_actions.refactoring
+        builtin.code_actions.refactoring,
       }
     }
   end,

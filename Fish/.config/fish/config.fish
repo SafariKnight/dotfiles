@@ -6,4 +6,5 @@ starship init fish | source
 fnm env | source
 
 # Why not
-fastfetch
+# fastfetch
+# nvm

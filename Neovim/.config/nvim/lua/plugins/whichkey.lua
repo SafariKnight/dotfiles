@@ -3,15 +3,15 @@ return {
   lazy = false,
   event = "VeryLazy",
   opts = {
-    operators = {
-      gc = "Comment",
-    },
-    key_labels = {
-      ["<space>"] = "SPC",
-      ["<leader>"] = "SPC",
-      ["<CR>"] = "RET",
-      ["<tab>"] = "TAB",
-    },
+    -- operators = {
+    --   gc = "Comment",
+    -- },
+    -- replace = {
+    --   ["<space>"] = "SPC",
+    --   ["<leader>"] = "SPC",
+    --   ["<CR>"] = "RET",
+    --   ["<tab>"] = "TAB",
+    -- },
     icons = {
       breadcrumb = "", -- symbol used in the command line area that shows your active key combo
       separator = " ", -- symbol used between a key and it's label
@@ -22,12 +22,12 @@ return {
     local wk = require("which-key")
     wk.setup(opts)
 
-    wk.register({
+    wk.add({
       { "<leader>c", group = "code" },
       { "<leader>f", group = "find" },
     })
 
-    wk.register({
+    wk.add({
       { "cr", group = "refactor" },
       -- ["crr"] = { name = "Code Action" },
       -- ["crn"] = { name = "Rename Symbol"}

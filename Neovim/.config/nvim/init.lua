@@ -2,7 +2,7 @@ vim.loader.enable()
 vim.g.mapleader = " "
 
 ---@diagnostic disable-next-line: lowercase-global
-map = vim.keymap.set
+-- vim.keymap.set = vim.keymap.set
 
 require("kh.options")
 require("kh.keymaps")

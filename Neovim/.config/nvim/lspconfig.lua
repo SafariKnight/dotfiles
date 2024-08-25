@@ -9,17 +9,53 @@ local servers = {
     },
   },
   rust_analyzer = {},
-  tsserver = {},
+  -- tsserver = {
+  --   enabled = true
+  -- },
+  vtsls = {
+      tsserver = {
+        globalPlugins = {
+
+          {
+            name = "@vue/typescript-plugin",
+            location = "",
+            languages = {
+              "javascript",
+              "typescript",
+              "javascriptreact",
+              "typescriptreact",
+              "vue",
+            },
+          },
+      },
+    },
+  },
   html = {},
   cssls = {},
   emmet_language_server = {},
   gopls = {},
   omnisharp = {},
+  volar = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
+  },
 }
+
+
 
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre" },
+  event = { "BufReadPre", "BufNew" },
   -- event = "VeryLazy",
   dependencies = {
     "williamboman/mason.nvim",
@@ -36,15 +72,16 @@ return {
     -- CSharp stuff
     -- "jmederosalvarado/roslyn.nvim",
   },
-  init = function()
-    -- disable lsp watcher. Too slow on linux
-    local ok, wf = pcall(require, "vim.lsp._watchfiles")
-    if ok then
-      wf._watchfunc = function()
-        return function() end
-      end
-    end
-  end,
+  enabled = false,
+  -- init = function()
+  --   -- disable lsp watcher. Too slow on linux
+  --   local ok, wf = pcall(require, "vim.lsp._watchfiles")
+  --   if ok then
+  --     wf._watchfunc = function()
+  --       return function() end
+  --     end
+  --   end
+  -- end,
   config = function()
     local on_attach = function(_, buffer)
       local map = function(mode, lhs, rhs, opts)
@@ -109,24 +146,93 @@ return {
     --   capabilities = capabilities
     -- })
 
+    local lspconfig = require("lspconfig")
     mason_lsp.setup()
+
+    local vue_typescript_plugin = require("mason-registry")
+      .get_package("vue-language-server")
+      :get_install_path() .. "/node_modules/@vue/language-server" .. "/node_modules/@vue/typescript-plugin"
+
+    servers.vtsls.tsserver.globalPlugins[1].location =
+      vue_typescript_plugin
+
     mason_lsp.setup_handlers({
       function(server)
-        require("lspconfig")[server].setup({
+        lspconfig[server].setup({
           capabilities = capabilities,
           settings = servers[server],
         })
       end,
+      -- ["tsserver"] = function()
+      --   local vue_typescript_plugin = require("mason-registry")
+      --     .get_package("vue-language-server")
+      --     :get_install_path() .. "/node_modules/@vue/language-server" .. "/node_modules/@vue/typescript-plugin"
+      --
+      --   lspconfig.tsserver.setup({
+      --     capabilities = capabilities,
+      --     init_options = {
+      --       plugins = {
+      --         {
+      --           name = "@vue/typescript-plugin",
+      --           location = vue_typescript_plugin,
+      --           languages = {
+      --             "javascript",
+      --             "typescript",
+      --             "javascriptreact",
+      --             "typescriptreact",
+      --             "vue",
+      --           },
+      --         },
+      --       },
+      --     },
+      --     filetypes = {
+      --       "javascript",
+      --       "javascriptreact",
+      --       "javascript.jsx",
+      --       "typescript",
+      --       "typescriptreact",
+      --       "typescript.tsx",
+      --       "vue",
+      --     },
+      --   })
+      -- end,
+      ["volar"] = function()
+        -- local tsserver = require("mason-registry")
+        --   .get_package("typescript-language-server")
+        --   :get_install_path() .. "/node_modules/typescript/lib"
+        lspconfig.volar.setup({
+          capabilities = capabilities,
+          init_options = {
+            vue = {
+              hybridMode = true
+            }
+            -- tsdk = tsserver,
+          },
+          settings = servers["volar"],
+        })
+      end,
     })
 
+    -- lspconfig.volar.setup({
+    --   capabilities = capabilities,
+    -- init_options = {
+    --   typescript = {
+    --
+    --     tsdk = tsserver,
+    --   },
+    -- },
+    --   settings = servers["volar"],
+    -- })
+
     require("lspconfig").gdscript.setup({
-      capabilities = capabilities
+      capabilities = capabilities,
     })
 
     require("diagflow").setup({
       scope = "line",
       show_sign = true,
     })
+
     local tools = {
       "shfmt",
       "stylua",

@@ -1,0 +1,21 @@
+@use "../assets/variables" as *;
+
+.audio {
+  min-width: 200px;
+  background-color: $crust;
+  padding: 8px 16px;
+  border: 3px solid $sky;
+  border-radius: 16px;
+
+  &__box {
+    background-color: $base;
+
+  }
+
+  &__icon {
+    font-size: 1.5em;
+  }
+  &__slider {
+    min-width: 150px;
+  }
+}

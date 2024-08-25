@@ -22,6 +22,7 @@ return {
 			"html",
 			"css",
 			"scss",
+      "vue",
 			"go",
 			"gosum",
 			"gomod",

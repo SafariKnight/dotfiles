@@ -1,36 +1,31 @@
 @use "assets/variables" as *;
+@use "bar/left.scss";
+@use "bar/center.scss";
+@use "bar/right.scss";
+@use "quicksettings/audio.scss";
 
 * {
   font-family: Inter Semibold;
 }
 
 window {
-  // background-color: $base;
+  background-color: $base;
   margin-top: 3px;
   background-color: transparent;
   border-radius: 16px;
 }
 
-.left {
-  background-color: $surface0;
+.panel-button {
   border-radius: 16px;
+
+  &.active {
+    background-color: $sky;
+    font-weight: 900;
+    transition-duration: 300ms;
+  }
 }
 
-.time__label {
-  padding: 0 16px;
-  background-color: $surface1;
-  border-radius: 16px;
-  min-width: 180px;
-}
-
-.ws__box {
-  padding: 0 16px;
-  background-color: $surface0;
-  border-bottom-right-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.ws__btn {
+button {
   // margin: 0 4px;
   font-weight: 900;
   font-size: 1.2em;
@@ -39,32 +34,4 @@ window {
   border-radius: 10%;
   min-width: 20px;
   // min-height: 20px;
-}
-
-.ws__btn--active {
-  color: $sky;
-}
-
-.center {
-}
-
-.window__title {
-  background: $crust;
-  border-radius: 16px;
-  padding: 0 16px;
-}
-
-.window__empty {
-  padding: 0;
-  background: transparent;
-}
-
-.right {
-  background-color: $surface0;
-}
-
-.language__label {
-  min-width: 150px;
-  border-radius: 16px;
-  background-color: $surface1;
 }

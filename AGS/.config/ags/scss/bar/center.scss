@@ -1,0 +1,15 @@
+@use "../assets/variables" as *;
+
+.center {
+}
+
+.window__title {
+  background: $crust;
+  border-radius: 16px;
+  padding: 0 16px;
+}
+
+.window__empty {
+  padding: 0;
+  background: transparent;
+}

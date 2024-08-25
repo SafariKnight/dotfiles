@@ -1,0 +1,35 @@
+@use "../assets/variables" as *;
+
+.right {
+  background-color: $surface0;
+  border-radius: 16px;
+}
+
+.audio__btn {
+  font-size: 1.5em;
+  border: none;
+  background: transparent;
+  border-radius: 10%;
+  min-width: 20px;
+}
+
+.audio__btn tooltip { // Why doesn't this work?
+  background: red;
+}
+
+.language__box {
+  min-width: 75px;
+  padding: 0 16px;
+  border-radius: 16px;
+  background-color: $surface1;
+}
+.language__label {
+  min-width: 60px;
+}
+.language__icon {
+  font-size: 1.5em;
+  margin-right: 8px;
+}
+
+// .language__label {
+// }
