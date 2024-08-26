@@ -1,8 +1,9 @@
 @use "../assets/variables" as *;
 
 .right {
-  background-color: $surface0;
+  background-color: $nord2;
   border-radius: 16px;
+  color: $nord4;
 }
 
 .audio__btn {
@@ -11,6 +12,7 @@
   background: transparent;
   border-radius: 10%;
   min-width: 20px;
+  color: $nord4;
 }
 
 .audio__btn tooltip { // Why doesn't this work?
@@ -21,7 +23,7 @@
   min-width: 75px;
   padding: 0 16px;
   border-radius: 16px;
-  background-color: $surface1;
+  background-color: $nord3;
 }
 .language__label {
   min-width: 60px;

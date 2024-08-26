@@ -28,7 +28,7 @@ local plugins = {
 
 local lazy_opts = {
   install = {
-    colorscheme = { "onedark" },
+    colorscheme = { "nord" },
   },
   default = {
     lazy = false,
@@ -71,6 +71,6 @@ local lazy_opts = {
 require("lazy").setup(plugins, lazy_opts)
 
 -- Neovide
-if vim.g.neovide then
+if vim.g.neovide then -- why is this here, I don't use neovide
   vim.o.guifont = "MonoLisa:h13"
 end

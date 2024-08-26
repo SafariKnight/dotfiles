@@ -1,35 +1,39 @@
 @use "../assets/variables" as *;
 
 .left {
-  background-color: $surface0;
+  background-color: $nord2;
   border-radius: 16px;
+  color: $nord4;
 }
 
 .time__label {
   padding: 0 16px;
-  background-color: $surface1;
+  background-color: $nord3;
   border-radius: 16px;
   min-width: 180px;
+  font-weight: 600;
 }
 
 .ws__box {
   padding: 0 16px;
-  background-color: $surface0;
+  background-color: $nord2;
   border-bottom-right-radius: 16px;
   border-top-right-radius: 16px;
 }
 
 .ws__btn {
-  // margin: 0 4px;
-  font-weight: 900;
   font-size: 1.2em;
   border: none;
   background: transparent;
   border-radius: 10%;
   min-width: 20px;
-  // min-height: 20px;
+  color: $nord4;
+}
+
+.ws__btn label {
+  font-weight: 900;
 }
 
 .ws__btn--active {
-  color: $sky;
+  color: $nord8;
 }

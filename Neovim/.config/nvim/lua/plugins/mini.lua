@@ -27,7 +27,7 @@ return {
     activate("comment")
     -- activate("icons") --why is this erroring
     activate("pairs")
-    activate("statusline")
+    -- activate("statusline")
     activate("surround")
   end,
 }

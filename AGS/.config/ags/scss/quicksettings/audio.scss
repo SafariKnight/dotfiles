@@ -2,15 +2,11 @@
 
 .audio {
   min-width: 200px;
-  background-color: $crust;
+  background-color: $nord0;
   padding: 8px 16px;
-  border: 3px solid $sky;
+  border: 3px solid $nord2;
   border-radius: 16px;
-
-  &__box {
-    background-color: $base;
-
-  }
+  color: $nord4;
 
   &__icon {
     font-size: 1.5em;

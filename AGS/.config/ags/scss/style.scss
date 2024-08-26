@@ -5,11 +5,11 @@
 @use "quicksettings/audio.scss";
 
 * {
-  font-family: Inter Semibold;
+  font-family: Inter;
+  font-weight: 600;
 }
 
 window {
-  background-color: $base;
   margin-top: 3px;
   background-color: transparent;
   border-radius: 16px;
@@ -19,7 +19,7 @@ window {
   border-radius: 16px;
 
   &.active {
-    background-color: $sky;
+    background-color: $nord8;
     font-weight: 900;
     transition-duration: 300ms;
   }

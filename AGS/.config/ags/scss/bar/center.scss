@@ -4,9 +4,11 @@
 }
 
 .window__title {
-  background: $crust;
+  background: $nord0;
+  color: $nord4;
   border-radius: 16px;
   padding: 0 16px;
+  font-weight: 700;
 }
 
 .window__empty {

@@ -1,9 +1,10 @@
 source ~/.config/fish/alias.fish
 source ~/.config/fish/keymaps.fish
+# source ~/.config/fish/prompt.fish
 
 zoxide init fish --cmd cd | source
-starship init fish | source
 fnm env | source
+
 
 # Why not
 # fastfetch

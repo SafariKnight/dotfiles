@@ -4,7 +4,8 @@ configuration {
   font: "Inter 15";
 }
 
-@theme "catppuccin-mocha"
+@theme "nord"
+
 
 window {
   location: north;

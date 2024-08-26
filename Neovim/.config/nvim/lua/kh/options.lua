@@ -6,7 +6,6 @@ vim.o.incsearch = true
 vim.o.inccommand = "split"
 
 -- hey this looks better
--- vim.o.cmdheight = 0
 
 -- make line numbers default
 vim.wo.number = true
@@ -15,25 +14,7 @@ vim.wo.relativenumber = true
 -- disable mouse
 vim.o.mouse = ""
 
--- use win32yank as the clipboard provider on wsl
-if vim.fn.has("wsl") then
-	vim.o.clipboard = "unnamedplus"
-	vim.env.nvim_tui_enable_cursor_shape = "1"
-	-- vim.g.clipboard = {
-	--   name = 'win32yank-wsl',
-	--   copy = {
-	--     ['+'] = 'win32yank -i --crlf',
-	--     ['*'] = 'win32yank -i --crlf',
-	--   },
-	--   paste = {
-	--     ['+'] = 'win32yank -o --lf',
-	--     ['*'] = 'win32yank -o --lf',
-	--   },
-	--   cache_enabled = 1,
-	-- }
-else
-	vim.o.clipboard = "unnamedplus"
-end
+vim.o.clipboard = "unnamedplus"
 
 vim.o.swapfile = false
 vim.o.backup = false
@@ -75,7 +56,7 @@ vim.o.expandtab = true
 vim.o.termguicolors = true
 
 -- hey this is pretty cool
-vim.o.scrolloff = 16
+vim.o.scrolloff = 9999
 
 -- configure how new splits should be opened
 vim.opt.splitright = true
@@ -84,8 +65,8 @@ vim.opt.splitbelow = true
 -- sets how neovim will display certain whitespace characters in the editor.
 -- `:help 'list'`
 -- `:help 'listchars'`
-vim.opt.list = false
--- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- show which line your cursos is on
 vim.opt.cursorline = false
@@ -96,3 +77,11 @@ vim.o.timeoutlen = 800
 
 -- Fold stuff
 vim.o.foldmethod = "marker"
+
+-- Turn off mode
+vim.o.showmode = true
+
+-- REMOVE EVERYTHING
+vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
+vim.opt.ruler = false
