@@ -1,4 +1,5 @@
 [tools]
+"aqua:JanDeDobbeleer/oh-my-posh" = "latest"
 bat = "latest"
 delta = "latest"
 fd = "latest"
