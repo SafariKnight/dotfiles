@@ -1,0 +1,3 @@
+! option = symbols
+	cmk = +cmk(colemak_dh_wide_symbol)
+! include %S/evdev
