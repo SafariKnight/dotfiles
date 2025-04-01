@@ -11,4 +11,5 @@ abbr vim "nvim"
 alias ovim "NVIM_APPNAME=nvim nvim"
 
 # Chezmoi
-abbr ce "chezmoi edit"
+abbr cme "chezmoi edit"
+abbr cm "chezmoi"
