@@ -1,0 +1,83 @@
+@use "colors" as *;
+@use "sass:color";
+
+* {
+  font-family: "Adwaita Sans";
+  font-weight: 600;
+}
+
+icon {
+  font-size: 24px;
+}
+
+window.Bar {
+  background: transparent;
+  font-weight: bold;
+
+  >centerbox {
+    background: $base;
+    padding: 0 5px 0 5px;
+  }
+}
+
+.Workspaces {
+  >button {
+    color: $text;
+    margin: 0;
+    padding: 0 2px;
+    background: transparent;
+    border: 3px transparent solid;
+    animation-duration: 0;
+    min-width: 20px;
+    border-radius: 5px;
+  }
+
+  .focused {
+    color: $blue;
+    animation-duration: 0;
+    border: 3px $blue solid;
+  }
+}
+
+.PowerButton {
+  color: $text;
+  margin: 0;
+  margin-left: 5px;
+  margin-right: 3px;
+  padding: 0 2px;
+  background: transparent;
+  animation-duration: 0;
+  min-width: 25px;
+  padding: 0 5px;
+
+  &:hover {
+    background: color.adjust($subtext0, $alpha: -0.8);
+  }
+}
+
+.PowerFlyout {
+  background: $mantle;
+  // border: 2px solid color.adjust($blue, $alpha: -0.3);
+  border: 3px solid $blue;
+  opacity: 1;
+  padding: 3px;
+  border-radius: 5px;
+  min-height: 200px;
+  min-width: 30px;
+  box-shadow: 0 0 10px 1px $base;
+
+  >eventbox {
+    padding: 10px 0;
+    margin: 0;
+    // border: 3px solid (color.adjust($blue, $alpha: -0.1));
+    border-radius: 5px;
+
+    // margin: 0;
+    // padding: 5px 10px;
+    // background: transparent;
+    // border: 1px solid transparent;
+    &:hover {
+      background: color.adjust($text, $alpha: -0.9);
+    }
+  }
+}
