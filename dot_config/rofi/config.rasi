@@ -1,0 +1,87 @@
+@import "catppuccin-mocha"
+
+configuration {
+  show-icons: true;
+  modes: [window, drun, combi];
+  combi-modes: [window, drun];
+  combi-hide-mode-prefix: true;
+}
+
+* {
+  clr-accent: @mauve;
+  clr-accent-second: @red;
+  clr-background: @base;
+  clr-background-second: @mantle;
+  clr-text: @subtext0;
+
+  border-color: @clr-accent;
+}
+
+element {
+  border: 0;
+}
+
+mainbox {
+  border: 0;
+}
+
+element normal.normal {
+  background-color: @clr-background-second;
+  text-color: @clr-text;
+}
+element normal.urgent {
+  background-color: @clr-background-second;
+  text-color: @clr-accent-second;
+}
+element normal.active {
+  background-color: @clr-background-second;
+  text-color: @clr-text;
+}
+
+element selected.normal {
+  background-color: @clr-accent;
+  text-color: @clr-background;
+}
+element selected.urgent {
+  background-color: @clr-accent-second;
+  text-color: @clr-background;
+}
+element selected.active {
+  background-color: @clr-accent;
+  text-color: @clr-background;
+}
+
+element alternate.normal {
+  background-color: @clr-background-second;
+  text-color: @clr-text;
+}
+element alternate.urgent {
+  background-color: @clr-background-second;
+  text-color: @clr-accent-second;
+}
+element alternate.active {
+  background-color: @clr-background-second;
+  text-color: @clr-text;
+}
+
+entry {
+  text-color: @clr-text;
+}
+
+window {
+  padding:          5;
+  background-color: @clr-background;
+  font: "Adwaita Sans 15";
+}
+
+listview {
+  background-color: @clr-background;
+  columns: 3;
+  flow: horizontal;
+  dynamic: true;
+  scrollbar: false;
+}
+
+inputbar {
+  children: [entry];
+}
