@@ -1,0 +1,12 @@
+[pyprland]
+plugins = [
+  # "scratchpads",
+  "menubar",
+  "shortcuts_menu",
+]
+
+[menubar]
+command = "/usr/bin/ags run /home/kareem/.config/ags/app.ts"
+monitors = [ "DP-1" ]
+
+
