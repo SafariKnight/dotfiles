@@ -12,4 +12,5 @@ alias ovim "NVIM_APPNAME=nvim nvim"
 
 # Chezmoi
 abbr cme "chezmoi edit"
-abbr cm "chezmoi"
+abbr cm  "chezmoi"
+abbr cdm "cd $(chezmoi source-path)"
