@@ -1,0 +1,23 @@
+[config]
+
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+
+[templates.rofi]
+input_path = "./templates/rofi.rasi"
+output_path = "~/.config/rofi/matugen.rasi"
+
+[templates.ags]
+input_path = "./templates/sass.scss"
+output_path = "~/.config/ags/styles/_matugen.scss"
+
+[templates.kitty]
+input_path = "./templates/kitty.conf"
+output_path = "~/.config/kitty/matugen.conf"
+post_hook = "kitty @ set-colors -a -c ~/.config/kitty/matugen.conf"
+
+[templates.hyprland]
+input_path = "./templates/hyprland.conf"
+output_path = "~/.config/hypr/colors.conf"
+post_hook = 'hyprctl reload'

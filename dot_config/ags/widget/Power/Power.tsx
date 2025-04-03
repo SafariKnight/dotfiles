@@ -5,35 +5,35 @@ import Gtk from "gi://Gtk?version=3.0";
 const buttons = {
   shutdown: {
     tooltip: "Power Off",
-    icon: "shutdown",
+    icon: "shutdown-symbolic",
     function: () => {
       exec("systemctl poweroff");
     },
   },
   restart: {
     tooltip: "Restart",
-    icon: "reboot",
+    icon: "reboot-symbolic",
     function: () => {
       exec("systemctl reboot");
     },
   },
   sleep: {
     tooltip: "Sleep",
-    icon: "suspend",
+    icon: "suspend-symbolic",
     function: () => {
       exec("systemctl suspend");
     },
   },
   hibernate: {
     tooltip: "Hibernate",
-    icon: "suspend-hibernate",
+    icon: "suspend-hibernate-symbolic",
     function: () => {
       exec("systemctl hibernate");
     },
   },
   logout: {
     tooltip: "Log Out",
-    icon: "log-out",
+    icon: "log-out-symbolic",
     function: () => {
       exec("hyprctl dispatch exit");
     },

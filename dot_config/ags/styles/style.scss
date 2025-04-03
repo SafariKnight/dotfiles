@@ -15,8 +15,7 @@ window.Bar {
   font-weight: bold;
 
   >centerbox {
-    background: $base;
-    margin-bottom: 8px;
+    background: $surface;
 
     >centerbox {
       background: $background;
@@ -93,3 +92,5 @@ window.Bar {
         }
       }
     }
+  }
+}
