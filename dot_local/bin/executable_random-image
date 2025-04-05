@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import glob
+import os
+import random
+import subprocess
+
+HOME: str | None = os.getenv("HOME")
+assert HOME is not None
+
+wallpapers_dir = f"{HOME}/.local/share/wallpapers"
+wallpapers = glob.glob("*", root_dir=wallpapers_dir)
+wallpaper = f"{wallpapers_dir}/{random.choice(wallpapers)}"
+
+command = f"/usr/bin/matugen image {wallpaper}".split(" ")
+
+subprocess.run(command)

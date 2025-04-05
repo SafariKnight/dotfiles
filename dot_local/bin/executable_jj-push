@@ -1,0 +1,11 @@
+#/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o pipefail
+
+REV="$1"
+BOOKMARK="$2"
+
+jj bookmark s -r "$REV" "$BOOKMARK"
+jj bookmark track "$BOOKMARK"@origin
+jj git push -b "$BOOKMARK"
