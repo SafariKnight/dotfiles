@@ -21,3 +21,15 @@ post_hook = "kitty @ set-colors -a -c ~/.config/kitty/matugen.conf"
 input_path = "./templates/hyprland.conf"
 output_path = "~/.config/hypr/colors.conf"
 post_hook = 'hyprctl reload'
+
+[templates.gtk3]
+input_path = "./templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/gtk.css"
+
+[templates.gtk4]
+input_path = "./templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/gtk.css"
+
+[templates.qtct]
+input_path = "./templates/qtct.conf"
+output_path = "~/.config/qt6ct/colors/qtct.conf"

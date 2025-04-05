@@ -15,6 +15,9 @@ return {
         -- formatters
         "stylua",
 
+        -- linters
+        -- "eslint",
+
         -- debuggers
         "debugpy",
       },
