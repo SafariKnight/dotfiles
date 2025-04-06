@@ -14,83 +14,80 @@ window.Bar {
   background: transparent;
   font-weight: bold;
 
-  >centerbox {
+  > centerbox {
     background: $surface;
+    padding: 0 5px 0 5px;
+  }
+}
 
-    >centerbox {
-      background: $background;
-      margin-bottom: 8px;
-      padding: 0 5px 0 5px;
+.Workspaces {
+  > button {
+    color: $tertiary;
+    margin: 0;
+    padding: 0 2px;
+    background: transparent;
+    border: 3px transparent solid;
+    animation-duration: 0;
+    min-width: 20px;
+    border-radius: 5px;
+
+    &:hover {
+      background: color.adjust($on_background, $alpha: -0.8);
     }
   }
 
-  .Workspaces {
-    >button {
-      color: $text;
+  .focused {
+    color: $primary;
+    animation-duration: 0;
+    border: 3px $primary solid;
+  }
+}
 
-      >button {
-        color: $on_background;
-        margin: 0;
-        padding: 0 2px;
-        background: transparent;
-        border: 3px transparent solid;
-        animation-duration: 0;
-        min-width: 20px;
-        border-radius: 5px;
+.PowerButton {
+  color: $on_background;
+  margin: 0;
+  margin-left: 5px;
+  margin-right: 3px;
+  padding: 0 2px;
+  background: transparent;
+  animation-duration: 0;
+  min-width: 25px;
+  padding: 0 5px;
 
-        &:hover {
-          background: color.adjust($on_background, $alpha: -0.8);
-        }
-      }
+  &:hover {
+    background: color.adjust($on_background, $alpha: -0.8);
+  }
+}
 
-      .focused {
-        color: $primary;
-        animation-duration: 0;
-        border: 3px $primary solid;
-      }
+.PowerFlyout {
+  background: $surface;
+  // border: 2px solid color.adjust($blue, $alpha: -0.3);
+  border: 3px solid $primary;
+  opacity: 1;
+  padding: 3px;
+  border-radius: 5px;
+  min-height: 200px;
+  min-width: 30px;
+  box-shadow: 0 0 10px 1px $background;
+
+  > eventbox {
+    padding: 10px 0;
+    margin: 0;
+    // border: 3px solid (color.adjust($blue, $alpha: -0.1));
+    border-radius: 5px;
+
+    color: $tertiary;
+
+    &:first-child {
+      color: $error;
     }
 
-    .PowerButton {
-      color: $on_background;
-      margin: 0;
-      margin-left: 5px;
-      margin-right: 3px;
-      padding: 0 2px;
-      background: transparent;
-      animation-duration: 0;
-      min-width: 25px;
-      padding: 0 5px;
-
-      &:hover {
-        background: color.adjust($on_background, $alpha: -0.8);
-      }
-    }
-
-    .PowerFlyout {
-      background: $surface;
-      // border: 2px solid color.adjust($blue, $alpha: -0.3);
-      border: 3px solid $primary;
-      opacity: 1;
-      padding: 3px;
-      border-radius: 5px;
-      min-height: 200px;
-      min-width: 30px;
-      box-shadow: 0 0 10px 1px $background;
-
-      >eventbox {
-        padding: 10px 0;
-        margin: 0;
-        // border: 3px solid (color.adjust($blue, $alpha: -0.1));
-        border-radius: 5px;
-
-        // margin: 0;
-        // padding: 5px 10px;
-        // background: transparent;
-        // border: 1px solid transparent;
-        &:hover {
-          background: color.adjust($on_background, $alpha: -0.9);
-        }
-      }
+    // margin: 0;
+    // padding: 5px 10px;
+    // background: transparent;
+    // border: 1px solid transparent;
+    &:hover {
+      background: color.adjust($on_background, $alpha: -0.9);
     }
   }
 }

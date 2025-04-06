@@ -6,7 +6,7 @@
       <configItem>
         <name>cmk</name>
         <shortDescription>cmk</shortDescription>
-	<description>English (US, Colemak CAWS)</description>
+	      <description>English (US, Colemak CAWS)</description>
         <countryList>
           <iso3166Id>US</iso3166Id>
         </countryList>

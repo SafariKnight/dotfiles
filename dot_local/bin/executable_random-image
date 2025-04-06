@@ -4,8 +4,20 @@ import os
 import random
 import subprocess
 
+
+def process_status(process_name):
+    try:
+        subprocess.check_output(["pgrep", process_name])
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+
 HOME: str | None = os.getenv("HOME")
 assert HOME is not None
+
+if process_status("mpvpaper"):  # very nice workaround, right
+    subprocess.run("/usr/bin/pkill mpvpaper".split(" "))
 
 wallpapers_dir = f"{HOME}/.local/share/wallpapers"
 wallpapers = glob.glob("*", root_dir=wallpapers_dir)
