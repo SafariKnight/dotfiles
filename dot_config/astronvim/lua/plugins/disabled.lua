@@ -1,5 +1,5 @@
 local disabled = {
-  "nvim-neo-tree/neo-tree.nvim",
+  -- "nvim-neo-tree/neo-tree.nvim",
   "akinsho/toggleterm.nvim",
 }
 
