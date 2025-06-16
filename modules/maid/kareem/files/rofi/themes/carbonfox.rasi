@@ -1,0 +1,107 @@
+* {
+  /* Base Colors */
+  black: #282828;
+  white: #dfdfe0;
+  red: #EE5396;
+  green: #25be6a;
+  yellow: #08BDBA;
+  blue: #78A9FF;
+  magenta: #BE95FF;
+  cyan: #33B1FF;
+  orange: #3DDBD9;
+  pink: #FF7EB6;
+
+  /* Base Shades (Bright) */
+  black-bright: #444444;
+  white-bright: #f2f2f2;
+  red-bright: #f072ac;
+  green-bright: #44cf83;
+  yellow-bright: #27d0ce;
+  blue-bright: #93baff;
+  magenta-bright: #d0b0ff;
+  cyan-bright: #52bdff;
+  orange-bright: #5ac7c5;
+  pink-bright: #ff9acb;
+
+  /* Base Shades (Dim) */
+  black-dim: #1d1d1d;
+  white-dim: #c7c7c8;
+  red-dim: #ec3480;
+  green-dim: #07ae51;
+  yellow-dim: #00a7a5;
+  blue-dim: #5c99ff;
+  magenta-dim: #aa7aff;
+  cyan-dim: #0e9dff;
+  orange-dim: #1facaa;
+  pink-dim: #ff62a1;
+
+  /* Backgrounds */
+  bg: #161616;
+  /* Default Background */
+  bg0: #0f0f0f;
+  /* Dark bg (status line and float) */
+  bg1: #161616;
+  /* Same as bg, explicit default */
+  bg2: #212121;
+  /* Lighter bg (colorcolumn folds) */
+  bg3: #2b2b2b;
+  /* Lighter bg (cursor line) */
+  bg4: #484848;
+  /* Conceal, border fg */
+
+  /* Foregrounds */
+  fg: #f2f4f8;
+  /* Default Foreground */
+  fg0: #ffffff;
+  /* Lighter fg */
+  fg1: #f2f4f8;
+  /* Same as fg, explicit default */
+  fg2: #b2b4b8;
+  /* Darker fg (status line) */
+  fg3: #757678;
+  /* Darker fg (line numbers, fold columns) */
+
+  /* Special UI Elements */
+  comment: #2e3034;
+  /* Comment text or subdued elements */
+  sel0: #2a2a2a;
+  /* Popup background, visual selection background */
+  sel1: #525253;
+  /* Popup selected item background, search background */
+
+  /* Diagnostic Colors */
+  diag-error: #EE5396;
+  diag-warn: #BE95FF;
+  diag-info: #78A9FF;
+  diag-hint: #3DDBD9;
+  diag-ok: #25be6a;
+
+  /* Diagnostic Backgrounds */
+  diag-bg-error: #2e1e23;
+  diag-bg-warn: #2c2532;
+  diag-bg-info: #232a35;
+  diag-bg-hint: #2a2020;
+  diag-bg-ok: #202d24;
+
+  /* Diff Colors */
+  diff-add: #202d24;
+  /* Background for added lines */
+  diff-delete: #2e1e23;
+  /* Background for deleted lines */
+  diff-change: #232a35;
+  /* Background for changed lines */
+  diff-text: #2f3a47;
+  /* Background for modified text within a line */
+
+  /* Git Colors */
+  git-add: #25be6a;
+  /* Added changes */
+  git-removed: #EE5396;
+  /* Removed changes */
+  git-changed: #08BDBA;
+  /* Modified changes */
+  git-conflict: #3DDBD9;
+  /* Conflict markers */
+  git-ignored: #2e3034;
+  /* Ignored files/lines */
+}

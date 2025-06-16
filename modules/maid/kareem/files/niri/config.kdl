@@ -1,0 +1,297 @@
+// Docs: https://github.com/YaLTeR/niri/wiki
+//// XKB ////
+input {
+    keyboard {
+        xkb {
+            layout "cmk,us,ara"
+            options "grp:win_space_toggle,altwin:menu_win"
+        }
+        repeat-delay 400
+        repeat-rate 60
+        numlock
+    }
+    mouse {
+        accel-profile "flat"
+    }
+    focus-follows-mouse max-scroll-amount="0%"
+}
+//// Display ////
+output "DP-1" {
+    mode "1920x1080@165.003"
+}
+//// Start-up ////
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "xwayland-satellite" ":1"
+spawn-at-startup "DISPLAY=:1" "sh" "-c" "setxkbmap us"
+//// Environment ////
+environment {
+    QT_QPA_PLATFORM "wayland"
+    DISPLAY ":0"
+}
+//// Layout ////
+layout {
+    gaps 4
+    always-center-single-column
+    preset-column-widths {
+        // Mod+r
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width {
+        proportion 0.5
+    }
+    preset-window-heights {
+        // Mod+R
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+    shadow {
+        on
+        softness 30
+        spread 5
+        color "#0007"
+    }
+    border {
+        width 4
+        active-color "#74c7ec"
+        inactive-color "#585b70"
+        urgent-color "#f38ba8"
+    }
+    focus-ring {
+        off
+    }
+}
+/// Misc
+prefer-no-csd
+// No client side decorationsscreenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H:%M:%S.png"
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    open-floating true
+}
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+hotkey-overlay {
+    skip-at-startup
+}
+cursor {
+    xcursor-size 24
+}
+//// Keybindings ////
+binds {
+    /// Windows ///
+    Mod+Q {
+        close-window
+    }
+    Mod+H {
+        focus-column-left
+    }
+    Mod+L {
+        focus-column-right
+    }
+    Mod+J {
+        focus-window-or-workspace-down
+    }
+    Mod+K {
+        focus-window-or-workspace-up
+    }
+    Mod+Shift+H {
+        move-column-left
+    }
+    Mod+Shift+J {
+        move-window-down
+    }
+    Mod+Shift+K {
+        move-window-up
+    }
+    Mod+Shift+L {
+        move-column-right
+    }
+    Mod+Shift+Minus {
+        set-window-height "-10%"
+    }
+    Mod+Shift+Equal {
+        set-window-height "+10%"
+    }
+    /// Workspaces ///
+    Mod+WheelScrollDown cooldown-ms=150 {
+        focus-workspace-down
+    }
+    Mod+WheelScrollUp cooldown-ms=150 {
+        focus-workspace-up
+    }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 {
+        move-column-to-workspace-down
+    }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 {
+        move-column-to-workspace-up
+    }
+    Mod+WheelScrollRight {
+        focus-column-right
+    }
+    Mod+WheelScrollLeft {
+        focus-column-left
+    }
+    Mod+Ctrl+WheelScrollRight {
+        move-column-right
+    }
+    Mod+Ctrl+WheelScrollLeft {
+        move-column-left
+    }
+    Mod+Shift+WheelScrollDown {
+        focus-column-right
+    }
+    Mod+Shift+WheelScrollUp {
+        focus-column-left
+    }
+    Mod+Ctrl+Shift+WheelScrollDown {
+        move-column-right
+    }
+    Mod+Ctrl+Shift+WheelScrollUp {
+        move-column-left
+    }
+    Mod+1 {
+        focus-workspace 1
+    }
+    Mod+2 {
+        focus-workspace 2
+    }
+    Mod+3 {
+        focus-workspace 3
+    }
+    Mod+4 {
+        focus-workspace 4
+    }
+    Mod+5 {
+        focus-workspace 5
+    }
+    Mod+6 {
+        focus-workspace 6
+    }
+    Mod+7 {
+        focus-workspace 7
+    }
+    Mod+8 {
+        focus-workspace 8
+    }
+    Mod+9 {
+        focus-workspace 9
+    }
+    Mod+Shift+F {
+        fullscreen-window
+    }
+    Mod+V {
+        toggle-window-floating
+    }
+    Mod+Shift+V {
+        switch-focus-between-floating-and-tiling
+    }
+    Mod+M {
+        consume-or-expel-window-left
+    }
+    Mod+O {
+        consume-or-expel-window-right
+    }
+    Mod+S {
+        toggle-overview
+    }
+    /// Columns ///
+    Mod+R {
+        switch-preset-column-width
+    }
+    Mod+Shift+R {
+        switch-preset-window-height
+    }
+    Mod+Ctrl+R {
+        reset-window-height
+    }
+    Mod+F {
+        maximize-column
+    }
+    Mod+C {
+        center-column
+    }
+    Mod+Minus {
+        set-column-width "-10%"
+    }
+    Mod+Equal {
+        set-column-width "+10%"
+    }
+    Mod+Shift+1 {
+        move-column-to-workspace 1
+    }
+    Mod+Shift+2 {
+        move-column-to-workspace 2
+    }
+    Mod+Shift+3 {
+        move-column-to-workspace 3
+    }
+    Mod+Shift+4 {
+        move-column-to-workspace 4
+    }
+    Mod+Shift+5 {
+        move-column-to-workspace 5
+    }
+    Mod+Shift+6 {
+        move-column-to-workspace 6
+    }
+    Mod+Shift+7 {
+        move-column-to-workspace 7
+    }
+    Mod+Shift+8 {
+        move-column-to-workspace 8
+    }
+    Mod+Shift+9 {
+        move-column-to-workspace 9
+    }
+    /// Apps ///
+    Mod+T hotkey-overlay-title="Terminal" {
+        spawn "kitty"
+    }
+    Mod+W hotkey-overlay-title="Browser" {
+        spawn "chromium"
+    }
+    Mod+D hotkey-overlay-title="Open an application" {
+        spawn "rofi" "-show" "drun"
+    }
+    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
+    // Note: the entire command goes as a single argument in the end.
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+    /// Volume Control ///
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
+    }
+    XF86AudioMicMute allow-when-locked=true {
+        spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
+    }
+    /// Screenshots ///
+    Print {
+        screenshot
+    }
+    Ctrl+Print {
+        screenshot-screen
+    }
+    Alt+Print {
+        screenshot-window
+    }
+    /// Misc ///
+    Mod+Ctrl+Shift+Q {
+        quit
+    }
+    Mod+Shift+P {
+        power-off-monitors
+    }
+    Mod+Shift+Slash {
+        show-hotkey-overlay
+    }
+}

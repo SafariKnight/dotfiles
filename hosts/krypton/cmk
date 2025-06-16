@@ -1,0 +1,16 @@
+default
+xkb_symbols "colemak_dh_wide_symbol" {
+    include "us(colemak_dh_wide)"
+    name[Group1] = "English (Colemak)";
+
+    key <AE07> { [ backslash, bar        ] };
+    key <AE12> { [ equal    , plus       ] };
+
+    key <CAPS> { [ Caps_Lock, Caps_Lock  ] };
+
+    key <AD11> {[ apostrophe, quotedbl   ] };
+    key <AD12> {[ minus     , underscore ] };
+
+
+    key <BKSL> {[ semicolon , colon      ] };
+};

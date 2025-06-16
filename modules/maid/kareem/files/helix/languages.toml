@@ -1,0 +1,16 @@
+[language-server.emmet-lsp]
+command = "emmet-language-server"
+args = ["--stdio"]
+
+[language-server.qmlls]
+command = "qmlls"
+args = [ "-E" ]
+
+[[language]]
+name = "html"
+roots = [".git"]
+language-servers = ["emmet-lsp"]
+
+[[language]]
+name = "qml"
+language-servers = [ "qmlls" ]

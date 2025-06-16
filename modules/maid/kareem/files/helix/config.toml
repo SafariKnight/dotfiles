@@ -1,0 +1,13 @@
+theme = "carbonfox"
+
+[editor]
+scrolloff = 9999
+line-number = "relative"
+cursor-shape.insert = "bar"
+idle-timeout = 0
+completion-trigger-len = 0
+
+[keys.normal]
+"A-C" = ["select_mode", "goto_line_end", "change_selection"]
+D = ["select_mode", "goto_line_end", "delete_selection"]
+"A-D" = ["select_mode", "goto_line_end", "delete_selection_noyank"]
