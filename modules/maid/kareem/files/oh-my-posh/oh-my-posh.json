@@ -33,7 +33,8 @@
         {
           "type": "jujutsu",
           "style": "plain",
-          "foreground": "p:grep",
+          "template": " (<red>{{.ChangeID}}</>{{if .Working.Changed}} <blue> {{ .Working.String }}</>{{ end }})",
+          "foreground": "p:grey",
           "background": "transparent",
           "properties": {
             "fetch_status": true
