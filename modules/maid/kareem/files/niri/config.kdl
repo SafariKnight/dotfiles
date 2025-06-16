@@ -13,7 +13,7 @@ input {
     mouse {
         accel-profile "flat"
     }
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="95%"
 }
 //// Display ////
 output "DP-1" {
