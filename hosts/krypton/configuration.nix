@@ -25,12 +25,16 @@ in {
     ./disk-config.nix
 
     ./keyd.nix
+    ./greetd.nix
 
     inputs.nix-maid.nixosModules.default
     ./../../modules/maid
 
     inputs.nix-index-database.nixosModules.nix-index
   ];
+  modules.greetd = {
+    enable = true;
+  };
 
   programs.nix-index-database.comma.enable = true;
   qt.enable = true;
@@ -82,6 +86,8 @@ in {
     symbolsFile = ./cmk;
     languages = ["eng"];
   };
+  services.xserver.xkb.layout = "cmk";
+  console.useXkbConfig = true;
 
   services.pipewire = {
     enable = true;

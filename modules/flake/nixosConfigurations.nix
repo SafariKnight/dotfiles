@@ -32,19 +32,19 @@ in {
 
   flake = let
     mkSystem = system: name:
-        inputs.nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./../../hosts/${name}/configuration.nix
-            ./../../hosts/${name}/hardware-configuration.nix
-            {
-              nixpkgs.pkgs = initPkgs system;
-            }
-          ];
-          specialArgs = {
-            inherit inputs;
-          };
+      inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./../../hosts/${name}/configuration.nix
+          ./../../hosts/${name}/hardware-configuration.nix
+          {
+            nixpkgs.pkgs = initPkgs system;
+          }
+        ];
+        specialArgs = {
+          inherit inputs;
         };
+      };
   in {
     nixosConfigurations = {
       krypton = mkSystem "x86_64-linux" "krypton";
