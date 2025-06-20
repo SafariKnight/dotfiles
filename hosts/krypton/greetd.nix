@@ -38,7 +38,7 @@ in {
 
       # extended
       "3ddbd9"
-      "ff7eb6"   
+      "ff7eb6"
     ];
     services.greetd = {
       enable = true;

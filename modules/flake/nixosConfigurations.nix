@@ -1,29 +1,7 @@
 {inputs, ...}: let
-  initPkgs = system:
-    import inputs.nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-
-        packageOverrides = pkgs: {
-          steam = pkgs.steam.override {
-            extraPkgs = pkgs:
-              with pkgs; [
-                xorg.libXcursor
-                xorg.libXi
-                xorg.libXinerama
-                xorg.libXScrnSaver
-                libpng
-                libpulseaudio
-                libvorbis
-                stdenv.cc.cc.lib
-                libkrb5
-                keyutils
-              ];
-          };
-        };
-      };
-    };
+  inherit (inputs) nixpkgs;
+  inherit (nixpkgs) lib;
+  initPkgs = (import ./nixpkgs.nix) {inherit inputs;};
 in {
   # Sync the instance of pkgs between flake-parts and my systems
   perSystem = {system, ...}: {
@@ -39,6 +17,15 @@ in {
           ./../../hosts/${name}/hardware-configuration.nix
           {
             nixpkgs.pkgs = initPkgs system;
+            nix = {
+              channel.enable = false;
+              registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
+              nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+              settings = {
+                nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+                flake-registry = ""; # optional, ensures flakes are truly self-contained
+              };
+            };
           }
         ];
         specialArgs = {

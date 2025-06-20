@@ -1,5 +1,6 @@
 configuration {
     modi: "run,drun,window";
+    show-icons: true;
 }
 
 @theme "carbonfox"
@@ -24,27 +25,27 @@ inputbox {
     children: [ prompt, entry ];
     expand: false;
     background-color: @bg1;
-    margin: 0 0 1 0;
+    margin: 0 0 1px 0;
     blink: false;
 }
 
 prompt {
-    padding: 8;
-    border-radius: 2;
-    margin: 2;
+    padding: 8px;
+    border-radius: 2px;
+    margin: 2px;
     background-color: @magenta;
 }
 
 entry {
-    margin: 0 0 0 10;
+    margin: 0 0 0 10px;
     width: 20em;
-    padding: 8;
+    padding: 8px;
     background-color: @bg1;
     text-color: @fg0;
 }
 
 listview {
-    padding: 4;
+    padding: 4px 2.5%;
     columns: 2;
     background-color: @bg0;
 }
@@ -60,9 +61,18 @@ element selected {
     text-color: @bg2;
 }
 
+element-icon {
+    background-color: transparent;
+    cursor: inherit;
+    text-color: inherit;
+    size: 2ch;
+}
+
 element-text {
     background-color: transparent;
     cursor: inherit;
     text-color: inherit;
     highlight: Bold Underline;
+    margin: 0 0 0 5px;
+    font: "Adwaita Sans Medium 16";
 }

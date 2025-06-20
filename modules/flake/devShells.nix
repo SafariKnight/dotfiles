@@ -9,8 +9,11 @@
           nixfmt-rfc-style
           (pkgs.writeShellApplication {
             name = "rebuild";
+            runtimeInputs = with pkgs; [
+              nh
+            ];
             text = ''
-              sudo nixos-rebuild switch --flake .
+              nh os switch . -a
             '';
           })
         ];

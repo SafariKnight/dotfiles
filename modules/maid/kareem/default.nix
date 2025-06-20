@@ -21,7 +21,11 @@ in {
     fzf
     adwaita-fonts
     jujutsu
+    jj-push
     wl-clipboard-rs
+    kiwix
+    discord-with-vencord
+    stremio
 
     # Rofi
     rofi-wayland
@@ -36,7 +40,6 @@ in {
     # Helix
     helix
     nixd
-    nil
     typescript
     typescript-language-server
     vscode-langservers-extracted
@@ -68,6 +71,8 @@ in {
     };
 
     home = {
+      # not sure why the desktop entry disappears
+      ".local/share/applications/discord.desktop".source = "${pkgs.discord-with-vencord}/share/applications/discord.desktop";
       # Cursor
       ".local/share/icons/default".source = "${pkgs.apple-cursor}/share/icons/macOS";
 

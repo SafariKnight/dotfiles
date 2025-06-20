@@ -2,6 +2,7 @@
   inputs,
   lib,
   config,
+  pkgs,
   ...
 }: let
   defaultConfig = name: {
@@ -14,7 +15,11 @@
       imports = [
         ./${name}
       ];
-      _module.args = {inherit inputs;};
+      _module.args = {
+        inherit inputs;
+        pkgs = lib.mkForce pkgs;
+        osConfig = config;
+      };
     };
   };
 in {

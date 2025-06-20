@@ -52,9 +52,17 @@ in {
   system.stateVersion = "25.05";
   modules.keyboard.keyd.enable = true;
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/kareem/dotfiles";
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+    "pipe-operators"
   ];
 
   networking.hostName = "krypton";
@@ -113,7 +121,6 @@ in {
     p7zip
     unzip
     unrar
-    mpv
     git
     cloudflared
     ungoogled-chromium
@@ -126,7 +133,6 @@ in {
     nemo
     qbittorrent
     inputs.quickshell.packages.${pkgs.system}.default
-    stremio
     wget
     kitty
     protonup-qt
@@ -134,10 +140,9 @@ in {
     lutris
     heroic
     vivaldi
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
+    temurin-jre-bin-8
+    temurin-jre-bin-17
+    osu-lazer-bin
   ];
 
   fileSystems."/mnt/hdd" = {
