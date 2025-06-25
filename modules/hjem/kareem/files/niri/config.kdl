@@ -253,7 +253,7 @@ binds {
         spawn "kitty"
     }
     Mod+W hotkey-overlay-title="Browser" {
-        spawn "chromium"
+        spawn "firefox"
     }
     Mod+D hotkey-overlay-title="Open an application" {
         spawn "rofi" "-show" "drun"

@@ -16,6 +16,13 @@
               nh os switch . -a
             '';
           })
+          (pkgs.writeShellApplication {
+            name = "impure";
+            text = ''
+              NAME=$(uname -n)
+              IMPURITY_PATH=$(pwd) sudo --preserve-env=IMPURITY_PATH nixos-rebuild switch --flake ".#$NAME-impure" --impure
+            '';
+          })
         ];
       };
     };

@@ -3,3 +3,6 @@
 [user]
 name = "Kareem Hisham"
 email = "safariknight2@gmail.com"
+
+[ui]
+diff-editor = ":builtin"

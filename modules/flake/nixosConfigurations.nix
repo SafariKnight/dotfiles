@@ -1,4 +1,4 @@
-{inputs, ...}: let
+{inputs, self, ...}: let
   inherit (inputs) nixpkgs;
   inherit (nixpkgs) lib;
   initPkgs = (import ./nixpkgs.nix) {inherit inputs;};
@@ -15,6 +15,7 @@ in {
         modules = [
           ./../../hosts/${name}/configuration.nix
           ./../../hosts/${name}/hardware-configuration.nix
+          ./../hjem
           {
             nixpkgs.pkgs = initPkgs system;
             nix = {
@@ -29,12 +30,14 @@ in {
           }
         ];
         specialArgs = {
-          inherit inputs;
+          inherit inputs self;
         };
       };
   in {
     nixosConfigurations = {
       krypton = mkSystem "x86_64-linux" "krypton";
+      krypton-impure = self.nixosConfigurations.krypton.extendModules
+      { modules = [ { impurity.enable = true; }];};
     };
   };
 }

@@ -14,12 +14,12 @@
     # Moves faster than the flake input (I think)
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    # Oh boy, the hot new home manager alternative
-    nix-maid.url = "github:viperML/nix-maid";
+    hjem.url = "github:feel-co/hjem";
+    impurity.url = "github:outfoxxed/impurity.nix";
 
     # Why am I obsessed with flake-parts now
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "systems";
+    systems.url = "github:nix-systems/default";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
