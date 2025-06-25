@@ -117,7 +117,12 @@ in {
   programs.gamescope = {
     enable = true;
   };
+  programs.fuse.userAllowOther = true;
+
   environment.systemPackages = with pkgs; [
+    dwarfs
+    fuse-overlayfs
+    bubblewrap
     p7zip
     unzip
     unrar
@@ -127,6 +132,9 @@ in {
     neovim
     zed-editor
     gamescope
+    gamemode
+    vkbasalt
+    vkbasalt-cli
     mangohud
     gpu-screen-recorder
     gpu-screen-recorder-gtk
@@ -140,8 +148,9 @@ in {
     lutris
     heroic
     vivaldi
-    temurin-jre-bin-8
-    temurin-jre-bin-17
+    # temurin-jre-bin-8
+    # temurin-jre-bin-17
+    temurin-jre-bin-21
     osu-lazer-bin
   ];
 
@@ -174,30 +183,126 @@ in {
     ];
   };
 
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = with pkgs; [
-  #     stdenv.cc.cc
-  #     openssl
-  #     curl
-  #     glib
-  #     util-linux
-  #     glibc
-  #     icu
-  #     libunwind
-  #     libuuid
-  #     zlib
-  #     libsecret
-  #     # graphical
-  #     freetype
-  #     libglvnd
-  #     libnotify
-  #     SDL2
-  #     vulkan-loader
-  #     gdk-pixbuf
-  #     xorg.libX11
-  #   ];
-  # };
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      fuse
+      desktop-file-utils
+      xorg.libXcomposite
+      xorg.libXtst
+      xorg.libXrandr
+      xorg.libXext
+      xorg.libX11
+      xorg.libXfixes
+      libGL
+
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-ugly
+      gst_all_1.gst-plugins-base
+      libdrm
+      xorg.xkeyboardconfig
+      xorg.libpciaccess
+
+      glib
+      gtk2
+      bzip2
+      zlib
+      gdk-pixbuf
+
+      xorg.libXinerama
+      xorg.libXdamage
+      xorg.libXcursor
+      xorg.libXrender
+      xorg.libXScrnSaver
+      xorg.libXxf86vm
+      xorg.libXi
+      xorg.libSM
+      xorg.libICE
+      freetype
+      curlWithGnuTls
+      nspr
+      nss
+      fontconfig
+      cairo
+      pango
+      expat
+      dbus
+      cups
+      libcap
+      # SDL2
+      libusb1
+      udev
+      dbus-glib
+      atk
+      at-spi2-atk
+      libudev0-shim
+
+      xorg.libXt
+      xorg.libXmu
+      xorg.libxcb
+      xorg.xcbutil
+      xorg.xcbutilwm
+      xorg.xcbutilimage
+      xorg.xcbutilkeysyms
+      xorg.xcbutilrenderutil
+      libGLU
+      libuuid
+      libogg
+      libvorbis
+      # SDL
+      # SDL2_image
+      glew110
+      openssl
+      libidn
+      tbb
+      wayland
+      mesa
+      libxkbcommon
+      vulkan-loader
+
+      flac
+      freeglut
+      libjpeg
+      libpng12
+      libpulseaudio
+      libsamplerate
+      libmikmod
+      libtheora
+      libtiff
+      pixman
+      speex
+      # SDL_image
+      # SDL_ttf
+      # SDL_mixer
+      # SDL2_ttf
+      # SDL2_mixer
+      libappindicator-gtk2
+      libcaca
+      libcanberra
+      libgcrypt
+      libvpx
+      librsvg
+      xorg.libXft
+      libvdpau
+      alsa-lib
+
+      harfbuzz
+      e2fsprogs
+      libgpg-error
+      keyutils.lib
+      libjack2
+      fribidi
+      p11-kit
+
+      gmp
+
+      libtool.lib
+      xorg.libxshmfence
+      at-spi2-core
+      gtk3
+      stdenv.cc.cc.lib
+    ];
+  };
 
   hardware.graphics = {
     enable = true;
