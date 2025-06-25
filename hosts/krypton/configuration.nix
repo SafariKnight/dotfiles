@@ -107,7 +107,6 @@ in {
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
   };
 
-  programs.chromium.enable = true;
   services.gvfs.enable = true;
 
   programs.steam.enable = true;
@@ -128,7 +127,7 @@ in {
     unrar
     git
     cloudflared
-    ungoogled-chromium
+    firefox
     neovim
     zed-editor
     gamescope
