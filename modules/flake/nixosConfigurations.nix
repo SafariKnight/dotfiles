@@ -1,4 +1,8 @@
-{inputs, self, ...}: let
+{
+  inputs,
+  self,
+  ...
+}: let
   inherit (inputs) nixpkgs;
   inherit (nixpkgs) lib;
   initPkgs = (import ./nixpkgs.nix) {inherit inputs;};
@@ -12,23 +16,33 @@ in {
     mkSystem = system: name:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [
-          ./../../hosts/${name}/configuration.nix
-          ./../../hosts/${name}/hardware-configuration.nix
-          ./../hjem
-          {
-            nixpkgs.pkgs = initPkgs system;
-            nix = {
-              channel.enable = false;
-              registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
-              nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
-              settings = {
-                nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
-                flake-registry = ""; # optional, ensures flakes are truly self-contained
+        modules =
+          [
+            ./../../hosts/${name}/configuration.nix
+            ./../../hosts/${name}/hardware-configuration.nix
+            ./../hjem
+            {
+              nixpkgs.pkgs = initPkgs system;
+              nix = {
+                channel.enable = false;
+                registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
+                nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+                settings = {
+                  nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+                  flake-registry = ""; # optional, ensures flakes are truly self-contained
+                  experimental-features = [
+                    "nix-command"
+                    "flakes"
+                    "pipe-operators"
+                  ];
+                };
               };
-            };
-          }
-        ];
+            }
+          ]
+          ++ (
+            lib.filesystem.listFilesRecursive ../nixos
+            |> lib.filter (lib.hasSuffix ".nix")
+          );
         specialArgs = {
           inherit inputs self;
         };
@@ -36,8 +50,9 @@ in {
   in {
     nixosConfigurations = {
       krypton = mkSystem "x86_64-linux" "krypton";
-      krypton-impure = self.nixosConfigurations.krypton.extendModules
-      { modules = [ { impurity.enable = true; }];};
+      krypton-impure =
+        self.nixosConfigurations.krypton.extendModules
+        {modules = [{impurity.enable = true;}];};
     };
   };
 }

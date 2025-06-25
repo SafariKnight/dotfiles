@@ -1,9 +1,13 @@
-{pkgs, impurity, ...}: let
+{
+  pkgs,
+  impurity,
+  ...
+}: let
   inherit (impurity) link;
   inherit (pkgs.mpvScripts) uosc thumbfast;
 in {
   config = {
-     hjem.users.kareem = {
+    hjem.users.kareem = {
       packages = with pkgs; [
         (mpv.override {
           scripts = [
@@ -15,6 +19,6 @@ in {
       files = {
         ".config/mpv".source = link ./files/mpv;
       };
-    }; 
+    };
   };
 }

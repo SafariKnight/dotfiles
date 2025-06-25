@@ -20,7 +20,7 @@ in {
     };
 
     hjem.users.kareem = {
-      enable = config.modules.hjem.enable; # shouldn't use userEnabled because hjem already checks if the user is enabled
+      inherit (config.modules.hjem) enable; # shouldn't use userEnabled because hjem already checks if the user is enabled
       packages = with pkgs; [
         ripgrep
         bat
@@ -91,5 +91,5 @@ in {
     };
 
     programs.fish.enable = lib.mkDefault userEnabled;
-  }; 
+  };
 }

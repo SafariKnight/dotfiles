@@ -1,4 +1,8 @@
-{pkgs, impurity, ...}: let
+{
+  pkgs,
+  impurity,
+  ...
+}: let
   inherit (impurity) link;
   minimal-tmux-status = pkgs.fetchFromGitHub {
     owner = "niksingh710";

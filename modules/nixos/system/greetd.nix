@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.modules.greetd;
+  cfg = config.modules.system.greetd;
 in {
   options = {
-    modules.greetd.enable = lib.mkEnableOption "Enable Greetd Autologin";
-    modules.greetd.command = lib.mkOption {
+    modules.system.greetd.enable = lib.mkEnableOption "greetd";
+    modules.system.greetd.command = lib.mkOption {
       description = lib.mdDoc "Command to run on startup";
       default = "";
       type = lib.types.str;

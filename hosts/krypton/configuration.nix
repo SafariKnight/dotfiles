@@ -1,67 +1,44 @@
 {
   inputs,
-  lib,
-  config,
   pkgs,
   ...
-}: let
-  zfsCompatibleKernelPackages =
-    lib.filterAttrs (
-      name: kernelPackages:
-        (builtins.match "linux_[0-9]+_[0-9]+" name)
-        != null
-        && (builtins.tryEval kernelPackages).success
-        && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
-    )
-    pkgs.linuxKernel.packages;
-  latestKernelPackage = lib.last (
-    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
-      builtins.attrValues zfsCompatibleKernelPackages
-    )
-  );
-in {
+}: {
   imports = [
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-
-    ./keyd.nix
-    ./greetd.nix
-
-    inputs.nix-index-database.nixosModules.nix-index
   ];
 
-  modules.greetd.enable = true;
-  modules.hjem.enable = true;
-
-  programs.nix-index-database.comma.enable = true;
+  modules = {
+    hjem.enable = true;
+    keyboard = {
+      keyd.enable = true;
+      cmk-caws.enable = true;
+    };
+    nix = {
+      ld.enable = true;
+      index = {
+        enable = true;
+        comma.enable = true;
+      };
+      nh = {
+        enable = true;
+        flake = "/home/kareem/dotfiles";
+      };
+    };
+    system = {
+      greetd.enable = true;
+      systemd-boot.enable = true;
+      zfs-kernel.enable = true;
+    };
+  };
 
   qt.enable = true;
-
-  programs.command-not-found.enable = false;
 
   programs.gnupg.agent.enable = true;
 
   programs.kdeconnect.enable = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = latestKernelPackage;
-
   system.stateVersion = "25.05";
-  modules.keyboard.keyd.enable = true;
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/kareem/dotfiles";
-  };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-    "pipe-operators"
-  ];
 
   networking.hostName = "krypton";
   networking.networkmanager.enable = true;
@@ -71,6 +48,7 @@ in {
   programs.niri.enable = true;
 
   programs.gpu-screen-recorder.enable = true;
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -86,14 +64,6 @@ in {
     };
   };
   networking.hostId = "f9bd4f45";
-
-  services.xserver.xkb.extraLayouts.cmk = {
-    description = "Colemak DH with Wide and Symbol mods (Colemak CAWS)";
-    symbolsFile = ./cmk;
-    languages = ["eng"];
-  };
-  services.xserver.xkb.layout = "cmk";
-  console.useXkbConfig = true;
 
   services.pipewire = {
     enable = true;
@@ -177,127 +147,6 @@ in {
     options = [
       "compress=zstd"
       "noatime"
-    ];
-  };
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      fuse
-      desktop-file-utils
-      xorg.libXcomposite
-      xorg.libXtst
-      xorg.libXrandr
-      xorg.libXext
-      xorg.libX11
-      xorg.libXfixes
-      libGL
-
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-ugly
-      gst_all_1.gst-plugins-base
-      libdrm
-      xorg.xkeyboardconfig
-      xorg.libpciaccess
-
-      glib
-      gtk2
-      bzip2
-      zlib
-      gdk-pixbuf
-
-      xorg.libXinerama
-      xorg.libXdamage
-      xorg.libXcursor
-      xorg.libXrender
-      xorg.libXScrnSaver
-      xorg.libXxf86vm
-      xorg.libXi
-      xorg.libSM
-      xorg.libICE
-      freetype
-      curlWithGnuTls
-      nspr
-      nss
-      fontconfig
-      cairo
-      pango
-      expat
-      dbus
-      cups
-      libcap
-      # SDL2
-      libusb1
-      udev
-      dbus-glib
-      atk
-      at-spi2-atk
-      libudev0-shim
-
-      xorg.libXt
-      xorg.libXmu
-      xorg.libxcb
-      xorg.xcbutil
-      xorg.xcbutilwm
-      xorg.xcbutilimage
-      xorg.xcbutilkeysyms
-      xorg.xcbutilrenderutil
-      libGLU
-      libuuid
-      libogg
-      libvorbis
-      # SDL
-      # SDL2_image
-      glew110
-      openssl
-      libidn
-      tbb
-      wayland
-      mesa
-      libxkbcommon
-      vulkan-loader
-
-      flac
-      freeglut
-      libjpeg
-      libpng12
-      libpulseaudio
-      libsamplerate
-      libmikmod
-      libtheora
-      libtiff
-      pixman
-      speex
-      # SDL_image
-      # SDL_ttf
-      # SDL_mixer
-      # SDL2_ttf
-      # SDL2_mixer
-      libappindicator-gtk2
-      libcaca
-      libcanberra
-      libgcrypt
-      libvpx
-      librsvg
-      xorg.libXft
-      libvdpau
-      alsa-lib
-
-      harfbuzz
-      e2fsprogs
-      libgpg-error
-      keyutils.lib
-      libjack2
-      fribidi
-      p11-kit
-
-      gmp
-
-      libtool.lib
-      xorg.libxshmfence
-      at-spi2-core
-      gtk3
-      stdenv.cc.cc.lib
     ];
   };
 
