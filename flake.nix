@@ -14,7 +14,11 @@
     # Moves faster than the flake input (I think)
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    hjem.url = "github:feel-co/hjem";
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impurity.url = "github:outfoxxed/impurity.nix";
 
     # Why am I obsessed with flake-parts now
