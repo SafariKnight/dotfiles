@@ -26,7 +26,6 @@ in {
         bat
         fd
         fzf
-        adwaita-fonts
         jujutsu
         jj-push
         wl-clipboard-rs
@@ -54,9 +53,11 @@ in {
         emmet-language-server
         kdePackages.qtdeclarative
 
+        # Ghostty
+        ghostty
+
         # Kitty
         kitty
-        monaspace
 
         # Fish
         fish
@@ -70,6 +71,7 @@ in {
         # Configs
         ".config/niri".source = link ./files/niri;
         ".config/helix".source = link ./files/helix;
+        ".config/ghostty".source = link ./files/ghostty;
         ".config/kitty".source = link ./files/kitty;
         ".config/fish".source = link ./files/fish;
         ".config/jj".source = link ./files/jj;
@@ -78,9 +80,6 @@ in {
         ".config/quickshell".source = link ./files/quickshell;
 
         # Other Stuff #
-        # remake the discord desktop entry
-        # ".local/share/applications/discord.desktop"source = "${pkgs.discord-with-vencord}/share/applications/discord.desktop";
-
         # Cursor
         ".local/share/icons/default".source = "${pkgs.apple-cursor}/share/icons/macOS";
 

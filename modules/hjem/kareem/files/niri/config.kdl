@@ -250,7 +250,7 @@ binds {
     }
     /// Apps ///
     Mod+T hotkey-overlay-title="Terminal" {
-        spawn "kitty"
+        spawn "ghostty"
     }
     Mod+W hotkey-overlay-title="Browser" {
         spawn "firefox"
