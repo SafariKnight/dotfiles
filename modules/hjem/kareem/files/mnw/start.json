@@ -1,0 +1,53 @@
+{
+  "pins": {
+    "lz.n": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nvim-neorocks",
+        "repo": "lz.n"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.11.3",
+      "revision": "27b77ec96725ee3b13d0d9482a42e9324f3a4089",
+      "url": "https://api.github.com/repos/nvim-neorocks/lz.n/tarball/v2.11.3",
+      "hash": "0vnr1iiq4z3q7s3qylfmvcclmspydg8ll4p75jilcx9d114v7wwc"
+    },
+    "lzn-auto-require": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "horriblename",
+        "repo": "lzn-auto-require"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.2.0",
+      "revision": "a360fd389215daf2558afa158b10df37a6bac998",
+      "url": "https://api.github.com/repos/horriblename/lzn-auto-require/tarball/v0.2.0",
+      "hash": "1mgka1mmvpd2gfya898qdbbwrp5rpqds8manjs1s7g5x63xp6b98"
+    },
+    "nightfox.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v3.10.0",
+      "revision": "d3e8b1acc095baf57af81bb5e89fe7c4359eb619",
+      "url": "https://api.github.com/repos/EdenEast/nightfox.nvim/tarball/v3.10.0",
+      "hash": "0z81af970w1rllh2abdvlyx63z4xkcf5jw3wy4xv99gvqa1fxryr"
+    }
+  },
+  "version": 5
+}

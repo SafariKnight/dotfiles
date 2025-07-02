@@ -65,6 +65,8 @@ in {
         oh-my-posh
         atuin
         eza
+
+        (import ./nvim.nix {inherit inputs pkgs;})
       ];
 
       files = {

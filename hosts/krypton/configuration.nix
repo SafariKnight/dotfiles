@@ -96,7 +96,6 @@
     git
     cloudflared
     firefox
-    neovim
     zed-editor
     gamescope
     gamemode

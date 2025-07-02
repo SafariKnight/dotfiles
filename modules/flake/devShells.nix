@@ -1,5 +1,9 @@
 {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: {
     devShells = {
       default = pkgs.mkShell {
         packages = with pkgs; [
@@ -7,6 +11,8 @@
           nixd
           nil
           nixfmt-rfc-style
+          npins
+          self'.packages.knv.devMode # doesn't work :/
           (pkgs.writeShellApplication {
             name = "rebuild";
             runtimeInputs = with pkgs; [

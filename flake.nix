@@ -6,6 +6,7 @@
         ./modules/flake/nixosConfigurations.nix
         ./modules/flake/devShells.nix
         ./modules/flake/formatter.nix
+        ./modules/flake/packages.nix
         inputs.treefmt-nix.flakeModule
       ];
     };
@@ -41,5 +42,7 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mnw.url = "github:Gerg-L/mnw";
   };
 }
