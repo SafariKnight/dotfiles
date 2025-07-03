@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter",
   event = "DeferredUIEnter",
+  -- lazy = false,
   after = function()
     -- require("nvim-treesitter.query_predicates")
     require("nvim-treesitter.configs").setup({

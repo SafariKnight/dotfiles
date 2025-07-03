@@ -1,0 +1,18 @@
+--- a/server.js	2024-03-27 12:09:53.000000000 +0200
++++ b/server.js	2025-07-03 16:50:23.061212465 +0300
+@@ -79503,7 +79503,7 @@
+                     path: [ "/usr/local/bin/mpv", "/opt/local/bin/mpv", "/sw/bin/mpv" ]
+                 },
+                 linux: {
+-                    path: [ "/usr/bin/mpv" ]
++                    path: [ "/usr/bin/mpv", "/etc/profiles/per-user/kareem/bin/mpv" ]
+                 },
+                 win32: {
+                     path: []
+@@ -101906,4 +101906,4 @@
+     inherits(SocketReader, Reader), SocketReader.prototype._read = function() {
+         this._paused || this._ended || (this.emit("end"), this.emit("close"), this._ended = !0);
+     };
+-} ]);
+\ No newline at end of file
++} ]);

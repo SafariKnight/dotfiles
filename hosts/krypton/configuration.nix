@@ -67,6 +67,8 @@
 
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
   };
 
@@ -95,7 +97,6 @@
     unrar
     git
     cloudflared
-    firefox
     zed-editor
     gamescope
     gamemode
@@ -104,16 +105,16 @@
     mangohud
     gpu-screen-recorder
     gpu-screen-recorder-gtk
-    nemo
+    kdePackages.dolphin
     qbittorrent
     inputs.quickshell.packages.${pkgs.system}.default
     wget
     kitty
+    mediastreamer-openh264
     protonup-qt
     wineWowPackages.stable
     lutris
     heroic
-    vivaldi
     # temurin-jre-bin-8
     # temurin-jre-bin-17
     temurin-jre-bin-21

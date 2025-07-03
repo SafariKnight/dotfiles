@@ -1,8 +1,8 @@
 {
-  pkgs,
+  writeShellApplication,
   jujutsu,
 }:
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "jj-push";
   runtimeInputs = [
     jujutsu

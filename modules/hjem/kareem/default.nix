@@ -31,14 +31,16 @@ in {
         wl-clipboard-rs
         kiwix
         discord-with-vencord
-        stremio
+        stremio-mpv
         yazi
+        floorp
+        inputs.zen-browser.packages.${system}.default
 
         # Rofi
         rofi-wayland
 
         # Quickshell
-        inputs.quickshell.packages.${pkgs.system}.default
+        # inputs.quickshell.packages.${pkgs.system}.default
 
         # Niri
         xwayland-satellite
@@ -65,6 +67,8 @@ in {
         oh-my-posh
         atuin
         eza
+
+        
 
         (import ./nvim.nix {inherit inputs pkgs;})
       ];
