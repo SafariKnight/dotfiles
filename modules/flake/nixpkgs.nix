@@ -8,8 +8,11 @@ in
       config = {
         allowUnfree = true;
       };
-      overlays = [ (import ./overlays/pkgs) ] ++ (builtins.readDir ./overlays
-       |> builtins.attrNames
-       |> lib.filter (lib.hasSuffix ".nix")
-       |> lib.map (n: import ./overlays/${n}));
+
+      overlays =
+        [(import ./overlays/pkgs)]
+        ++ (builtins.readDir ./overlays
+          |> builtins.attrNames
+          |> lib.filter (lib.hasSuffix ".nix")
+          |> lib.map (n: import ./overlays/${n}));
     }

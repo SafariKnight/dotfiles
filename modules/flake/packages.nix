@@ -1,9 +1,5 @@
 {inputs, ...}: {
-  perSystem = {
-    pkgs,
-    self',
-    ...
-  }: {
+  perSystem = {pkgs, ...}: {
     packages = {
       knv = import ../hjem/kareem/nvim.nix {inherit pkgs inputs;};
     };

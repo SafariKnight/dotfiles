@@ -1,3 +1,4 @@
+# c
 {
   perSystem = {
     pkgs,
@@ -12,14 +13,15 @@
           nil
           nixfmt-rfc-style
           npins
-          self'.packages.knv.devMode # doesn't work :/
+          self'.packages.knv.devMode
           (pkgs.writeShellApplication {
             name = "rebuild";
             runtimeInputs = with pkgs; [
               nh
             ];
             text = ''
-              nh os switch . -a
+              sudo -l > /dev/null
+              nh os switch .
             '';
           })
           (pkgs.writeShellApplication {

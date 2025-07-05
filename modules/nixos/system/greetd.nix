@@ -35,10 +35,6 @@ in {
       "c8a5ff"
       "52bdff"
       "e4e4e5"
-
-      # extended
-      "3ddbd9"
-      "ff7eb6"
     ];
     services.greetd = {
       enable = true;

@@ -1,0 +1,11 @@
+font=Adwaita Sans 16
+
+background-color=#161616
+text-color=#f2f4f8
+border-color=#8cb6ff
+progress-color=over #2a2a2a
+
+default-timeout=5000
+
+[urgency=high]
+border-color=#f16da6

@@ -8,6 +8,15 @@
     ./disk-config.nix
   ];
 
+  system.stateVersion = "25.05";
+
+  networking.hostName = "krypton";
+  time.timeZone = "Africa/Cairo";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  services.cloudflare-warp.enable = true;
+
   modules = {
     hjem.enable = true;
     keyboard = {
@@ -25,100 +34,103 @@
         flake = "/home/kareem/dotfiles";
       };
     };
+
     system = {
       greetd.enable = true;
       systemd-boot.enable = true;
       zfs-kernel.enable = true;
+      plymouth.enable = true;
     };
+
+    hardware = {
+      graphics.enable = true;
+      pipewire.enable = true;
+    };
+
+    programs = {
+      direnv.enable = true;
+      gaming.enable = true;
+    };
+    virtualization = {
+      virt-manager.enable = true;
+      distrobox.enable = true;
+      podman.enable = true;
+    };
+
+    desktop.niri.enable = true;
   };
+
+  services.flatpak.enable = true;
 
   qt.enable = true;
 
   programs.gnupg.agent.enable = true;
 
-  programs.kdeconnect.enable = true;
-
-  system.stateVersion = "25.05";
-
-  networking.hostName = "krypton";
-  networking.networkmanager.enable = true;
-  time.timeZone = "Africa/Cairo";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  programs.niri.enable = true;
-
-  programs.gpu-screen-recorder.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config = {
-      niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
-      niri.default = "gnome";
-      common.default = "gnome";
-      obs.default = "gnome";
-    };
-  };
   networking.hostId = "f9bd4f45";
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   users.users.kareem = {
     enable = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "libvirtd"];
   };
 
-  services.gvfs.enable = true;
+  networking.networkmanager.enable = true;
+  # networking = {
+  #   # networkmanager = {
+  #   #   enable = true;
+  #   #   wifi.backend = "iwd";
+  #   # };
+  #   wireless.iwd = {
+  #     enable = true;
+  #     settings = {
+  #       Network = {
+  #         EnableIPv6 = true;
+  #         NameResolvingService = "systemd";
+  #         EnableNetworkConfiguration = false;
+  #       };
+  #       Settings = {
+  #         AutoConnect = true;
+  #       };
+  #     };
+  #   };
+  # };
+  #
+  # systemd.network.enable = true;
+  # networking.useNetworkd = true;
 
-  programs.steam.enable = true;
-  programs.steam.extraCompatPackages = with pkgs; [
-    proton-ge-bin
-  ];
-  programs.gamescope = {
+  # systemd.network.networks."10-wireless-dhcp" = {
+  #   matchConfig.Name = "wlan0";
+  #   networkConfig = {
+  #     DHCP = "ipv4";
+  #   };
+  # };
+
+  services.resolved = {
     enable = true;
+    dnssec = "true";
+    domains = ["~."];
+    fallbackDns = [
+      "9.9.9.9"
+      "149.112.112.112"
+    ];
+    dnsovertls = "true";
   };
-  programs.fuse.userAllowOther = true;
+
+  networking.nameservers = [
+    "9.9.9.9"
+    "149.112.112.112"
+  ];
 
   environment.systemPackages = with pkgs; [
-    dwarfs
-    fuse-overlayfs
-    bubblewrap
-    p7zip
-    unzip
-    unrar
-    git
-    cloudflared
-    zed-editor
-    gamescope
-    gamemode
-    vkbasalt
-    vkbasalt-cli
-    mangohud
-    gpu-screen-recorder
-    gpu-screen-recorder-gtk
+    cloudflare-warp
+    p7zip-rar
+    kdePackages.ark
+
     kdePackages.dolphin
-    qbittorrent
-    inputs.quickshell.packages.${pkgs.system}.default
+    feh
+
+    git
     wget
-    kitty
-    mediastreamer-openh264
-    protonup-qt
     wineWowPackages.stable
-    lutris
-    heroic
-    # temurin-jre-bin-8
-    # temurin-jre-bin-17
-    temurin-jre-bin-21
-    osu-lazer-bin
   ];
 
   fileSystems."/mnt/hdd" = {
@@ -148,16 +160,5 @@
       "compress=zstd"
       "noatime"
     ];
-  };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    silent = true;
-    nix-direnv.enable = true;
   };
 }

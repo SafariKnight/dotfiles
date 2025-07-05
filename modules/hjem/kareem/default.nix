@@ -6,14 +6,16 @@
   impurity,
   ...
 }: let
-  inherit (impurity) link;
   userEnabled = config.modules.hjem.enable && config.users.users.kareem.enable;
+  inherit (pkgs.mpvScripts) uosc thumbfast;
+  zen-browser-beta = inputs.zen-browser.packages.${pkgs.system}.beta;
+  mpvWithScripts = pkgs.mpv.override {
+    scripts = [
+      uosc
+      thumbfast
+    ];
+  };
 in {
-  imports = [
-    ./mpv.nix
-    ./tmux.nix
-  ];
-
   config = {
     users.users.kareem = {
       isNormalUser = true;
@@ -22,19 +24,30 @@ in {
     hjem.users.kareem = {
       inherit (config.modules.hjem) enable; # shouldn't use userEnabled because hjem already checks if the user is enabled
       packages = with pkgs; [
-        ripgrep
-        bat
-        fd
-        fzf
-        jujutsu
-        jj-push
-        wl-clipboard-rs
-        kiwix
+        ungoogled-chromium
+        zen-browser-beta
+        qbittorrent
+        opencode
+
+        gpu-screen-recorder
+        gpu-screen-recorder-gtk
+
         discord-with-vencord
         stremio-mpv
-        yazi
-        floorp
-        inputs.zen-browser.packages.${system}.default
+        mpvWithScripts
+
+        cloudflared
+
+        nodejs
+        bun
+        nodejs.pkgs.pnpm
+
+        # VCS
+        git
+        lazygit
+        jujutsu
+        jj-push
+        lazyjj
 
         # Rofi
         rofi-wayland
@@ -42,8 +55,16 @@ in {
         # Quickshell
         # inputs.quickshell.packages.${pkgs.system}.default
 
+        # TMUX
+        tmux
+        tm
+
+        # Yazi
+        yazi
+
         # Niri
         xwayland-satellite
+        mako
         xorg.setxkbmap
 
         # Helix
@@ -58,43 +79,30 @@ in {
         # Ghostty
         ghostty
 
-        # Kitty
-        kitty
-
         # Fish
         fish
+        nix-your-shell
         zoxide
+        starship
         oh-my-posh
         atuin
         eza
+        lsr
+        ripgrep
+        bat
+        fd
+        television
 
-        
-
+        # Neovim
         (import ./nvim.nix {inherit inputs pkgs;})
+        wl-clipboard-rs
       ];
 
-      files = {
-        # Configs
-        ".config/niri".source = link ./files/niri;
-        ".config/helix".source = link ./files/helix;
-        ".config/ghostty".source = link ./files/ghostty;
-        ".config/kitty".source = link ./files/kitty;
-        ".config/fish".source = link ./files/fish;
-        ".config/jj".source = link ./files/jj;
-        ".config/rofi".source = link ./files/rofi;
-        ".config/oh-my-posh.json".source = link ./files/oh-my-posh/oh-my-posh.json;
-        ".config/quickshell".source = link ./files/quickshell;
-
-        # Other Stuff #
-        # Cursor
-        ".local/share/icons/default".source = "${pkgs.apple-cursor}/share/icons/macOS";
-
-        # Fonts
-        ".local/share/fonts/jetbrains".source = "${pkgs.jetbrains-mono}/share/fonts/truetype";
-        ".local/share/fonts/adwaita-fonts".source = "${pkgs.adwaita-fonts}/share/fonts/Adwaita";
-      };
+      files = import ./files.nix {inherit lib impurity config;};
     };
 
+    programs.gpu-screen-recorder.enable = lib.mkDefault userEnabled;
     programs.fish.enable = lib.mkDefault userEnabled;
+    programs.kdeconnect.enable = lib.mkDefault userEnabled;
   };
 }

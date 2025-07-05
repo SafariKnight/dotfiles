@@ -1,4 +1,4 @@
-final: prev: let
+_final: prev: let
   pkgs = prev;
 
   patchedServer = pkgs.stdenv.mkDerivation rec {
@@ -25,9 +25,15 @@ final: prev: let
 in {
   stremio-mpv = prev.stremio.overrideAttrs (oldAttrs: {
     server = patchedServer;
-    postInstall = oldAttrs.postInstall + /*bash*/''
-      rm $out/opt/stremio/server.js
-      ln -s ${patchedServer}/server.js $out/opt/stremio/server.js
-    '';
+    postInstall =
+      oldAttrs.postInstall
+      +
+      /*
+      bash
+      */
+      ''
+        rm $out/opt/stremio/server.js
+        ln -s ${patchedServer}/server.js $out/opt/stremio/server.js
+      '';
   });
 }

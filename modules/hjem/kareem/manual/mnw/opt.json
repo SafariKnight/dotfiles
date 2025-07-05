@@ -1,0 +1,133 @@
+{
+  "pins": {
+    "fidget.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "j-hui",
+        "repo": "fidget.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.6.1",
+      "revision": "b61e8af9b8b68ee0ec7da5fb7a8c203aae854f2e",
+      "url": "https://api.github.com/repos/j-hui/fidget.nvim/tarball/v1.6.1",
+      "hash": "172kd71bdlq1hkw21w6ywgc9v2agsw5y0aq6j48z6c9zdxfpcjav"
+    },
+    "heirline.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "rebelot",
+        "repo": "heirline.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.0.8",
+      "revision": "fae936abb5e0345b85c3a03ecf38525b0828b992",
+      "url": "https://api.github.com/repos/rebelot/heirline.nvim/tarball/v1.0.8",
+      "hash": "1xhfakhncwcknwlhw8nrbc1rw4i9s909n6lx5rmy68yn89wilylh"
+    },
+    "lazydev.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "folke",
+        "repo": "lazydev.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.9.0",
+      "revision": "f59bd14a852ca43db38e3662395354cb2a9b13e0",
+      "url": "https://api.github.com/repos/folke/lazydev.nvim/tarball/v1.9.0",
+      "hash": "102sxfdq6ajvfs95r4084xvbcjv2qiv5cmyrqbwijmc05isg9d8j"
+    },
+    "mini.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "echasnovski",
+        "repo": "mini.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.16.0",
+      "revision": "9696a426981031a8eba6764ef943bd57eba13bfa",
+      "url": "https://api.github.com/repos/echasnovski/mini.nvim/tarball/v0.16.0",
+      "hash": "1j79m6wn8wijad6an2rghd6a3pwd3v7yl4v529khg4644ybvwa9p"
+    },
+    "nvim-lspconfig": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "neovim",
+        "repo": "nvim-lspconfig"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.3.0",
+      "revision": "77d3fdfb3554632c7a3b101ded643d422de7626f",
+      "url": "https://api.github.com/repos/neovim/nvim-lspconfig/tarball/v2.3.0",
+      "hash": "0xlad1n0jzk1cir2fp4mnry7l6rbsq3rh2j1y1i5v7j25nk81rf0"
+    },
+    "oil.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "stevearc",
+        "repo": "oil.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.15.0",
+      "revision": "975a77cce3c8cb742bc1b3629f4328f5ca977dad",
+      "url": "https://api.github.com/repos/stevearc/oil.nvim/tarball/v2.15.0",
+      "hash": "0rrv7wg0nwfj5fd6byxs4np1p18xxdzyv11ba6vqqh3s6z0qwawc"
+    },
+    "snacks.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "folke",
+        "repo": "snacks.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.22.0",
+      "revision": "5eac729fa290248acfe10916d92a5ed5e5c0f9ed",
+      "url": "https://api.github.com/repos/folke/snacks.nvim/tarball/v2.22.0",
+      "hash": "1hbm4fnw51qdp0nz83fcxbvnxjq2k57a37w6dp0wz6wkcx7cwxw9"
+    },
+    "which-key.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "folke",
+        "repo": "which-key.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v3.17.0",
+      "revision": "fcbf4eea17cb299c02557d576f0d568878e354a4",
+      "url": "https://api.github.com/repos/folke/which-key.nvim/tarball/v3.17.0",
+      "hash": "17ny4b84f5m32mlp5gy0vhy4hwjhbqvajmbkzq0rxfxjck1n52li"
+    }
+  },
+  "version": 5
+}

@@ -1,7 +1,7 @@
 _: prev: {
   steam = prev.steam.override {
     extraPkgs = pkgs:
-      with pkgs; [ 
+      with pkgs; [
         xorg.libXcursor
         xorg.libXi
         xorg.libXinerama

@@ -15,11 +15,11 @@ in {
   config = {
     programs.nh = {
       inherit (cfg) enable;
+      inherit (cfg) flake;
       clean = {
         enable = true;
         extraArgs = "--keep-since 4d --keep 3";
       };
-      inherit (cfg) flake;
     };
   };
 }
