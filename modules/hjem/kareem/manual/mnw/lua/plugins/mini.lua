@@ -9,6 +9,7 @@ local opts = {
     directory = "~/.vim/sessions",
     file = "",
   },
+  move = {},
   -- surround = {
   --   mappings = {
   --     add = "gza",

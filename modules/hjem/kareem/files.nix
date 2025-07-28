@@ -33,7 +33,7 @@
           then (removeSuffix ".nix" target)
           else target;
       in {
-        name = finalTarget;
+        name = "." + finalTarget;
         value.source = source filepath;
       })
       (listFilesRecursive directory));

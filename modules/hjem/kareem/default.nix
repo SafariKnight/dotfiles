@@ -5,7 +5,8 @@
   config,
   impurity,
   ...
-}: let
+}:
+let
   userEnabled = config.modules.hjem.enable && config.users.users.kareem.enable;
   inherit (pkgs.mpvScripts) uosc thumbfast;
   zen-browser-beta = inputs.zen-browser.packages.${pkgs.system}.beta;
@@ -15,7 +16,8 @@
       thumbfast
     ];
   };
-in {
+in
+{
   config = {
     users.users.kareem = {
       isNormalUser = true;
@@ -28,6 +30,7 @@ in {
         zen-browser-beta
         qbittorrent
         opencode
+        mprocs
 
         gpu-screen-recorder
         gpu-screen-recorder-gtk
@@ -37,10 +40,15 @@ in {
         mpvWithScripts
 
         cloudflared
+        tealdeer
+
+        jetbrains.idea-community-bin
 
         nodejs
         bun
         nodejs.pkgs.pnpm
+
+        yaak
 
         # VCS
         git
@@ -48,6 +56,10 @@ in {
         jujutsu
         jj-push
         lazyjj
+
+        zed-editor-fhs
+
+        zeal
 
         # Rofi
         rofi-wayland
@@ -57,7 +69,7 @@ in {
 
         # TMUX
         tmux
-        tm
+        tmux-session
 
         # Yazi
         yazi
@@ -68,7 +80,8 @@ in {
         xorg.setxkbmap
 
         # Helix
-        helix
+        inputs.helix-steel.packages.${pkgs.system}.default
+        steel
         nixd
         typescript
         typescript-language-server
@@ -93,12 +106,14 @@ in {
         fd
         television
 
+        (emacs-pgtk.pkgs.withPackages (_: [ pkgs.emacs-lsp-proxy ]))
+
         # Neovim
-        (import ./nvim.nix {inherit inputs pkgs;})
+        (import ./nvim.nix { inherit inputs pkgs; })
         wl-clipboard-rs
       ];
 
-      files = import ./files.nix {inherit lib impurity config;};
+      files = import ./files.nix { inherit lib impurity config; };
     };
 
     programs.gpu-screen-recorder.enable = lib.mkDefault userEnabled;

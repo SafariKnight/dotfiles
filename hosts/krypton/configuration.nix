@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.disko.nixosModules.disko
     ./disk-config.nix
@@ -52,6 +53,7 @@
       gaming.enable = true;
     };
     virtualization = {
+      incus.enable = true;
       virt-manager.enable = true;
       distrobox.enable = true;
       podman.enable = true;
@@ -60,17 +62,45 @@
     desktop.niri.enable = true;
   };
 
+  programs.hyprland.enable = true;
+
   services.flatpak.enable = true;
 
   qt.enable = true;
 
   programs.gnupg.agent.enable = true;
 
+  services.gvfs.enable = true;
+
   networking.hostId = "f9bd4f45";
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+
+  nix.settings.substituters = [
+    "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=10"
+    # "https://helix.cachix.org"
+    # "https://mirrors.ustc.edu.cn/nix-channels/store?priority=20"
+  ];
+
+  # nix.settings.trusted-public-keys = [
+  #   "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+  # ];
+
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   users.users.kareem = {
     enable = true;
-    extraGroups = ["wheel" "libvirtd"];
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+      "incus-admin"
+    ];
   };
 
   networking.networkmanager.enable = true;
@@ -107,7 +137,7 @@
   services.resolved = {
     enable = true;
     dnssec = "true";
-    domains = ["~."];
+    domains = [ "~." ];
     fallbackDns = [
       "9.9.9.9"
       "149.112.112.112"
@@ -125,7 +155,13 @@
     p7zip-rar
     kdePackages.ark
 
+    input-remapper
+
+    kitty
+
     kdePackages.dolphin
+    nautilus
+
     feh
 
     git

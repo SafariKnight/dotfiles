@@ -1,4 +1,6 @@
 -- General Neovim options
+vim.opt.winborder = "rounded"
+
 vim.opt.hlsearch = false -- No highlight on search
 vim.opt.incsearch = true -- Incremental search
 

@@ -1,6 +1,7 @@
 {
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
       imports = [
         ./modules/flake/nixosConfigurations.nix
@@ -13,6 +14,7 @@
 
   inputs = {
     # Moves faster than the flake input (I think)
+    # nixpkgs.url = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixos-unstable/nixexprs.tar.xz";
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
     hjem = {
@@ -35,6 +37,11 @@
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    helix-steel = {
+      url = "github:mattwparas/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

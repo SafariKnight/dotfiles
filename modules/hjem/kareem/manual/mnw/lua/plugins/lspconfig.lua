@@ -30,9 +30,14 @@ local opts = {
     },
   },
   nixd = {},
+  basedpyright = {},
+  -- pyright = {},
+  ruff = {},
   html = {
-    filetypes = { "htmlangular" }
+    filetypes = { "htmlangular" },
   },
+  laravel_ls = {},
+  -- phpactor = {},
   cssls = {},
   vtsls = {},
   svelte = {},
@@ -41,6 +46,7 @@ local opts = {
   jsonls = {},
   emmet_language_server = {},
   rust_analyzer = {},
+  gopls = {},
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -63,8 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       map("n", "grr", vim.lsp.buf.references, { desc = "Show References" })
       map("n", "grs", vim.lsp.buf.document_symbol, { desc = "Show Symbols" })
     end
-    map("n", "grf", vim.lsp.buf.format, { desc = "Format File" })
-    map("n", "grd", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
+    map("n", "<c-w>d", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
     map("n", "gra", vim.lsp.buf.code_action, { desc = "Code Action" })
     map("n", "grn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
     map(
@@ -87,7 +92,7 @@ return {
   "nvim-lspconfig",
   lazy = false,
   beforeAll = function()
-    vim.diagnostic.config {
+    vim.diagnostic.config({
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = "",
@@ -96,7 +101,7 @@ return {
           [vim.diagnostic.severity.HINT] = "",
         },
       },
-    }
+    })
   end,
   after = function()
     for server, cfg in pairs(opts) do

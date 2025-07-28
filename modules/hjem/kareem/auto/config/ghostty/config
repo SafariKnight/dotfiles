@@ -9,13 +9,16 @@ cursor-style-blink = false
 adjust-cursor-thickness = 1
 shell-integration-features = "no-cursor, sudo, no-title"
 
-font-family = "Jetbrains Mono"
-font-style = "SemiBold"
+font-family = "Lilex"
+font-style = "Medium"
 font-style-bold = "Bold"
-font-style-italic = "SemiBold Italic"
+font-style-italic = "Medium Italic"
 font-style-bold-italic = "Bold Italic"
 font-size = 18
-adjust-cell-height=+10%
+# adjust-cell-height=+10%
+
+window-padding-balance=true
+window-padding-color=extend
 
 confirm-close-surface = false
 theme = "carbonfox"

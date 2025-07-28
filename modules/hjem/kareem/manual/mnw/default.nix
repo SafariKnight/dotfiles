@@ -2,16 +2,16 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   inherit (pkgs) lib;
   fs = lib.fileset;
-in {
+in
+{
   neovim = pkgs.neovim-unwrapped;
 
   initLua =
-    /*
-    lua
-    */
+    # lua
     ''
       require("config")
 
@@ -26,18 +26,39 @@ in {
     "vim"
   ];
   extraBinPath = with pkgs; [
-    # Language Servers
     lua-language-server
+    stylua
+
     basedpyright
+    # pyright
+    ruff
+
     nixd
+
     vscode-langservers-extracted
     tailwindcss-language-server
-    vtsls
     nodejs.pkgs.typescript
+    vtsls
     emmet-language-server
     svelte-language-server
     angular-language-server
+
+    phpactor
+
     rust-analyzer
+    # rust-analyzer.overrideAttrs(old: {
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "rust-lang";
+    #     repo = "rust-analyzer";
+    #     rev = "2025-08-11";
+    #     hash = "sha256-fuHLsvM5z5/5ia3yL0/mr472wXnxSrtXECa+pspQchA=";
+    #   };
+    # })
+
+    gopls
+    gofumpt
+    golines
+    goimports-reviser
 
     ffmpeg-full
     imagemagick
@@ -56,11 +77,10 @@ in {
 
     start = inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
 
-    opt =
-      [
-        pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-        (pkgs.callPackage ./packages/blink-cmp.nix {})
-      ]
-      ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
+    opt = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      (pkgs.callPackage ./packages/blink-cmp.nix { })
+    ]
+    ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
   };
 }

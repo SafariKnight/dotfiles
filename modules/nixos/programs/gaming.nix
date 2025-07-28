@@ -34,6 +34,7 @@ in {
       osu-lazer-bin
       protonplus
       temurin-jre-bin-21
+      ryubing
     ];
   };
 }

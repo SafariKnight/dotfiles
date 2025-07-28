@@ -1,23 +1,21 @@
 {
   writeShellApplication,
   tmux,
-  fzf,
+  television,
   fd,
 }:
 writeShellApplication {
   name = "tmux-session";
   runtimeInputs = [
     tmux
-    fzf
+    television
     fd
   ];
   bashOptions = [
     "pipefail"
   ];
   text =
-    /*
-    bash
-    */
+    # bash
     ''
       #/usr/bin/env bash
       declare -a SEARCH_PATHS=(~/projects)
@@ -47,7 +45,7 @@ writeShellApplication {
       if [[ -n "$1" ]]; then
         SELECTED="$1"
       else
-        SELECTED=$(find_dirs | fzf)
+        SELECTED=$(find_dirs | tv --no-status-bar --no-remote --no-help-panel)
       fi
 
 

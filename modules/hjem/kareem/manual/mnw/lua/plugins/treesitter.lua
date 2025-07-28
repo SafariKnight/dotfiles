@@ -1,30 +1,29 @@
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     html = function(path)
       if string.match(path, "[/\\]src[/\\]index.html$") then
-        return nil
+        return "html"
       end
 
-      local angular_json_path = vim.fs.find({'angular.json'}, {
+      local angular_json_path = vim.fs.find({ "angular.json" }, {
         upward = true,
         path = vim.fs.dirname(path),
-        stop = vim.env.HOME
+        stop = vim.env.HOME,
       })
 
       if not vim.tbl_isempty(angular_json_path) then
-        return 'htmlangular'
+        return "htmlangular"
       end
 
-      return nil
-    end
-  }
-})
+      return "html"
+    end,
+  },
+}
 return {
   "nvim-treesitter",
   event = "DeferredUIEnter",
   -- lazy = false,
   after = function()
-
     ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup {
       ensure_install = {},

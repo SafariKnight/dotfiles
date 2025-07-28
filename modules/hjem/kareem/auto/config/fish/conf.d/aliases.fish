@@ -5,7 +5,6 @@ abbr grep rg
 abbr find fd
 abbr less "less -r"
 
-
 abbr pn pnpm
 abbr npm pnpm
 

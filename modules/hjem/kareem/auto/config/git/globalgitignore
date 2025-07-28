@@ -1,0 +1,12 @@
+.jj
+
+.direnv
+.envrc
+*.env*
+!.env.example
+
+.projectile
+
+.DS_Store
+Thumbs.db
+mprocs.log
