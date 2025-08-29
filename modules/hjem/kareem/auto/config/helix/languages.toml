@@ -14,3 +14,7 @@ language-servers = ["emmet-lsp"]
 [[language]]
 name = "qml"
 language-servers = [ "qmlls" ]
+
+[[language]]
+name = "python"
+language-servers = [ "basedpyright" ]

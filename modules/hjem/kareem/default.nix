@@ -43,6 +43,7 @@ in
         tealdeer
 
         jetbrains.idea-community-bin
+        jetbrains.phpstorm
 
         nodejs
         bun
@@ -80,7 +81,8 @@ in
         xorg.setxkbmap
 
         # Helix
-        inputs.helix-steel.packages.${pkgs.system}.default
+        # inputs.helix-steel.packages.${pkgs.system}.default
+        helix-wrapped
         steel
         nixd
         typescript

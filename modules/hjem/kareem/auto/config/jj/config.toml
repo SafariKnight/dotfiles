@@ -6,3 +6,4 @@ email = "safariknight2@gmail.com"
 
 [ui]
 diff-editor = ":builtin"
+pager = ":builtin"

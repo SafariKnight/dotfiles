@@ -32,7 +32,7 @@ return {
     },
   },
   after = function()
-    Snacks.setup {
+    Snacks.setup({
       animate = { enabled = true },
       bigfile = { enabled = true },
       dim = { enabled = true },
@@ -99,6 +99,6 @@ return {
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
-    }
+    })
   end,
 }

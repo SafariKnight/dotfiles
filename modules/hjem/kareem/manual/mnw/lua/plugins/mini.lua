@@ -9,7 +9,9 @@ local opts = {
     directory = "~/.vim/sessions",
     file = "",
   },
-  move = {},
+  -- move = {},
+  -- pick = {},
+  -- extra = {},
   -- surround = {
   --   mappings = {
   --     add = "gza",
@@ -19,6 +21,29 @@ local opts = {
 
 return {
   "mini.nvim",
+  -- keys = {
+  --   {
+  --     "<leader>f",
+  --     function()
+  --       MiniPick.builtin.files()
+  --     end,
+  --     desc = "Find Files",
+  --   },
+  --   {
+  --     "<leader>/",
+  --     function()
+  --       MiniPick.builtin.grep_live()
+  --     end,
+  --     desc = "Find Text",
+  --   },
+  --   {
+  --     "<leader>sh",
+  --     function()
+  --       MiniPick.builtin.help()
+  --     end,
+  --     desc = "Help",
+  --   },
+  -- },
   lazy = false,
   after = function()
     for module, options in pairs(opts) do

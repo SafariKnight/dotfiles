@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.modules.keyboard.keyd;
-in {
+in
+{
   options = {
     modules.keyboard.keyd.enable = lib.mkEnableOption "Enable Keyd";
   };
@@ -14,10 +16,18 @@ in {
       enable = true;
       keyboards = {
         default = {
-          ids = ["*"];
+          ids = [ "*" ];
           settings = {
             main = {
               capslock = "overload(nav, esc)";
+
+              # shift = "oneshot(shift)";
+              # meta = "oneshot(meta)";
+              # control = "oneshot(control)";
+
+              # leftalt = "oneshot(alt)";
+              # rightalt = "oneshot(altgr)";
+
               # esc = "noop"; # I have this so I can get in the habit of pressing capslock over escape # I got in the habit
 
               # a = "overloadt(meta, a, 175)";
