@@ -68,12 +68,10 @@ layout {
 /// Misc
 prefer-no-csd
 // No client side decorationsscreenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H:%M:%S.png"
-
 window-rule {
     match app-id="zen$" title="^Picture-in-Picture$"
     open-floating true
 }
-
 // window-rule {
 //     match app-id="^jetbrains" title="^$" // wayland
 //     match app-id="^jetbrains" title="^ $" // X11
@@ -81,7 +79,6 @@ window-rule {
 //     open-focused false
 //     open-floating true
 // }
-
 window-rule {
     geometry-corner-radius 6
     clip-to-geometry true

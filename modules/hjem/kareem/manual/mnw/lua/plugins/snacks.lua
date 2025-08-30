@@ -32,7 +32,7 @@ return {
     },
   },
   after = function()
-    Snacks.setup({
+    Snacks.setup {
       animate = { enabled = true },
       bigfile = { enabled = true },
       dim = { enabled = true },
@@ -60,7 +60,7 @@ return {
             },
             {
               icon = " ",
-              key = "g",
+              key = "/",
               desc = "Find Text",
               action = ":lua Snacks.dashboard.pick('live_grep')",
             },
@@ -99,6 +99,6 @@ return {
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
-    })
+    }
   end,
 }

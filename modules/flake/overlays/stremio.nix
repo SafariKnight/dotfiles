@@ -1,5 +1,4 @@
-_final: prev:
-let
+_final: prev: let
   pkgs = prev;
 
   patchedServer = pkgs.stdenv.mkDerivation rec {
@@ -23,8 +22,7 @@ let
 
     meta.license = pkgs.lib.licenses.unfree;
   };
-in
-{
+in {
   stremio-mpv = prev.stremio.overrideAttrs (oldAttrs: {
     server = patchedServer;
     postInstall =

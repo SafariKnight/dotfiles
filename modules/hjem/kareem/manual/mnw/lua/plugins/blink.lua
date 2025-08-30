@@ -2,7 +2,7 @@ return {
   "blink.cmp",
   event = "InsertEnter",
   after = function()
-    require("blink.cmp").setup({
+    require("blink.cmp").setup {
       fuzzy = {
         sorts = {
           function(a, b)
@@ -66,6 +66,6 @@ return {
           },
         },
       },
-    })
+    }
   end,
 }

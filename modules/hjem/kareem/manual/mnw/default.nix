@@ -2,12 +2,10 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   inherit (pkgs) lib;
   fs = lib.fileset;
-in
-{
+in {
   neovim = pkgs.neovim-unwrapped;
 
   initLua =
@@ -30,10 +28,10 @@ in
     stylua
 
     basedpyright
-    # pyright
     ruff
 
     nixd
+    alejandra
 
     vscode-langservers-extracted
     tailwindcss-language-server
@@ -46,14 +44,6 @@ in
     phpactor
 
     rust-analyzer
-    # rust-analyzer.overrideAttrs(old: {
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "rust-lang";
-    #     repo = "rust-analyzer";
-    #     rev = "2025-08-11";
-    #     hash = "sha256-fuHLsvM5z5/5ia3yL0/mr472wXnxSrtXECa+pspQchA=";
-    #   };
-    # })
 
     gopls
     gofumpt
@@ -77,10 +67,11 @@ in
 
     start = inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
 
-    opt = [
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-      (pkgs.callPackage ./packages/blink-cmp.nix { })
-    ]
-    ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
+    opt =
+      [
+        pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+        (pkgs.callPackage ./packages/blink-cmp.nix {})
+      ]
+      ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
   };
 }

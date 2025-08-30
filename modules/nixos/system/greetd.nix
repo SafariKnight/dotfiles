@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.modules.system.greetd;
-in
-{
+in {
   options = {
     modules.system.greetd.enable = lib.mkEnableOption "greetd";
     modules.system.greetd.command = lib.mkOption {
@@ -41,27 +39,25 @@ in
     services.greetd = {
       enable = true;
       settings = {
-        default_session =
-          let
-            tuigreet = "${lib.getExe pkgs.tuigreet}";
-            baseSessions = "${config.services.displayManager.sessionData.desktops}";
-            xSessions = "${baseSessions}/share/xsessions";
-            waylandSessions = "${baseSessions}/share/wayland-sessions";
-            tuigreetOptions = [
-              "--remember"
-              "--remember-session"
-              "--sessions ${waylandSessions}:${xSessions}"
-              "--time"
-              # Make sure theme is wrapped in single quotes. See https://github.com/apognu/tuigreet/issues/147
-              "--theme 'border=lightmagenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red'"
-              (lib.strings.optionalString (cfg.command != "") "--cmd ${cfg.command}")
-            ];
-            flags = lib.concatStringsSep " " tuigreetOptions;
-          in
-          {
-            command = "${tuigreet} ${flags}";
-            user = "greeter";
-          };
+        default_session = let
+          tuigreet = "${lib.getExe pkgs.tuigreet}";
+          baseSessions = "${config.services.displayManager.sessionData.desktops}";
+          xSessions = "${baseSessions}/share/xsessions";
+          waylandSessions = "${baseSessions}/share/wayland-sessions";
+          tuigreetOptions = [
+            "--remember"
+            "--remember-session"
+            "--sessions ${waylandSessions}:${xSessions}"
+            "--time"
+            # Make sure theme is wrapped in single quotes. See https://github.com/apognu/tuigreet/issues/147
+            "--theme 'border=lightmagenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red'"
+            (lib.strings.optionalString (cfg.command != "") "--cmd ${cfg.command}")
+          ];
+          flags = lib.concatStringsSep " " tuigreetOptions;
+        in {
+          command = "${tuigreet} ${flags}";
+          user = "greeter";
+        };
       };
     };
   };

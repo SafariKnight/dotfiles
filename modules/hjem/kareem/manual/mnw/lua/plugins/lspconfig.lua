@@ -92,7 +92,7 @@ return {
   "nvim-lspconfig",
   lazy = false,
   beforeAll = function()
-    vim.diagnostic.config({
+    vim.diagnostic.config {
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = "",
@@ -101,7 +101,7 @@ return {
           [vim.diagnostic.severity.HINT] = "",
         },
       },
-    })
+    }
   end,
   after = function()
     for server, cfg in pairs(opts) do

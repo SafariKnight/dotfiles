@@ -39,20 +39,19 @@ in {
               };
             }
           ]
-          ++ (
-            lib.filesystem.listFilesRecursive ../nixos
-            |> lib.filter (lib.hasSuffix ".nix")
-          );
+          ++ (lib.filesystem.listFilesRecursive ../nixos |> lib.filter (lib.hasSuffix ".nix"));
         specialArgs = {
           inherit inputs self;
         };
       };
+    impure = name:
+      self.nixosConfigurations.${name}.extendModules {
+        modules = [{impurity.enable = true;}];
+      };
   in {
     nixosConfigurations = {
       krypton = mkSystem "x86_64-linux" "krypton";
-      krypton-impure =
-        self.nixosConfigurations.krypton.extendModules
-        {modules = [{impurity.enable = true;}];};
+      krypton-impure = impure "krypton";
     };
   };
 }

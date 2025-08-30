@@ -5,8 +5,7 @@
   config,
   impurity,
   ...
-}:
-let
+}: let
   userEnabled = config.modules.hjem.enable && config.users.users.kareem.enable;
   inherit (pkgs.mpvScripts) uosc thumbfast;
   zen-browser-beta = inputs.zen-browser.packages.${pkgs.system}.beta;
@@ -16,8 +15,7 @@ let
       thumbfast
     ];
   };
-in
-{
+in {
   config = {
     users.users.kareem = {
       isNormalUser = true;
@@ -108,14 +106,14 @@ in
         fd
         television
 
-        (emacs-pgtk.pkgs.withPackages (_: [ pkgs.emacs-lsp-proxy ]))
+        emacs-pgtk
 
         # Neovim
-        (import ./nvim.nix { inherit inputs pkgs; })
+        (import ./nvim.nix {inherit inputs pkgs;})
         wl-clipboard-rs
       ];
 
-      files = import ./files.nix { inherit lib impurity config; };
+      files = import ./files.nix {inherit lib impurity config;};
     };
 
     programs.gpu-screen-recorder.enable = lib.mkDefault userEnabled;

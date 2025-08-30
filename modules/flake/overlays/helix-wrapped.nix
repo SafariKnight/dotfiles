@@ -1,15 +1,13 @@
-_: prev:
-let
+_: prev: let
   pkgs = prev;
-in
-{
-  helix-wrapped = pkgs.runCommand "helix-wrapped" { buildInputs = [ pkgs.makeWrapper ]; } ''
+in {
+  helix-wrapped = pkgs.runCommand "helix-wrapped" {buildInputs = [pkgs.makeWrapper];} ''
     mkdir -p $out/bin
     makeWrapper ${pkgs.helix}/bin/hx $out/bin/hx \
       --prefix PATH : ${
-        pkgs.lib.makeBinPath [
-          pkgs.basedpyright
-        ]
-      }
+      pkgs.lib.makeBinPath [
+        pkgs.basedpyright
+      ]
+    }
   '';
 }

@@ -2,8 +2,7 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.disko.nixosModules.disko
     ./disk-config.nix
@@ -137,7 +136,7 @@
   services.resolved = {
     enable = true;
     dnssec = "true";
-    domains = [ "~." ];
+    domains = ["~."];
     fallbackDns = [
       "9.9.9.9"
       "149.112.112.112"

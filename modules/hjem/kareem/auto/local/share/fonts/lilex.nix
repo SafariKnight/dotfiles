@@ -1,1 +1,1 @@
-{ pkgs, ... }: "${pkgs.lilex}/share/fonts/truetype"
+{pkgs, ...}: "${pkgs.lilex}/share/fonts/truetype"

@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.modules.keyboard.keyd;
-in
-{
+in {
   options = {
     modules.keyboard.keyd.enable = lib.mkEnableOption "Enable Keyd";
   };
@@ -16,7 +14,7 @@ in
       enable = true;
       keyboards = {
         default = {
-          ids = [ "*" ];
+          ids = ["*"];
           settings = {
             main = {
               capslock = "overload(nav, esc)";
