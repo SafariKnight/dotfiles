@@ -63,10 +63,7 @@ in {
         # Rofi
         rofi-wayland
 
-        # Quickshell
-        # inputs.quickshell.packages.${pkgs.system}.default
-
-        # TMUX
+        # TMux
         tmux
         tmux-session
 

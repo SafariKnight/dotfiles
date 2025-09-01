@@ -80,13 +80,9 @@
 
   nix.settings.substituters = [
     "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=10"
-    # "https://helix.cachix.org"
-    # "https://mirrors.ustc.edu.cn/nix-channels/store?priority=20"
+    "https://mirrors.ustc.edu.cn/nix-channels/store?priority=20"
+    "https://cache.nixos.org?priority=50"
   ];
-
-  # nix.settings.trusted-public-keys = [
-  #   "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-  # ];
 
   nix.settings.trusted-users = [
     "root"
@@ -103,35 +99,6 @@
   };
 
   networking.networkmanager.enable = true;
-  # networking = {
-  #   # networkmanager = {
-  #   #   enable = true;
-  #   #   wifi.backend = "iwd";
-  #   # };
-  #   wireless.iwd = {
-  #     enable = true;
-  #     settings = {
-  #       Network = {
-  #         EnableIPv6 = true;
-  #         NameResolvingService = "systemd";
-  #         EnableNetworkConfiguration = false;
-  #       };
-  #       Settings = {
-  #         AutoConnect = true;
-  #       };
-  #     };
-  #   };
-  # };
-  #
-  # systemd.network.enable = true;
-  # networking.useNetworkd = true;
-
-  # systemd.network.networks."10-wireless-dhcp" = {
-  #   matchConfig.Name = "wlan0";
-  #   networkConfig = {
-  #     DHCP = "ipv4";
-  #   };
-  # };
 
   services.resolved = {
     enable = true;
