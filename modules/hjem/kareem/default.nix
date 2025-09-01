@@ -8,7 +8,6 @@
 }: let
   userEnabled = config.modules.hjem.enable && config.users.users.kareem.enable;
   inherit (pkgs.mpvScripts) uosc thumbfast;
-  zen-browser-beta = inputs.zen-browser.packages.${pkgs.system}.beta;
   mpvWithScripts = pkgs.mpv.override {
     scripts = [
       uosc
@@ -25,7 +24,6 @@ in {
       inherit (config.modules.hjem) enable; # shouldn't use userEnabled because hjem already checks if the user is enabled
       packages = with pkgs; [
         ungoogled-chromium
-        zen-browser-beta
         qbittorrent
         opencode
         mprocs

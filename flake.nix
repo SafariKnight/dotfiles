@@ -12,43 +12,29 @@
     };
 
   inputs = {
-    # Moves faster than the flake input (I think)
+    ## Nix Packages ##
     # nixpkgs.url = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixos-unstable/nixexprs.tar.xz";
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    ## Home Management ##
+    hjem.url = "github:feel-co/hjem";
     impurity.url = "github:outfoxxed/impurity.nix";
 
-    # Why am I obsessed with flake-parts now
+    ## Flake Management
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
-
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ## System ##
+    disko.url = "github:nix-community/disko/latest";
 
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    helix-steel = {
-      url = "github:mattwparas/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    ## Programs ##
+    nix-index-database.url = "github:nix-community/nix-index-database";
     mnw.url = "github:Gerg-L/mnw";
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ## Overrides ##
+    hjem.inputs.nixpkgs.follows = "nixpkgs";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
