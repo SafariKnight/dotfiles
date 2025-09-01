@@ -52,6 +52,9 @@ in {
 
     ffmpeg-full
     imagemagick
+
+    sqlite
+    postgresql
   ];
 
   plugins = {

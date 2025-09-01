@@ -128,6 +128,48 @@
       "url": "https://api.github.com/repos/folke/snacks.nvim/tarball/v2.22.0",
       "hash": "1hbm4fnw51qdp0nz83fcxbvnxjq2k57a37w6dp0wz6wkcx7cwxw9"
     },
+    "vim-dadbod": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "tpope",
+        "repo": "vim-dadbod"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.4",
+      "revision": "35dd7bf38a69c1142a50c5c926e4d5ebd52d5c70",
+      "url": "https://api.github.com/repos/tpope/vim-dadbod/tarball/v1.4",
+      "hash": "0n1hvyv9555rgi3qajy3d59v1nqdwcrr0l4nqzc0pr0cg9q7d6g3"
+    },
+    "vim-dadbod-completion": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "kristijanhusak",
+        "repo": "vim-dadbod-completion"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6",
+      "url": "https://github.com/kristijanhusak/vim-dadbod-completion/archive/a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6.tar.gz",
+      "hash": "0gzhn6px019kd955di3540ngfn050hwll37wd5hdpj6i1apc5rhp"
+    },
+    "vim-dadbod-ui": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "kristijanhusak",
+        "repo": "vim-dadbod-ui"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "e8b53c0f3aa6e6127ac2a2d2071d9aade6c6e373",
+      "url": "https://github.com/kristijanhusak/vim-dadbod-ui/archive/e8b53c0f3aa6e6127ac2a2d2071d9aade6c6e373.tar.gz",
+      "hash": "014hzw3fh7v9zp3i6s1rv11i0gg8wv1qz4acs9nmwlmyir400jz9"
+    },
     "which-key.nvim": {
       "type": "GitRelease",
       "repository": {
