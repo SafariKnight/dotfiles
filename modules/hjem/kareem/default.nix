@@ -47,6 +47,8 @@ in {
 
         yaak
 
+        gemini-cli
+
         # VCS
         git
         lazygit
