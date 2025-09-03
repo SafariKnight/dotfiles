@@ -23,13 +23,6 @@ return {
       end,
       desc = "File Tree",
     },
-    {
-      "<leader>sh",
-      function()
-        Snacks.picker.help()
-      end,
-      desc = "Help",
-    },
   },
   after = function()
     Snacks.setup {
