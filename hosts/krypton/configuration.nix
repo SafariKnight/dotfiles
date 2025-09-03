@@ -63,6 +63,8 @@
 
   programs.hyprland.enable = true;
 
+  programs.fuse.userAllowOther = true;
+
   services.flatpak.enable = true;
 
   qt.enable = true;
@@ -95,6 +97,7 @@
       "wheel"
       "libvirtd"
       "incus-admin"
+      "fuse"
     ];
   };
 

@@ -14,6 +14,14 @@ in {
     programs.steam = {
       enable = true;
     };
+
+    security.wrappers.fusermount3 = {
+      source = "${pkgs.fuse3}/bin/fusermount3";
+      owner = "root";
+      group = "root";
+      setuid = true;
+    };
+
     programs.gamescope = {
       enable = true;
     };
@@ -21,6 +29,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       dwarfs
+      fuse3
       fuse-overlayfs
       bubblewrap
       gamescope
