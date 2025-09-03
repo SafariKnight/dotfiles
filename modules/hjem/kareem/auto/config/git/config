@@ -2,6 +2,6 @@
 	name = Kareem Hisham
 	email = safariknight2@gmail.com
 [core]
-  excludesFiles = ~/.config/git/globalgitignore
+  excludesFile = ~/.config/git/globalgitignore
 [init]
   defaultBranch = main
