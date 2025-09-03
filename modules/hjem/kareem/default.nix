@@ -49,16 +49,18 @@ in {
 
         gemini-cli
 
+        zed-editor-fhs
+
+        zeal
+
+        pinta
+
         # VCS
         git
         lazygit
         jujutsu
         jj-push
         lazyjj
-
-        zed-editor-fhs
-
-        zeal
 
         # Rofi
         rofi-wayland
