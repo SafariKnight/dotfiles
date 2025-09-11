@@ -51,8 +51,6 @@ in {
 
         zed-editor-fhs
 
-        zeal
-
         pinta
 
         # VCS
@@ -60,7 +58,6 @@ in {
         lazygit
         jujutsu
         jj-push
-        lazyjj
 
         # Rofi
         rofi-wayland
