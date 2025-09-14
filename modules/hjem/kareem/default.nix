@@ -15,6 +15,9 @@
     ];
   };
 in {
+  imports = [
+    ./theming.nix
+  ];
   config = {
     users.users.kareem = {
       isNormalUser = true;
