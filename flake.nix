@@ -31,6 +31,7 @@
     ## Programs ##
     nix-index-database.url = "github:nix-community/nix-index-database";
     mnw.url = "github:Gerg-L/mnw";
+    vicinae.url = "github:vicinaehq/vicinae";
 
     ## Overrides ##
     hjem.inputs.nixpkgs.follows = "nixpkgs";

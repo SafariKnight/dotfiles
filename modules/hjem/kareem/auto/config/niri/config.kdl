@@ -24,6 +24,7 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "xwayland-satellite" ":1"
 spawn-at-startup "sh" "-c" "DISPLAY=:1 setxkbmap us"
 spawn-at-startup "mako"
+spawn-at-startup "vicinae" "server"
 //// Environment ////
 environment {
     QT_QPA_PLATFORM "wayland"
@@ -267,7 +268,8 @@ binds {
         spawn "chromium"
     }
     Mod+D hotkey-overlay-title="Open an application" {
-        spawn "rofi" "-show" "drun"
+        // spawn "rofi" "-show" "drun"
+        spawn "vicinae"
     }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

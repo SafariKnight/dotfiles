@@ -62,6 +62,10 @@ in {
         # Rofi
         rofi-wayland
 
+        usbutils
+
+        inputs.vicinae.packages.${pkgs.system}.default
+
         # TMux
         tmux
         tmux-session
