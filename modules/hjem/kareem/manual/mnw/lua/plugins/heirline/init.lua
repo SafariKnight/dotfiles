@@ -1,9 +1,9 @@
 ---@diagnostic disable: missing-fields
-local StatusLine = require("plugins.heirline.statusline")
 return {
   "heirline.nvim",
   event = "DeferredUIEnter",
   after = function()
+    local StatusLine = require("plugins.heirline.statusline")
     require("heirline").setup {
       statusline = StatusLine,
     }
